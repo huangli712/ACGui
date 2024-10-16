@@ -23,6 +23,9 @@ caption {
 thead,
 tfoot {
     background-color: rgb(228 240 245);
+}
+
+thead th {
     text-align: center;
 }
   
