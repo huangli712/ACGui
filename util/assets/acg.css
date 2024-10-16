@@ -23,12 +23,14 @@ caption {
 thead,
 tfoot {
     background-color: rgb(228 240 245);
+    text-align: center;
 }
   
 th,
 td {
     border: 1px solid rgb(160 160 160);
     padding: 8px 10px;
+    text-align: left;
 }
   
 td:last-of-type {
