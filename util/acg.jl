@@ -172,12 +172,30 @@ function layout_maxent_block()
             html_tr([
                 html_th(html_label("How to determine the optimized α parameter")),
                 html_td(html_label("method")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(
+                    dcc_dropdown(
+                        options = [
+                            (label = "Maximum entropy method", value = "MaxEnt"),
+                            (label = "Barycentric rational function", value = "BarRat"),
+                            (label = "Stochastic pole expansion", value = "StochPX"),
+                        ],
+                        value = "MaxEnt",
+                    )
+                ),
             ]),
             html_tr([
                 html_th(html_label("Type of the entropy term")),
                 html_td(html_label("stype")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(
+                    dcc_dropdown(
+                        options = [
+                            (label = "Maximum entropy method", value = "MaxEnt"),
+                            (label = "Barycentric rational function", value = "BarRat"),
+                            (label = "Stochastic pole expansion", value = "StochPX"),
+                        ],
+                        value = "MaxEnt",
+                    )
+                ),
             ]),
             html_tr([
                 html_th(html_label("Total number of the chosen α parameters")),
@@ -215,12 +233,30 @@ function layout_barrat_block()
             html_tr([
                 html_th(html_label("Possible type of the spectrum")),
                 html_td(html_label("atype")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(
+                    dcc_dropdown(
+                        options = [
+                            (label = "Maximum entropy method", value = "MaxEnt"),
+                            (label = "Barycentric rational function", value = "BarRat"),
+                            (label = "Stochastic pole expansion", value = "StochPX"),
+                        ],
+                        value = "MaxEnt",
+                    )
+                ),
             ]),
             html_tr([
                 html_th(html_label("How to denoise the input data")),
                 html_td(html_label("denoise")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(
+                    dcc_dropdown(
+                        options = [
+                            (label = "Maximum entropy method", value = "MaxEnt"),
+                            (label = "Barycentric rational function", value = "BarRat"),
+                            (label = "Stochastic pole expansion", value = "StochPX"),
+                        ],
+                        value = "MaxEnt",
+                    )
+                ),
             ]),
             html_tr([
                 html_th(html_label("Threshold for the Prony approximation")),
