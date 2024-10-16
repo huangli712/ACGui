@@ -126,12 +126,30 @@ function layout_base_block()
             html_tr([
                 html_th(html_label("Is it the offdiagonal part in matrix-valued function")),
                 html_td(html_label("offdiag")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(
+                    dcc_radioitems(
+                        options = [
+                            (label = "Yes", value = "true"),
+                            (label = "No", value = "false"),
+                        ],
+                        value = "false",
+                        labelStyle = Dict("display" => "inline-block")
+                    )
+                ),
             ]),
             html_tr([
                 html_th(html_label("Are the analytic continuation results written into files")),
                 html_td(html_label("fwrite")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(
+                    dcc_radioitems(
+                        options = [
+                            (label = "Yes", value = "true"),
+                            (label = "No", value = "false"),
+                        ],
+                        value = "false",
+                        labelStyle = Dict("display" => "inline-block")
+                    )
+                ),
             ]),
             html_tr([
                 html_th(html_label("Restriction of the energy range of the spectrum")),
