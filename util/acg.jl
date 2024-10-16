@@ -6,8 +6,8 @@ function acg_layout!(app::Dash.DashApp)
     app.layout = html_div() do 
         html_h2("ACGui: A Graphic User Interface For ACFlow"),
         html_h4("Developed by Li Huang (hungli@caep.cn)"),
-        layout_base_block(),
-        layout_maxent_block()
+        layout_base_block()
+        #layout_maxent_block()
     end
 end
 
