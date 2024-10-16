@@ -15,9 +15,40 @@ function layout_base_block()
     html_table(
         html_tbody([
             html_tr([
-                html_th(html_label("finput : ")),
+                html_th(html_label("File name for input data")),
+                html_td(html_label("finput")),
                 html_td(dcc_input(type = "text", placeholder = "input")),
-            ]), 
+            ]),
+            html_tr([
+                html_th(html_label("File name for input data")),
+                html_td(html_label("finput")),
+                html_td(dcc_input(type = "text", placeholder = "input")),
+            ]),
+            html_tr([
+                html_th(html_label("File name for input data")),
+                html_td(html_label("finput")),
+                html_td(dcc_input(type = "text", placeholder = "input")),
+            ]),
+            html_tr([
+                html_th(html_label("File name for input data")),
+                html_td(html_label("finput")),
+                html_td(dcc_input(type = "text", placeholder = "input")),
+            ]),
+            html_tr([
+                html_th(html_label("File name for input data")),
+                html_td(html_label("finput")),
+                html_td(dcc_input(type = "text", placeholder = "input")),
+            ]),
+            html_tr([
+                html_th(html_label("File name for input data")),
+                html_td(html_label("finput")),
+                html_td(dcc_input(type = "text", placeholder = "input")),
+            ]),
+            html_tr([
+                html_th(html_label("File name for input data")),
+                html_td(html_label("finput")),
+                html_td(dcc_input(type = "text", placeholder = "input")),
+            ]),
         ])
     )
 end
