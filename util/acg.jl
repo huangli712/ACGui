@@ -45,22 +45,58 @@ function layout_base_block()
             html_tr([
                 html_th(html_label("Type of kernel function")),
                 html_td(html_label("ktype")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(
+                    dcc_dropdown(
+                        options = [
+                            (label = "Maximum entropy method", value = "MaxEnt"),
+                            (label = "Barycentric rational function", value = "BarRat"),
+                            (label = "Stochastic pole expansion", value = "StochPX"),
+                        ],
+                        value = "MaxEnt",
+                    )
+                ),
             ]),
             html_tr([
                 html_th(html_label("Type of default model function")),
                 html_td(html_label("mtype")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(
+                    dcc_dropdown(
+                        options = [
+                            (label = "Maximum entropy method", value = "MaxEnt"),
+                            (label = "Barycentric rational function", value = "BarRat"),
+                            (label = "Stochastic pole expansion", value = "StochPX"),
+                        ],
+                        value = "MaxEnt",
+                    )
+                ),
             ]),
             html_tr([
                 html_th(html_label("Grid for input data (imaginary axis)")),
                 html_td(html_label("grid")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(
+                    dcc_dropdown(
+                        options = [
+                            (label = "Maximum entropy method", value = "MaxEnt"),
+                            (label = "Barycentric rational function", value = "BarRat"),
+                            (label = "Stochastic pole expansion", value = "StochPX"),
+                        ],
+                        value = "MaxEnt",
+                    )
+                ),
             ]),
             html_tr([
                 html_th(html_label("Mesh for output data (real axis)")),
                 html_td(html_label("mesh")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(
+                    dcc_dropdown(
+                        options = [
+                            (label = "Maximum entropy method", value = "MaxEnt"),
+                            (label = "Barycentric rational function", value = "BarRat"),
+                            (label = "Stochastic pole expansion", value = "StochPX"),
+                        ],
+                        value = "MaxEnt",
+                    )
+                ),
             ]),
             html_tr([
                 html_th(html_label("Number of grid points")),
