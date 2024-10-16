@@ -138,6 +138,49 @@ function layout_maxent_block()
     ])
 end
 
+function layout_barrat_block()
+    html_table([
+        html_thead(
+            html_tr(
+                html_th(html_label("[BarRat] block"), colSpan = 3)
+            )
+        ),
+        #
+        html_tbody([
+            html_tr([
+                html_th(html_label("How to determine the optimized α parameter")),
+                html_td(html_label("method")),
+                html_td(dcc_input(type = "text", placeholder = "input")),
+            ]),
+            html_tr([
+                html_th(html_label("Type of the entropy term")),
+                html_td(html_label("stype")),
+                html_td(dcc_input(type = "text", placeholder = "input")),
+            ]),
+            html_tr([
+                html_th(html_label("Total number of the chosen α parameters")),
+                html_td(html_label("nalph")),
+                html_td(dcc_input(type = "text", placeholder = "input")),
+            ]),
+            html_tr([
+                html_th(html_label("Starting value for the α parameter")),
+                html_td(html_label("alpha")),
+                html_td(dcc_input(type = "text", placeholder = "input")),
+            ]),
+            html_tr([
+                html_th(html_label("Scaling factor for the α parameter")),
+                html_td(html_label("ratio")),
+                html_td(dcc_input(type = "text", placeholder = "input")),
+            ]),
+            html_tr([
+                html_th(html_label("Shall we preblur the kernel and spectrum")),
+                html_td(html_label("blur")),
+                html_td(dcc_input(type = "text", placeholder = "input")),
+            ]),
+        ]),
+    ])
+end
+
 app = dash()
 acg_layout!(app)
 run_server(app, "0.0.0.0", debug = true)
