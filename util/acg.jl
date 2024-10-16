@@ -8,7 +8,9 @@ function acg_layout!(app::Dash.DashApp)
         html_h4("Developed by Li Huang (hungli@caep.cn)"),
         layout_base_block(),
         html_br(),
-        layout_maxent_block()
+        layout_maxent_block(),
+        html_br(),
+        layout_barrat_block()
     end
 end
 
@@ -148,33 +150,28 @@ function layout_barrat_block()
         #
         html_tbody([
             html_tr([
-                html_th(html_label("How to determine the optimized α parameter")),
-                html_td(html_label("method")),
+                html_th(html_label("Possible type of the spectrum")),
+                html_td(html_label("atype")),
                 html_td(dcc_input(type = "text", placeholder = "input")),
             ]),
             html_tr([
-                html_th(html_label("Type of the entropy term")),
-                html_td(html_label("stype")),
+                html_th(html_label("How to denoise the input data")),
+                html_td(html_label("denoise")),
                 html_td(dcc_input(type = "text", placeholder = "input")),
             ]),
             html_tr([
-                html_th(html_label("Total number of the chosen α parameters")),
-                html_td(html_label("nalph")),
+                html_th(html_label("Threshold for the Prony approximation")),
+                html_td(html_label("epsilon")),
                 html_td(dcc_input(type = "text", placeholder = "input")),
             ]),
             html_tr([
-                html_th(html_label("Starting value for the α parameter")),
-                html_td(html_label("alpha")),
+                html_th(html_label("Cutoff for unphysical poles")),
+                html_td(html_label("pcut")),
                 html_td(dcc_input(type = "text", placeholder = "input")),
             ]),
             html_tr([
-                html_th(html_label("Scaling factor for the α parameter")),
-                html_td(html_label("ratio")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
-            ]),
-            html_tr([
-                html_th(html_label("Shall we preblur the kernel and spectrum")),
-                html_td(html_label("blur")),
+                html_th(html_label("Tiny distance from the real axis")),
+                html_td(html_label("eta")),
                 html_td(dcc_input(type = "text", placeholder = "input")),
             ]),
         ]),
