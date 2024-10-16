@@ -31,7 +31,16 @@ function layout_base_block()
             html_tr([
                 html_th(html_label("Solver for the analytic continuation problem")),
                 html_td(html_label("solver")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(
+                    dcc_dropdown(
+                        options = [
+                            (label = "Maximum entropy method", value = "MaxEnt"),
+                            (label = "Barycentric rational function", value = "BarRat"),
+                            (label = "Stochastic pole expansion", value = "StochPX"),
+                        ],
+                        value = "MaxEnt",
+                    )
+                ),
             ]),
             html_tr([
                 html_th(html_label("Type of kernel function")),
