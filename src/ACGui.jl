@@ -16,5 +16,6 @@ include("layout.jl")
 include("callback.jl")
 include("base.jl")
 export acg_run
+export acg_layout!
 
 end
