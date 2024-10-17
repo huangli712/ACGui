@@ -51,7 +51,7 @@ function layout_base_block()
                     dcc_input(
                         id = "finput",
                         type = "text",
-                        value = "green.data",
+                        value = "giw.data",
                         readOnly = true
                     )
                 ),
@@ -222,7 +222,7 @@ function layout_base_block()
                             (label = "Yes", value = "true"),
                             (label = "No", value = "false"),
                         ],
-                        value = "true",
+                        value = "false",
                         labelStyle = Dict("display" => "inline-block")
                     )
                 ),
@@ -502,6 +502,8 @@ callback!(
         @show B
         @show S
         welcome()
+        setup_param(B,S)
+        mesh, Aout, Gout = solve(read_data())
     end
 
 
