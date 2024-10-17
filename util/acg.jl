@@ -15,12 +15,17 @@ function acg_layout!(app::Dash.DashApp)
         html_br(),
         dcc_tabs(children = [
             dcc_tab(
-                label = "General setup",
+                label = "Data",
+                children = layout_data_block(),
+                className = "custom-tab",
+            ),
+            dcc_tab(
+                label = "General",
                 children = layout_base_block(),
                 className = "custom-tab",
             ),
             dcc_tab(
-                label = "Analytic continuation solvers",
+                label = "Solver",
                 children = [
                     layout_maxent_block(),
                     layout_barrat_block(),
@@ -29,7 +34,7 @@ function acg_layout!(app::Dash.DashApp)
                 className = "custom-tab",
             ),
             dcc_tab(
-                label = "Calculate and visualize",
+                label = "Run",
                 children = [
                     layout_hidden_block(),
                     layout_calc_block(),
@@ -38,7 +43,7 @@ function acg_layout!(app::Dash.DashApp)
                 className = "custom-tab",
             ),
             dcc_tab(
-                label = "User's guide",
+                label = "Guide",
                 children = [],
                 className = "custom-tab",
             ),
@@ -58,6 +63,28 @@ function layout_header_block()
         html_h4("Release : 2024/10"),
         html_h4("Developed by Li Huang (hungli@caep.cn)"),
     ])
+end
+
+function layout_data_block()
+    dcc_upload(
+        id="upload-image",
+        children=html_div([
+            "Drag and Drop or ",
+            html_a("Select Files")
+        ]),
+        style=Dict(
+            "width" => "100%",
+            "height" => "60px",
+            "lineHeight" => "60px",
+            "borderWidth" => "1px",
+            "borderStyle" => "dashed",
+            "borderRadius" => "5px",
+            "textAlign" => "center",
+            "margin" => "10px"
+        ),
+        # Allow multiple files to be uploaded
+        multiple=true
+    )
 end
 
 function layout_base_block()
