@@ -17,13 +17,14 @@ thead, tfoot {
 
 thead th {
     text-align: left;
+    font-weight: bold;
 }
 
 th, td {
     border: 1px solid rgb(228 240 245);
     text-align: left;
 	height: 2em;
-    font-family: sans-serif;
+    font-weight: normal;
 }
 
 tbody > tr:nth-of-type(even) {
@@ -35,4 +36,8 @@ input[type=text] {
 	border-radius: .2em .2em 0 0;
 	height: 2em;
     width: 96%;
+}
+
+.custom-tab {
+    font-weight: bold;
 }

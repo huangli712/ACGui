@@ -17,6 +17,7 @@ function acg_layout!(app::Dash.DashApp)
             dcc_tab(
                 label = "General setup",
                 children = layout_base_block(),
+                className = "custom-tab",
             ),
             dcc_tab(
                 label = "Analytic continuation solvers",
@@ -25,6 +26,7 @@ function acg_layout!(app::Dash.DashApp)
                     layout_barrat_block(),
                     layout_stochpx_block(),
                 ],
+                className = "custom-tab",
             ),
             dcc_tab(
                 label = "Calculate and visualize",
@@ -33,10 +35,12 @@ function acg_layout!(app::Dash.DashApp)
                     layout_calc_block(),
                     layout_plot_block(),
                 ],
+                className = "custom-tab",
             ),
             dcc_tab(
                 label = "User's guide",
                 children = [],
+                className = "custom-tab",
             ),
         ]),
         html_br(),
