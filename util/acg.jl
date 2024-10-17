@@ -44,9 +44,9 @@ function layout_base_block()
                 html_td(
                     dcc_dropdown(
                         options = [
-                            (label = "Maximum entropy method", value = "MaxEnt"),
-                            (label = "Barycentric rational function", value = "BarRat"),
-                            (label = "Stochastic pole expansion", value = "StochPX"),
+                            (label = "MaxEnt", value = "MaxEnt"),
+                            (label = "BarRat", value = "BarRat"),
+                            (label = "StochPX", value = "StochPX"),
                         ],
                         value = "MaxEnt",
                     )
@@ -58,11 +58,11 @@ function layout_base_block()
                 html_td(
                     dcc_dropdown(
                         options = [
-                            (label = "Maximum entropy method", value = "MaxEnt"),
-                            (label = "Barycentric rational function", value = "BarRat"),
-                            (label = "Stochastic pole expansion", value = "StochPX"),
+                            (label = "fermi", value = "fermi"),
+                            (label = "boson", value = "boson"),
+                            (label = "bsymm", value = "bsymm"),
                         ],
-                        value = "MaxEnt",
+                        value = "fermi",
                     )
                 ),
             ]),
@@ -72,11 +72,16 @@ function layout_base_block()
                 html_td(
                     dcc_dropdown(
                         options = [
-                            (label = "Maximum entropy method", value = "MaxEnt"),
-                            (label = "Barycentric rational function", value = "BarRat"),
-                            (label = "Stochastic pole expansion", value = "StochPX"),
+                            (label = "flat", value = "flat"),
+                            (label = "gauss", value = "gauss"),
+                            (label = "1gauss", value = "1gauss"),
+                            (label = "2gauss", value = "2gauss"),
+                            (label = "lorentz", value = "lorentz"),
+                            (label = "1lorentz", value = "1lorentz"),
+                            (label = "2lorentz", value = "2lorentz"),
+                            (label = "risedecay", value = "risedecay"),
                         ],
-                        value = "MaxEnt",
+                        value = "flat",
                     )
                 ),
             ]),
@@ -86,11 +91,16 @@ function layout_base_block()
                 html_td(
                     dcc_dropdown(
                         options = [
-                            (label = "Maximum entropy method", value = "MaxEnt"),
-                            (label = "Barycentric rational function", value = "BarRat"),
-                            (label = "Stochastic pole expansion", value = "StochPX"),
+                            (label = "ftime", value = "ftime"),
+                            (label = "fpart", value = "fpart"),
+                            (label = "btime", value = "btime"),
+                            (label = "bpart", value = "bpart"),
+                            (label = "ffreq", value = "ffreq"),
+                            (label = "ffrag", value = "ffrag"),
+                            (label = "bfreq", value = "bfreq"),
+                            (label = "bfrag", value = "bfrag"),
                         ],
-                        value = "MaxEnt",
+                        value = "ftime",
                     )
                 ),
             ]),
@@ -100,11 +110,12 @@ function layout_base_block()
                 html_td(
                     dcc_dropdown(
                         options = [
-                            (label = "Maximum entropy method", value = "MaxEnt"),
-                            (label = "Barycentric rational function", value = "BarRat"),
-                            (label = "Stochastic pole expansion", value = "StochPX"),
+                            (label = "linear", value = "linear"),
+                            (label = "tangent", value = "tangent"),
+                            (label = "lorentz", value = "lorentz"),
+                            (label = "halflorentz", value = "halflorentz"),
                         ],
-                        value = "MaxEnt",
+                        value = "linear",
                     )
                 ),
             ]),
