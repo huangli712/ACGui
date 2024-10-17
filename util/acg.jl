@@ -427,7 +427,6 @@ callback!(
     Output("barrat-block", "hidden"),
     Input("solver", "value"),
 ) do solver
-    println(solver)
     if solver == "MaxEnt"
         return (false, true)
     end
@@ -469,10 +468,6 @@ callback!(
     State("maxent", "children"),
     State("barrat", "children"),
 ) do btn, pbase, pmaxent, pbarrat
-    @show pbase
-    @show pmaxent
-    @show pbarrat
-    welcome()
 
     if btn > 0
         array_base = split(pbase,"|") 
@@ -491,8 +486,24 @@ callback!(
             "offdiag" => parse(Bool, array_base[12]),
             "fwrite"  => parse(Bool, array_base[13]),
         )
+
+        if array_base[2] == "MaxEnt"
+            array_maxent = split(pmaxent,"|")
+            S = Dict{String,Any}(
+                "method" => array_maxent[1],
+                "stype" => array_maxent[2],
+                "nalph" => parse(Int64, array_maxent[3]),
+                "alpha" => parse(Float64, array_maxent[4]),
+                "ratio" => parse(Float64, array_maxent[5]),
+                "blur" => parse(Float64, array_maxent[6]),
+            )
+        end
+
         @show B
+        @show S
+        welcome()
     end
+
 
     return "here $btn"
 end
