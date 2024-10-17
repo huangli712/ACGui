@@ -257,11 +257,10 @@ function layout_barrat_block()
                 html_td(
                     dcc_dropdown(
                         options = [
-                            (label = "Maximum entropy method", value = "MaxEnt"),
-                            (label = "Barycentric rational function", value = "BarRat"),
-                            (label = "Stochastic pole expansion", value = "StochPX"),
+                            (label = "cont", value = "cont"),
+                            (label = "delta", value = "delta"),
                         ],
-                        value = "MaxEnt",
+                        value = "cont",
                     )
                 ),
             ]),
@@ -271,11 +270,11 @@ function layout_barrat_block()
                 html_td(
                     dcc_dropdown(
                         options = [
-                            (label = "Maximum entropy method", value = "MaxEnt"),
-                            (label = "Barycentric rational function", value = "BarRat"),
-                            (label = "Stochastic pole expansion", value = "StochPX"),
+                            (label = "none", value = "none"),
+                            (label = "prony_s", value = "prony_s"),
+                            (label = "prony_o", value = "prony_o"),
                         ],
-                        value = "MaxEnt",
+                        value = "none",
                     )
                 ),
             ]),
