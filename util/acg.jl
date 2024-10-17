@@ -9,7 +9,10 @@ function acg_layout!(app::Dash.DashApp)
         layout_base_block(),
         html_br(),
         layout_maxent_block(),
-        layout_barrat_block()
+        layout_barrat_block(),
+        layout_stochpx_block(),
+        html_br(),
+        layout_hidden_block()
     end
 end
 
@@ -35,7 +38,14 @@ function layout_base_block()
             html_tr([
                 html_th(html_label("Filename for input data")),
                 html_td(html_label("finput")),
-                html_td(dcc_input(type = "text", value = "green.data", readOnly = true)),
+                html_td(
+                    dcc_input(
+                        id = "finput",
+                        type = "text",
+                        value = "green.data",
+                        readOnly = true
+                    )
+                ),
             ]),
             html_tr([
                 html_th(html_label("Solver for the analytic continuation problem")),
@@ -57,6 +67,7 @@ function layout_base_block()
                 html_td(html_label("ktype")),
                 html_td(
                     dcc_dropdown(
+                        id = "ktype",
                         options = [
                             (label = "fermi", value = "fermi"),
                             (label = "boson", value = "boson"),
@@ -71,6 +82,7 @@ function layout_base_block()
                 html_td(html_label("mtype")),
                 html_td(
                     dcc_dropdown(
+                        id = "mtype",
                         options = [
                             (label = "flat", value = "flat"),
                             (label = "gauss", value = "gauss"),
@@ -90,6 +102,7 @@ function layout_base_block()
                 html_td(html_label("grid")),
                 html_td(
                     dcc_dropdown(
+                        id = "grid",
                         options = [
                             (label = "ftime", value = "ftime"),
                             (label = "fpart", value = "fpart"),
@@ -109,6 +122,7 @@ function layout_base_block()
                 html_td(html_label("mesh")),
                 html_td(
                     dcc_dropdown(
+                        id = "mesh",
                         options = [
                             (label = "linear", value = "linear"),
                             (label = "tangent", value = "tangent"),
@@ -122,27 +136,57 @@ function layout_base_block()
             html_tr([
                 html_th(html_label("Number of grid points")),
                 html_td(html_label("ngrid")),
-                html_td(dcc_input(type = "text", value = "10")),
+                html_td(
+                    dcc_input(
+                        id = "ngrid",
+                        type = "text",
+                        value = "10"
+                    )
+                ),
             ]),
             html_tr([
                 html_th(html_label("Number of mesh points")),
                 html_td(html_label("nmesh")),
-                html_td(dcc_input(type = "text", value = "501")),
+                html_td(
+                    dcc_input(
+                        id = "nmesh",
+                        type = "text",
+                        value = "501"
+                    )
+                ),
             ]),
             html_tr([
                 html_th(html_label("Right boundary (maximum value) of output mesh")),
                 html_td(html_label("wmax")),
-                html_td(dcc_input(type = "text", value = "5.0")),
+                html_td(
+                    dcc_input(
+                        id = "wmax",
+                        type = "text",
+                        value = "5.0"
+                    )
+                ),
             ]),
             html_tr([
                 html_th(html_label("Left boundary (minimum value) of output mesh")),
                 html_td(html_label("wmin")),
-                html_td(dcc_input(type = "text", value = "-5.0")),
+                html_td(
+                    dcc_input(
+                        id = "wmin",
+                        type = "text",
+                        value = "-5.0"
+                    )
+                ),
             ]),
             html_tr([
                 html_th(html_label("Inverse temperature")),
                 html_td(html_label("beta")),
-                html_td(dcc_input(type = "text", value = "10.0")),
+                html_td(
+                    dcc_input(
+                        id = "beta",
+                        type = "text",
+                        value = "10.0"
+                    )
+                ),
             ]),
             html_tr([
                 html_th(html_label("Is it the offdiagonal part in matrix-valued function")),
@@ -175,7 +219,13 @@ function layout_base_block()
             html_tr([
                 html_th(html_label("Restriction of the energy range of the spectrum")),
                 html_td(html_label("exclude")),
-                html_td(dcc_input(type = "text", value = "")),
+                html_td(
+                    dcc_input(
+                        id = "exclude",
+                        type = "text",
+                        value = ""
+                    )
+                ),
             ]),
         ]),
     ])
@@ -298,6 +348,10 @@ function layout_barrat_block()
 end
 
 function layout_stochpx_block()
+end
+
+function layout_hidden_block()
+    html_label("")
 end
 
 app = dash()
