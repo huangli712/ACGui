@@ -4,14 +4,24 @@ using Dash
 
 function acg_layout!(app::Dash.DashApp)
     app.layout = html_div() do 
-        html_h2("ACGui: A Graphic User Interface For ACFlow"),
-        html_h4("Developed by Li Huang (hungli@caep.cn)"),
+        layout_header_block(),
+        html_br(),
         layout_base_block(),
         html_br(),
         layout_maxent_block(),
         html_br(),
         layout_barrat_block()
     end
+end
+
+function layout_header_block()
+    html_div([
+        html_h2("ACGui: A Graphic User Interface For ACFlow"),
+        html_hr(),
+        html_h4("Version : v0.0.1-devel.241017"),
+        html_h4("Release : 2024/10"),
+        html_h4("Developed by Li Huang (hungli@caep.cn)")
+    ])
 end
 
 function layout_base_block()

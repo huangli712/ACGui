@@ -2,10 +2,6 @@ body {
     font-family: sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: hotpink
-}
-
 table {
     border-collapse: collapse;
     border: 2px solid rgb(140 140 140);
