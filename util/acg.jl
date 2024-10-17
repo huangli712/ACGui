@@ -18,7 +18,6 @@ function acg_layout!(app::Dash.DashApp)
         layout_stochpx_block(),
         html_br(),
         layout_hidden_block(),
-        layout_data_block(),
         layout_calc_block(),
         layout_plot_block()
     end
@@ -416,10 +415,11 @@ function layout_hidden_block()
     ])
 end
 
-function layout_data_block()
-end
-
 function layout_calc_block()
+    html_div([
+        html_button(id = "calc", children = "Calculate"),
+        html_button(id = "plot", children = "Plot"),
+    ])
 end
 
 function layout_plot_block()
