@@ -9,7 +9,7 @@ const PMaxEnt = ["method", "stype", "nalph", "alpha", "ratio", "blur"]
 const PBarRat = ["atype", "denoise", "epsilon", "pcut", "eta"]
 const PStochPX = ["method", "nfine", "npole", "ntry", "nstep", "theta", "eta"]
 
-function acg_layout!(app::Dash.DashApp)
+function acg_layout_back!(app::Dash.DashApp)
     app.layout = html_div() do 
         layout_header_block(),
         html_br(),
@@ -22,6 +22,35 @@ function acg_layout!(app::Dash.DashApp)
         layout_hidden_block(),
         layout_calc_block(),
         layout_plot_block()
+    end
+end
+
+function acg_layout!(app::Dash.DashApp)
+    app.layout = html_div() do 
+        layout_header_block(),
+        html_br(),
+        dcc_tabs(children = [
+            dcc_tab(
+                label = "General setup",
+                children = layout_base_block(),
+            ),
+            dcc_tab(
+                label = "Analytic continuation solver",
+                children = [
+                    layout_maxent_block(),
+                    layout_barrat_block(),
+                    layout_stochpx_block(),
+                ],
+            ),
+            dcc_tab(
+                label = "Calculate and visualize",
+                children = [
+                    layout_hidden_block(),
+                    layout_calc_block(),
+                    layout_plot_block(),
+                ],
+            ),
+        ])
     end
 end
 
@@ -419,7 +448,8 @@ function layout_plot_block()
     html_div(id = "canvas")
 end
 
-app = dash()
+external_stylesheets = ["/Users/lihuang/Working/devel/ACGui/src/acg.css"]
+app = dash(external_stylesheets=external_stylesheets)
 acg_layout!(app)
 
 callback!(
@@ -498,6 +528,17 @@ callback!(
                 "alpha"  => parse(Float64, array_maxent[4]),
                 "ratio"  => parse(Float64, array_maxent[5]),
                 "blur"   => parse(Float64, array_maxent[6]),
+            )
+        end
+
+        if array_base[2] == "BarRat"
+            array_barrat = split(pbarrat,"|")
+            S = Dict{String,Any}(
+                "atype"   => string(array_barrat[1]),
+                "denoise" => string(array_barrat[2]),
+                "epsilon" => parse(Float64, array_barrat[3]),
+                "pcut"    => parse(Float64, array_barrat[4]),
+                "eta"     => parse(Float64, array_barrat[5]),
             )
         end
 
