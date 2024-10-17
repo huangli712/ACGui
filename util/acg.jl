@@ -20,7 +20,7 @@ function layout_header_block()
         html_hr(),
         html_h4("Version : v0.0.1-devel.241017"),
         html_h4("Release : 2024/10"),
-        html_h4("Developed by Li Huang (hungli@caep.cn)")
+        html_h4("Developed by Li Huang (hungli@caep.cn)"),
     ])
 end
 
