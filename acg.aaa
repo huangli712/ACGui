@@ -9,9 +9,7 @@ caption {
 td:last-of-type {
     text-align: center;
 }
-  
 
-  
 tfoot th {
     text-align: right;
 }
@@ -19,8 +17,6 @@ tfoot th {
 tfoot td {
     font-weight: bold;
 }
-
-
 
 button {
 	appearance: none;
