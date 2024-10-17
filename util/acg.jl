@@ -19,7 +19,7 @@ function acg_layout!(app::Dash.DashApp)
                 children = layout_base_block(),
             ),
             dcc_tab(
-                label = "Analytic continuation solver",
+                label = "Analytic continuation solvers",
                 children = [
                     layout_maxent_block(),
                     layout_barrat_block(),
@@ -33,6 +33,10 @@ function acg_layout!(app::Dash.DashApp)
                     layout_calc_block(),
                     layout_plot_block(),
                 ],
+            ),
+            dcc_tab(
+                label = "User's guide",
+                children = [],
             ),
         ])
     end
@@ -52,7 +56,7 @@ function layout_base_block()
     html_table([
         html_thead(
             html_tr(
-                html_th(html_label("[Base] block"), colSpan = 3)
+                html_th(html_label("Configuration parameters: general setup"), colSpan = 3)
             )
         ),
         #

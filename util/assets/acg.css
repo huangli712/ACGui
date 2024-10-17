@@ -1,7 +1,17 @@
-h2 h4 {
+h1, h2, h3, h4, h5, h6 {
 	color: hotpink;
 }
 
 body {
     font-family: sans-serif;
+}
+
+table {
+    border: 1px solid hotpink;
+	width: 100%;
+}
+
+thead,
+tfoot {
+    background-color: rgb(228 240 245);
 }
