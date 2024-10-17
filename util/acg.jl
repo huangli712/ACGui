@@ -297,6 +297,9 @@ function layout_barrat_block()
     ])
 end
 
+function layout_stochpx_block()
+end
+
 app = dash()
 acg_layout!(app)
 run_server(app, "0.0.0.0", debug = true)

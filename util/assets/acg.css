@@ -30,6 +30,7 @@ td {
     border: 1px solid rgb(160 160 160);
     padding: 8px 10px;
     text-align: left;
+	height: 2em;
 }
   
 td:last-of-type {
@@ -49,9 +50,8 @@ tfoot td {
 }
 
 input[type=text] {
-	border: .1em solid #E91E63;
+	border: .1em solid;
 	border-radius: .2em .2em 0 0;
-	color: #E91E63;
 }
 
 input[type=radio] {
