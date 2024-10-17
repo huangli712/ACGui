@@ -55,10 +55,6 @@ input[type=text] {
 	height: 2em;
 }
 
-input[type=radio] {
-    color: #E91E63;
-}
-
 button {
 	appearance: none;
 	border: .2em solid #E91E63;
