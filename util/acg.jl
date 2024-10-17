@@ -269,27 +269,30 @@ function layout_barrat_block()
                 html_th(html_label("How to denoise the input data")),
                 html_td(html_label("denoise")),
                 html_td(
-                    html_select([
-                        html_option(label = "No denoising", value = "none"),
-                        html_option(label = "Prony method (one-shot)", value = "prony_s"),
-                        html_option(label = "Prony method (optimized)", value = "prony_o"),
-                    ])
+                    dcc_dropdown(
+                        options = [
+                            (label = "Maximum entropy method", value = "MaxEnt"),
+                            (label = "Barycentric rational function", value = "BarRat"),
+                            (label = "Stochastic pole expansion", value = "StochPX"),
+                        ],
+                        value = "MaxEnt",
+                    )
                 ),
             ]),
             html_tr([
                 html_th(html_label("Threshold for the Prony approximation")),
                 html_td(html_label("epsilon")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(dcc_input(type = "text", value = "1e-10")),
             ]),
             html_tr([
                 html_th(html_label("Cutoff for unphysical poles")),
                 html_td(html_label("pcut")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(dcc_input(type = "text", value = "1e-3")),
             ]),
             html_tr([
                 html_th(html_label("Tiny distance from the real axis")),
                 html_td(html_label("eta")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(dcc_input(type = "text", value = "1e-2")),
             ]),
         ]),
     ])
