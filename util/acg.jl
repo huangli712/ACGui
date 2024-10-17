@@ -2,7 +2,7 @@
 
 using Dash
 
-const BASE_BLOCK = ["finput", "solver", "ktype", "mtype", "grid", "mesh", "ngrid", "nmesh", "wmax", "wmin", "beta", "offdiag", "fwrite", "export"]
+const BASE_BLOCK = ["finput", "solver", "ktype", "mtype", "grid", "mesh", "ngrid", "nmesh", "wmax", "wmin", "beta", "offdiag", "fwrite", "exclude"]
 
 function acg_layout!(app::Dash.DashApp)
     app.layout = html_div() do 
@@ -353,7 +353,7 @@ function layout_stochpx_block()
 end
 
 function layout_hidden_block()
-    html_label("")
+    html_label(children = "me", id = "base")
 end
 
 app = dash()
