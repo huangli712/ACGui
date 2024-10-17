@@ -1,23 +1,5 @@
 
 /*
-caption {
-    caption-side: bottom;
-    padding: 10px;
-    font-weight: bold;
-}
-
-td:last-of-type {
-    text-align: center;
-}
-
-tfoot th {
-    text-align: right;
-}
-  
-tfoot td {
-    font-weight: bold;
-}
-
 button {
 	appearance: none;
 	border: .2em solid #E91E63;
