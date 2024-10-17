@@ -404,7 +404,13 @@ function layout_stochpx_block()
 end
 
 function layout_hidden_block()
-    html_label(children = "me", id = "base")
+    html_div([
+        html_label(children = "me", id = "base"),
+        html_br(),
+        html_label(children = "me", id = "maxent"),
+        html_br(),
+        html_label(children = "me", id = "barrat"),
+    ])
 end
 
 app = dash()
@@ -429,7 +435,23 @@ end
 callback!(
     app,
     Output("base", "children"),
-    [Input("$i", "value") for i in BASE_BLOCK],
+    [Input("$i", "value") for i in PBASE],
+) do vals...
+    return string(vals)
+end
+
+callback!(
+    app,
+    Output("maxent", "children"),
+    [Input("$i", "value") for i in PMaxEnt],
+) do vals...
+    return string(vals)
+end
+
+callback!(
+    app,
+    Output("barrat", "children"),
+    [Input("$i", "value") for i in PBarRat],
 ) do vals...
     return string(vals)
 end
