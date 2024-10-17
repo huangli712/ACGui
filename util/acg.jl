@@ -222,7 +222,7 @@ function layout_base_block()
                             (label = "Yes", value = "true"),
                             (label = "No", value = "false"),
                         ],
-                        value = "false",
+                        value = "true",
                         labelStyle = Dict("display" => "inline-block")
                     )
                 ),
@@ -474,7 +474,7 @@ callback!(
     @show pbarrat
     welcome()
 
-    if btn > 1
+    if btn > 0
         array_base = split(pbase,"|") 
         B = Dict{String,Any}(
             "finput" => array_base[1],
@@ -483,13 +483,13 @@ callback!(
             "mtype"  => array_base[4],
             "grid"   => array_base[5],
             "mesh"   => array_base[6],
-            "ngrid"  => array_base[7],
-            "nmesh"  => array_base[8],
-            "wmax"   => array_base[9],
-            "wmin"   => array_base[10],
-            "beta"   => array_base[11],
-            "offdiag" => array_base[12],
-            "fwrite"  => array_base[13],
+            "ngrid"  => parse(Int64, array_base[7]),
+            "nmesh"  => parse(Int64, array_base[8]),
+            "wmax"   => parse(Float64, array_base[9]),
+            "wmin"   => parse(Float64, array_base[10]),
+            "beta"   => parse(Float64, array_base[11]),
+            "offdiag" => parse(Bool, array_base[12]),
+            "fwrite"  => parse(Bool, array_base[13]),
         )
         @show B
     end
