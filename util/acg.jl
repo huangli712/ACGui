@@ -9,22 +9,6 @@ const PMaxEnt = ["method", "stype", "nalph", "alpha", "ratio", "blur"]
 const PBarRat = ["atype", "denoise", "epsilon", "pcut", "eta"]
 const PStochPX = ["method", "nfine", "npole", "ntry", "nstep", "theta", "eta"]
 
-function acg_layout_back!(app::Dash.DashApp)
-    app.layout = html_div() do 
-        layout_header_block(),
-        html_br(),
-        layout_base_block(),
-        html_br(),
-        layout_maxent_block(),
-        layout_barrat_block(),
-        layout_stochpx_block(),
-        html_br(),
-        layout_hidden_block(),
-        layout_calc_block(),
-        layout_plot_block()
-    end
-end
-
 function acg_layout!(app::Dash.DashApp)
     app.layout = html_div() do 
         layout_header_block(),
