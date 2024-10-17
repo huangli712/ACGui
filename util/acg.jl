@@ -9,7 +9,6 @@ function acg_layout!(app::Dash.DashApp)
         layout_base_block(),
         html_br(),
         layout_maxent_block(),
-        html_br(),
         layout_barrat_block()
     end
 end
