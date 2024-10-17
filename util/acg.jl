@@ -448,8 +448,7 @@ function layout_plot_block()
     html_div(id = "canvas")
 end
 
-external_stylesheets = ["/Users/lihuang/Working/devel/ACGui/src/acg.css"]
-app = dash(external_stylesheets=external_stylesheets)
+app = dash()
 acg_layout!(app)
 
 callback!(
