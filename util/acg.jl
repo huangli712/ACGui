@@ -412,6 +412,8 @@ function layout_hidden_block()
         html_label(children = "me", id = "maxent"),
         html_br(),
         html_label(children = "me", id = "barrat"),
+        html_br(),
+        html_label(children = "me", id = "finish"),
     ])
 end
 
@@ -466,6 +468,17 @@ callback!(
     [Input("$i", "value") for i in PBarRat],
 ) do vals...
     return string(vals)
+end
+
+callback!(
+    app,
+    Output("finish", "children"),
+    Input("calc", "n_clicks"),
+    State("base", "children"),
+    State("maxent", "children"),
+    State("barrat", "children"),
+) do btn, pbase, pmaxent, pbarrat
+    return "here $btn"
 end
 
 run_server(app, "0.0.0.0", debug = true)
