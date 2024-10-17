@@ -470,14 +470,14 @@ callback!(
 ) do btn, pbase, pmaxent, pbarrat
 
     if btn > 0
-        array_base = split(pbase,"|") 
+        array_base = split(pbase,"|")
         B = Dict{String,Any}(
-            "finput" => array_base[1],
-            "solver" => array_base[2],
-            "ktype"  => array_base[3],
-            "mtype"  => array_base[4],
-            "grid"   => array_base[5],
-            "mesh"   => array_base[6],
+            "finput" => string(array_base[1]),
+            "solver" => string(array_base[2]),
+            "ktype"  => string(array_base[3]),
+            "mtype"  => string(array_base[4]),
+            "grid"   => string(array_base[5]),
+            "mesh"   => string(array_base[6]),
             "ngrid"  => parse(Int64, array_base[7]),
             "nmesh"  => parse(Int64, array_base[8]),
             "wmax"   => parse(Float64, array_base[9]),
@@ -490,12 +490,12 @@ callback!(
         if array_base[2] == "MaxEnt"
             array_maxent = split(pmaxent,"|")
             S = Dict{String,Any}(
-                "method" => array_maxent[1],
-                "stype" => array_maxent[2],
-                "nalph" => parse(Int64, array_maxent[3]),
-                "alpha" => parse(Float64, array_maxent[4]),
-                "ratio" => parse(Float64, array_maxent[5]),
-                "blur" => parse(Float64, array_maxent[6]),
+                "method" => string(array_maxent[1]),
+                "stype"  => string(array_maxent[2]),
+                "nalph"  => parse(Int64, array_maxent[3]),
+                "alpha"  => parse(Float64, array_maxent[4]),
+                "ratio"  => parse(Float64, array_maxent[5]),
+                "blur"   => parse(Float64, array_maxent[6]),
             )
         end
 
@@ -503,9 +503,8 @@ callback!(
         @show S
         welcome()
         setup_param(B,S)
-        mesh, Aout, Gout = solve(read_data())
+        mesh, Aout, Gout = ACFlow.solve(ACFlow.read_data())
     end
-
 
     return "here $btn"
 end
