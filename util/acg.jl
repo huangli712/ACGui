@@ -43,6 +43,7 @@ function layout_base_block()
                 html_td(html_label("solver")),
                 html_td(
                     dcc_dropdown(
+                        id = "solver",
                         options = [
                             (label = "MaxEnt", value = "MaxEnt"),
                             (label = "BarRat", value = "BarRat"),
@@ -239,7 +240,7 @@ function layout_maxent_block()
                 html_td(dcc_input(type = "text", value = "-1.0")),
             ]),
         ]),
-    ])
+    ], id = "maxent-block", hidden = true)
 end
 
 function layout_barrat_block()
@@ -294,7 +295,7 @@ function layout_barrat_block()
                 html_td(dcc_input(type = "text", value = "1e-2")),
             ]),
         ]),
-    ])
+    ], id = "barrat-block", hidden = true)
 end
 
 function layout_stochpx_block()
@@ -302,4 +303,21 @@ end
 
 app = dash()
 acg_layout!(app)
+
+callback!(
+    app,
+    Output("maxent-block", "hidden"),
+    Output("barrat-block", "hidden"),
+    Input("solver", "value"),
+) do solver
+    println(solver)
+    if solver == "MaxEnt"
+        return (false, true)
+    end
+
+    if solver == "BarRat"
+        return (true, false)
+    end
+end
+
 run_server(app, "0.0.0.0", debug = true)
