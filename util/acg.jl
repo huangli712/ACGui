@@ -196,11 +196,12 @@ function layout_maxent_block()
                 html_td(
                     dcc_dropdown(
                         options = [
-                            (label = "Maximum entropy method", value = "MaxEnt"),
-                            (label = "Barycentric rational function", value = "BarRat"),
-                            (label = "Stochastic pole expansion", value = "StochPX"),
+                            (label = "historic", value = "historic"),
+                            (label = "classic", value = "classic"),
+                            (label = "bryan", value = "bryan"),
+                            (label = "chi2kink", value = "chi2kink"),
                         ],
-                        value = "MaxEnt",
+                        value = "chi2kink",
                     )
                 ),
             ]),
@@ -210,33 +211,32 @@ function layout_maxent_block()
                 html_td(
                     dcc_dropdown(
                         options = [
-                            (label = "Maximum entropy method", value = "MaxEnt"),
-                            (label = "Barycentric rational function", value = "BarRat"),
-                            (label = "Stochastic pole expansion", value = "StochPX"),
+                            (label = "sj", value = "sj"),
+                            (label = "br", value = "br"),
                         ],
-                        value = "MaxEnt",
+                        value = "sj",
                     )
                 ),
             ]),
             html_tr([
                 html_th(html_label("Total number of the chosen α parameters")),
                 html_td(html_label("nalph")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(dcc_input(type = "text", value = "12")),
             ]),
             html_tr([
                 html_th(html_label("Starting value for the α parameter")),
                 html_td(html_label("alpha")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(dcc_input(type = "text", value = "1e9")),
             ]),
             html_tr([
                 html_th(html_label("Scaling factor for the α parameter")),
                 html_td(html_label("ratio")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(dcc_input(type = "text", value = "10.0")),
             ]),
             html_tr([
                 html_th(html_label("Shall we preblur the kernel and spectrum")),
                 html_td(html_label("blur")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(dcc_input(type = "text", value = "-1.0")),
             ]),
         ]),
     ])
