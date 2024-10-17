@@ -1,5 +1,7 @@
 #!/usr/bin/env julia
 
+push!(LOAD_PATH,"/Users/lihuang/Working/devel/ACFlow/src")
+using ACFlow
 using Dash
 
 const PBASE = ["finput", "solver", "ktype", "mtype", "grid", "mesh", "ngrid", "nmesh", "wmax", "wmin", "beta", "offdiag", "fwrite"]
@@ -408,8 +410,8 @@ end
 
 function layout_calc_block()
     html_div([
-        html_button(id = "calc", children = "Calculate"),
-        html_button(id = "plot", children = "Plot"),
+        html_button(id = "calc", children = "Calculate", n_clicks = 0),
+        html_button(id = "plot", children = "Plot", n_clicks = 0),
     ])
 end
 
@@ -440,7 +442,7 @@ callback!(
     Output("base", "children"),
     [Input("$i", "value") for i in PBASE],
 ) do vals...
-    return join(vals, " | ")
+    return join(vals, "|")
 end
 
 callback!(
@@ -448,7 +450,7 @@ callback!(
     Output("maxent", "children"),
     [Input("$i", "value") for i in PMaxEnt],
 ) do vals...
-    return join(vals, " | ")
+    return join(vals, "|")
 end
 
 callback!(
@@ -456,7 +458,7 @@ callback!(
     Output("barrat", "children"),
     [Input("$i", "value") for i in PBarRat],
 ) do vals...
-    return join(vals, " | ")
+    return join(vals, "|")
 end
 
 callback!(
@@ -470,6 +472,28 @@ callback!(
     @show pbase
     @show pmaxent
     @show pbarrat
+    welcome()
+
+    if btn > 1
+        array_base = split(pbase,"|") 
+        B = Dict{String,Any}(
+            "finput" => array_base[1],
+            "solver" => array_base[2],
+            "ktype"  => array_base[3],
+            "mtype"  => array_base[4],
+            "grid"   => array_base[5],
+            "mesh"   => array_base[6],
+            "ngrid"  => array_base[7],
+            "nmesh"  => array_base[8],
+            "wmax"   => array_base[9],
+            "wmin"   => array_base[10],
+            "beta"   => array_base[11],
+            "offdiag" => array_base[12],
+            "fwrite"  => array_base[13],
+        )
+        @show B
+    end
+
     return "here $btn"
 end
 
