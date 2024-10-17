@@ -249,6 +249,7 @@ function layout_maxent_block()
                 html_td(html_label("method")),
                 html_td(
                     dcc_dropdown(
+                        id = "method",
                         options = [
                             (label = "historic", value = "historic"),
                             (label = "classic", value = "classic"),
@@ -264,6 +265,7 @@ function layout_maxent_block()
                 html_td(html_label("stype")),
                 html_td(
                     dcc_dropdown(
+                        id = "stype",
                         options = [
                             (label = "sj", value = "sj"),
                             (label = "br", value = "br"),
@@ -275,22 +277,46 @@ function layout_maxent_block()
             html_tr([
                 html_th(html_label("Total number of the chosen α parameters")),
                 html_td(html_label("nalph")),
-                html_td(dcc_input(type = "text", value = "12")),
+                html_td(
+                    dcc_input(
+                        id = "nalph",
+                        type = "text",
+                        value = "12"
+                    )
+                ),
             ]),
             html_tr([
                 html_th(html_label("Starting value for the α parameter")),
                 html_td(html_label("alpha")),
-                html_td(dcc_input(type = "text", value = "1e9")),
+                html_td(
+                    dcc_input(
+                        id = "alpha",
+                        type = "text",
+                        value = "1e9"
+                    )
+                ),
             ]),
             html_tr([
                 html_th(html_label("Scaling factor for the α parameter")),
                 html_td(html_label("ratio")),
-                html_td(dcc_input(type = "text", value = "10.0")),
+                html_td(
+                    dcc_input(
+                        id = "ratio",
+                        type = "text",
+                        value = "10.0"
+                    )
+                ),
             ]),
             html_tr([
                 html_th(html_label("Shall we preblur the kernel and spectrum")),
                 html_td(html_label("blur")),
-                html_td(dcc_input(type = "text", value = "-1.0")),
+                html_td(
+                    dcc_input(
+                        id = "blur",
+                        type = "text",
+                        value = "-1.0"
+                    )
+                ),
             ]),
         ]),
     ], id = "maxent-block", hidden = true)
