@@ -2,7 +2,10 @@
 
 using Dash
 
-const BASE_BLOCK = ["finput", "solver", "ktype", "mtype", "grid", "mesh", "ngrid", "nmesh", "wmax", "wmin", "beta", "offdiag", "fwrite", "exclude"]
+const PBASE = ["finput", "solver", "ktype", "mtype", "grid", "mesh", "ngrid", "nmesh", "wmax", "wmin", "beta", "offdiag", "fwrite", "exclude"]
+const PMaxEnt = ["method", "stype", "nalph", "alpha", "ratio", "blur"]
+const PBarRat = ["atype", "denoise", "epsilon", "pcut", "eta"]
+const PStochPX = ["method", "nfine", "npole", "ntry", "nstep", "theta", "eta"]
 
 function acg_layout!(app::Dash.DashApp)
     app.layout = html_div() do 
