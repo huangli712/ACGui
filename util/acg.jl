@@ -66,25 +66,18 @@ function layout_header_block()
 end
 
 function layout_data_block()
-    dcc_upload(
-        id="upload-image",
-        children=html_div([
-            "Drag and Drop or ",
-            html_a("Select Files")
-        ]),
-        style=Dict(
-            "width" => "100%",
-            "height" => "60px",
-            "lineHeight" => "60px",
-            "borderWidth" => "1px",
-            "borderStyle" => "dashed",
-            "borderRadius" => "5px",
-            "textAlign" => "center",
-            "margin" => "10px"
+    html_div([
+        html_br(),
+        dcc_upload(
+            id = "upload-data",
+            children = html_div([
+                "Drag and Drop or ", 
+                html_a("Select Files"),
+            ]),
+            multiple = false,
+            className = "custom-upload",
         ),
-        # Allow multiple files to be uploaded
-        multiple=true
-    )
+    ])
 end
 
 function layout_base_block()
