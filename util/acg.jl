@@ -17,7 +17,10 @@ function acg_layout!(app::Dash.DashApp)
         layout_barrat_block(),
         layout_stochpx_block(),
         html_br(),
-        layout_hidden_block()
+        layout_hidden_block(),
+        layout_data_block(),
+        layout_calc_block(),
+        layout_plot_block()
     end
 end
 
@@ -411,6 +414,15 @@ function layout_hidden_block()
         html_br(),
         html_label(children = "me", id = "barrat"),
     ])
+end
+
+function layout_data_block()
+end
+
+function layout_calc_block()
+end
+
+function layout_plot_block()
 end
 
 app = dash()
