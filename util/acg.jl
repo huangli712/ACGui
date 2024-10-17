@@ -36,7 +36,7 @@ function layout_base_block()
             html_tr([
                 html_th(html_label("Filename for input data")),
                 html_td(html_label("finput")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(dcc_input(type = "text", value = "green.data", readOnly = true)),
             ]),
             html_tr([
                 html_th(html_label("Solver for the analytic continuation problem")),
@@ -122,27 +122,27 @@ function layout_base_block()
             html_tr([
                 html_th(html_label("Number of grid points")),
                 html_td(html_label("ngrid")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(dcc_input(type = "text", value = "10")),
             ]),
             html_tr([
                 html_th(html_label("Number of mesh points")),
                 html_td(html_label("nmesh")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(dcc_input(type = "text", value = "501")),
             ]),
             html_tr([
                 html_th(html_label("Right boundary (maximum value) of output mesh")),
                 html_td(html_label("wmax")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(dcc_input(type = "text", value = "5.0")),
             ]),
             html_tr([
                 html_th(html_label("Left boundary (minimum value) of output mesh")),
                 html_td(html_label("wmin")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(dcc_input(type = "text", value = "-5.0")),
             ]),
             html_tr([
                 html_th(html_label("Inverse temperature")),
                 html_td(html_label("beta")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(dcc_input(type = "text", value = "10.0")),
             ]),
             html_tr([
                 html_th(html_label("Is it the offdiagonal part in matrix-valued function")),
@@ -175,7 +175,7 @@ function layout_base_block()
             html_tr([
                 html_th(html_label("Restriction of the energy range of the spectrum")),
                 html_td(html_label("exclude")),
-                html_td(dcc_input(type = "text", placeholder = "input")),
+                html_td(dcc_input(type = "text", value = "")),
             ]),
         ]),
     ])
