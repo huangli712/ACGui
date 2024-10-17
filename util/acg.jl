@@ -195,6 +195,7 @@ function layout_base_block()
                 html_td(html_label("offdiag")),
                 html_td(
                     dcc_radioitems(
+                        id = "offdiag",
                         options = [
                             (label = "Yes", value = "true"),
                             (label = "No", value = "false"),
@@ -209,6 +210,7 @@ function layout_base_block()
                 html_td(html_label("fwrite")),
                 html_td(
                     dcc_radioitems(
+                        id = "fwrite",
                         options = [
                             (label = "Yes", value = "true"),
                             (label = "No", value = "false"),
@@ -373,6 +375,14 @@ callback!(
     if solver == "BarRat"
         return (true, false)
     end
+end
+
+callback!(
+    app,
+    Output("base", "children"),
+    [Input("$i", "value") for i in BASE_BLOCK],
+) do vals...
+    return string(vals)
 end
 
 run_server(app, "0.0.0.0", debug = true)
