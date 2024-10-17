@@ -2,7 +2,7 @@
 
 using Dash
 
-const PBASE = ["finput", "solver", "ktype", "mtype", "grid", "mesh", "ngrid", "nmesh", "wmax", "wmin", "beta", "offdiag", "fwrite", "exclude"]
+const PBASE = ["finput", "solver", "ktype", "mtype", "grid", "mesh", "ngrid", "nmesh", "wmax", "wmin", "beta", "offdiag", "fwrite"]
 const PMaxEnt = ["method", "stype", "nalph", "alpha", "ratio", "blur"]
 const PBarRat = ["atype", "denoise", "epsilon", "pcut", "eta"]
 const PStochPX = ["method", "nfine", "npole", "ntry", "nstep", "theta", "eta"]
@@ -225,17 +225,6 @@ function layout_base_block()
                     )
                 ),
             ]),
-            html_tr([
-                html_th(html_label("Restriction of the energy range of the spectrum")),
-                html_td(html_label("exclude")),
-                html_td(
-                    dcc_input(
-                        id = "exclude",
-                        type = "text",
-                        value = ""
-                    )
-                ),
-            ]),
         ]),
     ])
 end
@@ -451,7 +440,7 @@ callback!(
     Output("base", "children"),
     [Input("$i", "value") for i in PBASE],
 ) do vals...
-    return string(vals)
+    return join(vals, " | ")
 end
 
 callback!(
@@ -459,7 +448,7 @@ callback!(
     Output("maxent", "children"),
     [Input("$i", "value") for i in PMaxEnt],
 ) do vals...
-    return string(vals)
+    return join(vals, " | ")
 end
 
 callback!(
@@ -467,7 +456,7 @@ callback!(
     Output("barrat", "children"),
     [Input("$i", "value") for i in PBarRat],
 ) do vals...
-    return string(vals)
+    return join(vals, " | ")
 end
 
 callback!(
@@ -478,6 +467,9 @@ callback!(
     State("maxent", "children"),
     State("barrat", "children"),
 ) do btn, pbase, pmaxent, pbarrat
+    @show pbase
+    @show pmaxent
+    @show pbarrat
     return "here $btn"
 end
 
