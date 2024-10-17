@@ -336,6 +336,7 @@ function layout_barrat_block()
                 html_td(html_label("atype")),
                 html_td(
                     dcc_dropdown(
+                        id = "atype",
                         options = [
                             (label = "cont", value = "cont"),
                             (label = "delta", value = "delta"),
@@ -349,6 +350,7 @@ function layout_barrat_block()
                 html_td(html_label("denoise")),
                 html_td(
                     dcc_dropdown(
+                        id = "denoise",
                         options = [
                             (label = "none", value = "none"),
                             (label = "prony_s", value = "prony_s"),
@@ -361,17 +363,35 @@ function layout_barrat_block()
             html_tr([
                 html_th(html_label("Threshold for the Prony approximation")),
                 html_td(html_label("epsilon")),
-                html_td(dcc_input(type = "text", value = "1e-10")),
+                html_td(
+                    dcc_input(
+                        id = "epsilon",
+                        type = "text",
+                        value = "1e-10"
+                    )
+                ),
             ]),
             html_tr([
                 html_th(html_label("Cutoff for unphysical poles")),
                 html_td(html_label("pcut")),
-                html_td(dcc_input(type = "text", value = "1e-3")),
+                html_td(
+                    dcc_input(
+                        id = "pcut",
+                        type = "text",
+                        value = "1e-3"
+                    )
+                ),
             ]),
             html_tr([
                 html_th(html_label("Tiny distance from the real axis")),
                 html_td(html_label("eta")),
-                html_td(dcc_input(type = "text", value = "1e-2")),
+                html_td(
+                    dcc_input(
+                        id = "eta",
+                        type = "text",
+                        value = "1e-2"
+                    )
+                ),
             ]),
         ]),
     ], id = "barrat-block", hidden = true)
