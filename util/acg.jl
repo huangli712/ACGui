@@ -416,6 +416,7 @@ function layout_calc_block()
 end
 
 function layout_plot_block()
+    html_div(id = "canvas")
 end
 
 app = dash()
@@ -463,6 +464,7 @@ end
 callback!(
     app,
     Output("finish", "children"),
+    Output("canvas", "children"),
     Input("calc", "n_clicks"),
     State("base", "children"),
     State("maxent", "children"),
@@ -504,9 +506,16 @@ callback!(
         welcome()
         setup_param(B,S)
         mesh, Aout, Gout = ACFlow.solve(ACFlow.read_data())
-    end
 
-    return "here $btn"
+        fig = dcc_graph(
+            figure = (
+                data = [(x = mesh, y = Aout),],
+            )
+        )
+        return "here $btn", fig
+    else
+        return "here $btn", dcc_graph()
+    end
 end
 
 run_server(app, "0.0.0.0", debug = true)
