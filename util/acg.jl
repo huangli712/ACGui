@@ -38,7 +38,11 @@ function acg_layout!(app::Dash.DashApp)
                 label = "User's guide",
                 children = [],
             ),
-        ])
+        ]),
+        html_br(),
+        html_br(),
+        html_br(),
+        html_br()
     end
 end
 
