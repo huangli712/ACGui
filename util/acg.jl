@@ -2,6 +2,8 @@
 
 using Dash
 
+const BASE_BLOCK = ["finput", "solver", "ktype", "mtype", "grid", "mesh", "ngrid", "nmesh", "wmax", "wmin", "beta", "offdiag", "fwrite", "export"]
+
 function acg_layout!(app::Dash.DashApp)
     app.layout = html_div() do 
         layout_header_block(),
