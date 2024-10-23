@@ -3,6 +3,7 @@
 push!(LOAD_PATH,"/Users/lihuang/Working/devel/ACFlow/src")
 using ACFlow
 using Dash
+using Base64
 
 const PBASE = ["finput", "solver", "ktype", "mtype", "grid", "mesh", "ngrid", "nmesh", "wmax", "wmin", "beta", "offdiag", "fwrite"]
 const PMaxEnt = ["method", "stype", "nalph", "alpha", "ratio", "blur"]
@@ -85,6 +86,7 @@ function layout_data_block()
             html_br(),
             html_label("I like data."),
         ]),
+        html_div(id = "upload-file-info"),
     ])
 end
 
@@ -474,6 +476,26 @@ end
 
 app = dash()
 acg_layout!(app)
+
+callback!(
+    app,
+    Output("upload-file-info", "children"),
+    Input("upload-data", "contents"),
+    State("upload-data", "filename"),
+) do contents, filename
+    if !isnothing(filename)
+
+
+        content_type, content_string = split(contents, ',')
+        decoded = base64decode(content_string)
+        str = String(decoded)
+
+        open(filename, "w") do f
+            write(f, str)
+        end
+    end
+    return " Filename : $filename"
+end
 
 callback!(
     app,
