@@ -59,7 +59,7 @@ function layout_header_block()
     html_div([
         html_h2("ACGui: A Graphic User Interface For ACFlow"),
         html_hr(),
-        html_h4("Version : v0.0.1-devel.241017"),
+        html_h4("Version : v0.1.0-devel.241024"),
         html_h4("Release : 2024/10"),
         html_h4("Developed by Li Huang (hungli@caep.cn)"),
     ])
@@ -68,15 +68,18 @@ end
 function layout_data_block()
     html_div([
         html_br(),
-        dcc_upload(
-            id = "upload-data",
-            children = html_div([
-                "Drag and Drop or ", 
-                html_a("Select Files"),
-            ]),
-            multiple = false,
-            className = "custom-upload",
+        html_center(
+            dcc_upload(
+                id = "upload-data",
+                children = html_div([
+                    "Drag and Drop or ", 
+                    html_a("Select Files"),
+                ]),
+                multiple = false,
+                className = "custom-upload",
+            )
         ),
+        html_br(),
     ])
 end
 

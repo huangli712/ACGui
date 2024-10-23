@@ -44,7 +44,7 @@ input[type=text] {
 
 .custom-upload {
     font-weight: bold;
-    width: 100%;
+    width: 50%;
     height: 60px;
     line-height: 60px;
     border: 1px dashed;
