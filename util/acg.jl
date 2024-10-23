@@ -80,6 +80,11 @@ function layout_data_block()
             )
         ),
         html_br(),
+        html_center([
+            html_label("Please upload Matubara or imaginary time data to me."),
+            html_br(),
+            html_label("I like data."),
+        ]),
     ])
 end
 
