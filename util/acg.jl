@@ -732,7 +732,8 @@ function register_callback(app::Dash.DashApp)
         State("dict-base", "children"),
         State("dict-maxent", "children"),
         State("dict-barrat", "children"),
-    ) do btn, pbase, pmaxent, pbarrat
+        State("dict-stochpx", "children"),
+    ) do btn, pbase, pmaxent, pbarrat, pstochpx
 
         if btn > 0
             array_base = split(pbase,"|")
