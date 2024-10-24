@@ -807,7 +807,7 @@ function register_callback(app::Dash.DashApp)
     end
 end
 
-app = dash()
+app = dash(assets_folder="../src/assets", prevent_initial_callbacks = true)
 acg_layout!(app)
 register_callback(app)
 run_server(app, "0.0.0.0", debug = true)
