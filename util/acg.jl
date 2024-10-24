@@ -506,19 +506,33 @@ function layout_calc_block()
             )
         ),
         html_br(),
-        html_center(
-            html_button(
-                children = "Remove err.out",
-                id = "remove-err-out",
-                n_clicks = 0
-            )
-        ),
+        html_div(id = "err-out", hidden = true),
         html_br(),
         html_div(id = "canvas"),
     ])
 end
 
 function register_callback(app::Dash.DashApp)
+    callback!(
+        app,
+        Output("err-out", "hidden"),
+        Output("err-out", "children"),
+        Input("check-err-out", "n_clicks"),
+    ) do btn
+        fn = "./err.out"
+        if isfile(fn)
+            err = read(fn, String)
+        else
+            err = "N/A"
+        end
+        #
+        if iseven(btn)
+            return(true, err)
+        else
+            return(false, err)
+        end
+    end
+
     # For upload data
     callback!(
         app,
