@@ -7,28 +7,30 @@ body {
 }
 
 table {
-    border: 1px solid hotpink;
+    border: 1px solid;
+    border-collapse: collapse;
 	width: 100%;
 }
 
 thead, tfoot {
-    background-color: hotpink;
+    background-color: lightpink;
 }
 
 thead th {
+    border: 1px solid;
     text-align: left;
     font-weight: bold;
 }
 
 th, td {
-    border: 1px solid rgb(228 240 245);
+    border: 1px solid;
     text-align: left;
 	height: 2em;
     font-weight: normal;
 }
 
 tbody > tr:nth-of-type(even) {
-    background-color: pink;
+    background-color: #f2f2f2;
 }
 
 input[type=text] {
