@@ -776,7 +776,7 @@ function register_callback(app::Dash.DashApp)
             end
 
             if array_base[2] == "StochPX"
-                array_barrat = split(pstochpx,"|")
+                array_stochpx = split(pstochpx,"|")
                 S = Dict{String,Any}(
                     "method" => string(array_stochpx[1]),
                     "nfine"  => parse(I64, array_stochpx[2]),
