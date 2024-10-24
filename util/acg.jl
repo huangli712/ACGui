@@ -489,6 +489,7 @@ function layout_calc_block()
             id = "dict-barrat",
             hidden = true
         ),
+        html_br(),
         html_center(
             html_button(
                 children = "Start Analytic Continuation",
@@ -496,6 +497,23 @@ function layout_calc_block()
                 n_clicks = 0
             )
         ),
+        html_br(),
+        html_center(
+            html_button(
+                children = "Check err.out",
+                id = "check-err-out",
+                n_clicks = 0
+            )
+        ),
+        html_br(),
+        html_center(
+            html_button(
+                children = "Remove err.out",
+                id = "remove-err-out",
+                n_clicks = 0
+            )
+        ),
+        html_br(),
         html_div(id = "canvas"),
     ])
 end
