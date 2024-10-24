@@ -10,7 +10,7 @@
 module ACGui
 
 using Dash
-using Dates
+using Base64
 
 include("layout.jl")
 include("callback.jl")
