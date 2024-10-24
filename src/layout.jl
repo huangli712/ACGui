@@ -552,3 +552,57 @@ function layout_stochpx_block()
         ]),
     ], id = "stochpx-block", hidden = true)
 end
+
+function layout_calc_block()
+    html_div([
+        html_br(),
+        html_label(
+            children = "N/A",
+            id = "dict-base",
+            hidden = true,
+        ),
+        html_label(
+            children = "N/A",
+            id = "dict-maxent",
+            hidden = true,
+        ),
+        html_label(
+            children = "N/A",
+            id = "dict-barrat",
+            hidden = true,
+        ),
+        html_label(
+            children = "N/A",
+            id = "dict-stochpx",
+            hidden = true,
+        ),
+        html_br(),
+        html_center(
+            html_button(
+                children = "Start Analytic Continuation",
+                id = "calc",
+                n_clicks = 0
+            )
+        ),
+        html_br(),
+        html_center(
+            html_button(
+                children = "Check err.out",
+                id = "check-err-out",
+                n_clicks = 0
+            )
+        ),
+        html_br(),
+        html_div(id = "err-out", hidden = true),
+        html_br(),
+        html_div(id = "canvas"),
+    ])
+end
+
+function layout_about_block()
+    html_div([
+        html_h4("Version : v0.3.0-devel.241025"),
+        html_h4("Release : 2024/10"),
+        html_h4("Developed by Li Huang (hungli@caep.cn)"),
+    ])
+end
