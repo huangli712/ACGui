@@ -494,6 +494,8 @@ function register_callback(app::Dash.DashApp)
         app,
         Output("upload-file-name", "children"),
         Output("upload-file-type", "children"),
+        Output("upload-file-nrow", "children"),
+        Output("upload-file-ncol", "children"),
         Input("upload-data", "contents"),
         State("upload-data", "filename"),
     ) do contents, filename
@@ -501,13 +503,17 @@ function register_callback(app::Dash.DashApp)
             content_type, content_string = split(contents, ',')
             decoded = base64decode(content_string)
             str = String(decoded)
+            #
             #open(filename, "w") do f
             #    write(f, str)
             #end
-
-            return (filename, content_type)
+            #
+            str_vec = split(str, "\n", keepempty = false)
+            nrow = length(str_vec)
+            ncol = length(split(str_vec[1], " ", keepempty = false))
+            return (filename, content_type, nrow, ncol)
         else
-            return ("N/A", "N/A")
+            return ("N/A", "N/A", "N/A", "N/A")
         end
     end
 
