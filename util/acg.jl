@@ -672,14 +672,19 @@ function register_callback(app::Dash.DashApp)
         app,
         Output("maxent-block", "hidden"),
         Output("barrat-block", "hidden"),
-        Input("solver", "value"),
+        Output("stochpx-block", "hidden"),
+        Input("base-solver", "value"),
     ) do solver
         if solver == "MaxEnt"
-            return (false, true)
+            return (false, true, true)
         end
     
         if solver == "BarRat"
-            return (true, false)
+            return (true, false, true)
+        end
+
+        if solver == "StochPX"
+            return (true, true, false)
         end
     end
 
