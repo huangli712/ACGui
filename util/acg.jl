@@ -504,6 +504,7 @@ function register_callback(app::Dash.DashApp)
         Output("upload-file-nrow", "children"),
         Output("upload-file-ncol", "children"),
         Output("upload-file-head", "children"),
+        Output("upload-file-tail", "children"),
         Input("upload-data", "contents"),
         State("upload-data", "filename"),
     ) do contents, filename
@@ -517,18 +518,25 @@ function register_callback(app::Dash.DashApp)
             #end
             #
             str_vec = split(str, "\n", keepempty = false)
+            str_head = [split(x, " ", keepempty = false) for x in str_vec[1:4]]
+            str_tail = [split(x, " ", keepempty = false) for x in str_vec[end-3:end]]
             nrow = length(str_vec)
-            str_arr = [split(x, " ", keepempty = false) for x in str_vec[1:4]]
-            ncol = length(str_arr[1])
+            ncol = length(str_head[1])
 
-            dt = dash_datatable(
+            dt_head = dash_datatable(
                 columns = [Dict("name" => "Column $i", "id" => "column-$i") for i in 1:ncol],
-                data = [Dict("column-$i" => str_arr[j][i] for i in 1:ncol) for j = 1:4]
+                data = [Dict("column-$i" => str_head[j][i] for i in 1:ncol) for j = 1:4]
             )
-            return (filename, content_type, nrow, ncol, dt)
+
+            dt_tail = dash_datatable(
+                columns = [Dict("name" => "Column $i", "id" => "column-$i") for i in 1:ncol],
+                data = [Dict("column-$i" => str_tail[j][i] for i in 1:ncol) for j = 1:4]
+            )
+
+            return (filename, content_type, nrow, ncol, dt_head, dt_tail)
         else
             dt = dash_datatable()
-            return ("N/A", "N/A", "N/A", "N/A", dt)
+            return ("N/A", "N/A", "N/A", "N/A", dt, dt)
         end
     end
 
