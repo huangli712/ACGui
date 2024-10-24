@@ -472,59 +472,77 @@ function layout_stochpx_block()
     html_table([
         html_thead(
             html_tr(
-                html_th(html_label("[BarRat] block"), colSpan = 3)
+                html_th(html_label("[StochPX] block"), colSpan = 3)
             )
         ),
         #
         html_tbody([
             html_tr([
-                html_th(html_label("Possible type of the spectrum")),
-                html_td(html_label("atype")),
+                html_th(html_label("How to evaluate the final spectral density")),
+                html_td(html_label("method")),
                 html_td(
                     dcc_dropdown(
-                        id = "atype",
+                        id = "stochpx-method",
                         options = [
-                            (label = "cont", value = "cont"),
-                            (label = "delta", value = "delta"),
+                            (label = "best", value = "best"),
+                            (label = "mean", value = "mean"),
                         ],
-                        value = "cont",
+                        value = "mean",
                     )
                 ),
             ]),
             html_tr([
-                html_th(html_label("How to denoise the input data")),
-                html_td(html_label("denoise")),
-                html_td(
-                    dcc_dropdown(
-                        id = "denoise",
-                        options = [
-                            (label = "none", value = "none"),
-                            (label = "prony_s", value = "prony_s"),
-                            (label = "prony_o", value = "prony_o"),
-                        ],
-                        value = "none",
-                    )
-                ),
-            ]),
-            html_tr([
-                html_th(html_label("Threshold for the Prony approximation")),
-                html_td(html_label("epsilon")),
+                html_th(html_label("Number of points of a very fine linear mesh")),
+                html_td(html_label("nfine")),
                 html_td(
                     dcc_input(
-                        id = "epsilon",
+                        id = "stochpx-nfine",
                         type = "text",
-                        value = "1e-10"
+                        value = "100000"
                     )
                 ),
             ]),
             html_tr([
-                html_th(html_label("Cutoff for unphysical poles")),
-                html_td(html_label("pcut")),
+                html_th(html_label("Number of poles")),
+                html_td(html_label("npole")),
                 html_td(
                     dcc_input(
-                        id = "pcut",
+                        id = "stochpx-npole",
                         type = "text",
-                        value = "1e-3"
+                        value = "200"
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("Number of attempts (tries) to seek the solution")),
+                html_td(html_label("ntry")),
+                html_td(
+                    dcc_input(
+                        id = "stochpx-ntry",
+                        type = "text",
+                        value = "1000"
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("Number of Monte Carlo steps per attempt / try")),
+                html_td(html_label("nstep")),
+                html_td(
+                    dcc_input(
+                        id = "stochpx-nstep",
+                        type = "text",
+                        value = "1000000"
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("Artificial inverse temperature")),
+                html_td(html_label("theta")),
+                html_td(
+                    dcc_input(
+                        id = "stochpx-theta",
+                        type = "text",
+                        value = "1e+6"
                     )
                 ),
             ]),
@@ -533,9 +551,9 @@ function layout_stochpx_block()
                 html_td(html_label("eta")),
                 html_td(
                     dcc_input(
-                        id = "eta",
+                        id = "stochpx-eta",
                         type = "text",
-                        value = "1e-2"
+                        value = "1e-4"
                     )
                 ),
             ]),
