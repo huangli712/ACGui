@@ -101,8 +101,6 @@ function layout_data_block()
                 className = "custom-upload",
             )
         ),
-        html_br(),
-        html_div(id = "upload-file-info"),
     ])
 end
 
@@ -494,7 +492,8 @@ function register_callback(app::Dash.DashApp)
     # For upload data
     callback!(
         app,
-        Output("upload-file-info", "children"),
+        Output("upload-file-name", "children"),
+        Output("upload-file-type", "children"),
         Input("upload-data", "contents"),
         State("upload-data", "filename"),
     ) do contents, filename
@@ -505,9 +504,11 @@ function register_callback(app::Dash.DashApp)
             #open(filename, "w") do f
             #    write(f, str)
             #end
-            println(str)
+
+            return (filename, content_type)
+        else
+            return ("N/A", "N/A")
         end
-        return " Filename : $filename"
     end
 
     # For enable or disable solver tabs
