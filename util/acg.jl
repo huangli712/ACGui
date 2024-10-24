@@ -475,6 +475,7 @@ function layout_plot_block()
 end
 
 function register_callback(app::Dash.DashApp)
+    # For upload data
     callback!(
         app,
         Output("upload-file-info", "children"),
@@ -493,6 +494,7 @@ function register_callback(app::Dash.DashApp)
         return " Filename : $filename"
     end
 
+    # For enable or disable solver tabs
     callback!(
         app,
         Output("maxent-block", "hidden"),
@@ -507,6 +509,30 @@ function register_callback(app::Dash.DashApp)
             return (true, false)
         end
     end
+
+    callback!(
+        app,
+        Output("base", "children"),
+        [Input("$i", "value") for i in PBASE],
+    ) do vals...
+        return join(vals, "|")
+    end
+
+    callback!(
+        app,
+        Output("maxent", "children"),
+        [Input("$i", "value") for i in PMaxEnt],
+    ) do vals...
+        return join(vals, "|")
+    end
+
+    callback!(
+        app,
+        Output("barrat", "children"),
+        [Input("$i", "value") for i in PBarRat],
+    ) do vals...
+        return join(vals, "|")
+    end
 end
 
 app = dash()
@@ -516,29 +542,7 @@ register_callback(app)
 
 
 
-callback!(
-    app,
-    Output("base", "children"),
-    [Input("$i", "value") for i in PBASE],
-) do vals...
-    return join(vals, "|")
-end
 
-callback!(
-    app,
-    Output("maxent", "children"),
-    [Input("$i", "value") for i in PMaxEnt],
-) do vals...
-    return join(vals, "|")
-end
-
-callback!(
-    app,
-    Output("barrat", "children"),
-    [Input("$i", "value") for i in PBarRat],
-) do vals...
-    return join(vals, "|")
-end
 
 callback!(
     app,
