@@ -41,8 +41,8 @@ function acg_layout!(app::Dash.DashApp)
                 className = "custom-tab",
             ),
             dcc_tab(
-                label = "Guide",
-                children = [],
+                label = "About",
+                children = layout_about_block(),
                 className = "custom-tab",
             ),
         ]),
@@ -54,12 +54,9 @@ function acg_layout!(app::Dash.DashApp)
 end
 
 function layout_header_block()
-    html_div([
-        html_h2("ACGui: A Graphic User Interface For ACFlow"),
-        html_hr(),
-        html_h4("Version : v0.2.0-devel.241024"),
-        html_h4("Release : 2024/10"),
-        html_h4("Developed by Li Huang (hungli@caep.cn)"),
+    html_center([
+        html_h2("ACGui"),
+        html_h3("A Graphic User Interface For ACFlow"),
     ])
 end
 
@@ -604,6 +601,14 @@ function layout_calc_block()
         html_div(id = "err-out", hidden = true),
         html_br(),
         html_div(id = "canvas"),
+    ])
+end
+
+function layout_about_block()
+    html_div([
+        html_h4("Version : v0.2.0-devel.241024"),
+        html_h4("Release : 2024/10"),
+        html_h4("Developed by Li Huang (hungli@caep.cn)"),
     ])
 end
 
