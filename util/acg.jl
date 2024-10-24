@@ -37,11 +37,7 @@ function acg_layout!(app::Dash.DashApp)
             ),
             dcc_tab(
                 label = "Run",
-                children = [
-                    layout_dict_block(),
-                    layout_calc_block(),
-                    layout_plot_block(),
-                ],
+                children = layout_calc_block(),
                 className = "custom-tab",
             ),
             dcc_tab(
@@ -475,26 +471,33 @@ end
 function layout_stochpx_block()
 end
 
-function layout_dict_block()
-    html_div([
-        html_label(children = "N/A", id = "dict-base"),
-        html_br(),
-        html_label(children = "N/A", id = "dict-maxent"),
-        html_br(),
-        html_label(children = "N/A", id = "dict-barrat"),
-        html_br(),
-        html_label(children = "N/A", id = "finish"),
-    ])
-end
-
 function layout_calc_block()
     html_div([
-        html_button(id = "calc", children = "Calculate", n_clicks = 0),
+        html_br(),
+        html_label(
+            children = "N/A",
+            id = "dict-base",
+            hidden = true
+        ),
+        html_label(
+            children = "N/A",
+            id = "dict-maxent",
+            hidden = true
+        ),
+        html_label(
+            children = "N/A",
+            id = "dict-barrat",
+            hidden = true
+        ),
+        html_center(
+            html_button(
+                children = "Start Analytic Continuation",
+                id = "calc",
+                n_clicks = 0
+            )
+        ),
+        html_div(id = "canvas"),
     ])
-end
-
-function layout_plot_block()
-    html_div(id = "canvas")
 end
 
 function register_callback(app::Dash.DashApp)
@@ -584,7 +587,6 @@ function register_callback(app::Dash.DashApp)
 
     callback!(
         app,
-        Output("finish", "children"),
         Output("canvas", "children"),
         Input("calc", "n_clicks"),
         State("dict-base", "children"),
@@ -644,9 +646,9 @@ function register_callback(app::Dash.DashApp)
                     data = [(x = mesh, y = Aout),],
                 )
             )
-            return "here $btn", fig
+            return fig
         else
-            return "here $btn", dcc_graph()
+            return dcc_graph()
         end
     end
 end
