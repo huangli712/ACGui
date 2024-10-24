@@ -474,43 +474,47 @@ function layout_plot_block()
     html_div(id = "canvas")
 end
 
+function register_callback(app::Dash.DashApp)
+    callback!(
+        app,
+        Output("upload-file-info", "children"),
+        Input("upload-data", "contents"),
+        State("upload-data", "filename"),
+    ) do contents, filename
+        if !isnothing(filename)
+            content_type, content_string = split(contents, ',')
+            decoded = base64decode(content_string)
+            str = String(decoded)
+            #open(filename, "w") do f
+            #    write(f, str)
+            #end
+            println(str)
+        end
+        return " Filename : $filename"
+    end
+
+    callback!(
+        app,
+        Output("maxent-block", "hidden"),
+        Output("barrat-block", "hidden"),
+        Input("solver", "value"),
+    ) do solver
+        if solver == "MaxEnt"
+            return (false, true)
+        end
+    
+        if solver == "BarRat"
+            return (true, false)
+        end
+    end
+end
+
 app = dash()
 acg_layout!(app)
 
-callback!(
-    app,
-    Output("upload-file-info", "children"),
-    Input("upload-data", "contents"),
-    State("upload-data", "filename"),
-) do contents, filename
-    if !isnothing(filename)
+register_callback(app)
 
 
-        content_type, content_string = split(contents, ',')
-        decoded = base64decode(content_string)
-        str = String(decoded)
-
-        open(filename, "w") do f
-            write(f, str)
-        end
-    end
-    return " Filename : $filename"
-end
-
-callback!(
-    app,
-    Output("maxent-block", "hidden"),
-    Output("barrat-block", "hidden"),
-    Input("solver", "value"),
-) do solver
-    if solver == "MaxEnt"
-        return (false, true)
-    end
-
-    if solver == "BarRat"
-        return (true, false)
-    end
-end
 
 callback!(
     app,
