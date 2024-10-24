@@ -48,3 +48,53 @@ function acg_layout!(app::Dash.DashApp)
     end
 end
 
+function layout_header_block()
+    html_center([
+        html_h2("ACGui"),
+        html_h3("A Graphic User Interface For ACFlow"),
+    ])
+end
+
+function layout_data_block()
+    html_div([
+        html_br(),
+        html_table([
+            html_caption(
+                html_b("Basic Information About the Uploaded File")
+            ),
+            html_thead(
+                html_tr([
+                    html_th("Filename"),
+                    html_th("Type"),
+                    html_th("Number of rows"),
+                    html_th("Number of columns"),
+                ])
+            ),
+            #
+            html_tbody(
+                html_tr([
+                    html_td("N/A", id = "upload-file-name"),
+                    html_td("N/A", id = "upload-file-type"),
+                    html_td("N/A", id = "upload-file-nrow"),
+                    html_td("N/A", id = "upload-file-ncol"),
+                ])
+            ),
+        ]),
+        html_br(),
+        html_div(id = "upload-file-head"),
+        html_br(),
+        html_div(id = "upload-file-tail"),
+        html_br(),
+        html_center(
+            dcc_upload(
+                children = html_div([
+                    "Drag and Drop or ", 
+                    html_a("Select Files"),
+                ]),
+                id = "upload-data",
+                multiple = false,
+                className = "custom-upload",
+            )
+        ),
+    ])
+end
