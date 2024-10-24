@@ -124,7 +124,7 @@ function layout_base_block()
                 html_td(html_label("finput")),
                 html_td(
                     dcc_input(
-                        id = "finput",
+                        id = "base-finput",
                         type = "text",
                         value = "giw.data",
                         readOnly = true
@@ -136,7 +136,7 @@ function layout_base_block()
                 html_td(html_label("solver")),
                 html_td(
                     dcc_dropdown(
-                        id = "solver",
+                        id = "base-solver",
                         options = [
                             (label = "MaxEnt", value = "MaxEnt"),
                             (label = "BarRat", value = "BarRat"),
@@ -151,7 +151,7 @@ function layout_base_block()
                 html_td(html_label("ktype")),
                 html_td(
                     dcc_dropdown(
-                        id = "ktype",
+                        id = "base-ktype",
                         options = [
                             (label = "fermi", value = "fermi"),
                             (label = "boson", value = "boson"),
@@ -166,7 +166,7 @@ function layout_base_block()
                 html_td(html_label("mtype")),
                 html_td(
                     dcc_dropdown(
-                        id = "mtype",
+                        id = "base-mtype",
                         options = [
                             (label = "flat", value = "flat"),
                             (label = "gauss", value = "gauss"),
@@ -186,7 +186,7 @@ function layout_base_block()
                 html_td(html_label("grid")),
                 html_td(
                     dcc_dropdown(
-                        id = "grid",
+                        id = "base-grid",
                         options = [
                             (label = "ftime", value = "ftime"),
                             (label = "fpart", value = "fpart"),
@@ -206,7 +206,7 @@ function layout_base_block()
                 html_td(html_label("mesh")),
                 html_td(
                     dcc_dropdown(
-                        id = "mesh",
+                        id = "base-mesh",
                         options = [
                             (label = "linear", value = "linear"),
                             (label = "tangent", value = "tangent"),
@@ -222,7 +222,7 @@ function layout_base_block()
                 html_td(html_label("ngrid")),
                 html_td(
                     dcc_input(
-                        id = "ngrid",
+                        id = "base-ngrid",
                         type = "text",
                         value = "10"
                     )
@@ -233,7 +233,7 @@ function layout_base_block()
                 html_td(html_label("nmesh")),
                 html_td(
                     dcc_input(
-                        id = "nmesh",
+                        id = "base-nmesh",
                         type = "text",
                         value = "501"
                     )
@@ -244,7 +244,7 @@ function layout_base_block()
                 html_td(html_label("wmax")),
                 html_td(
                     dcc_input(
-                        id = "wmax",
+                        id = "base-wmax",
                         type = "text",
                         value = "5.0"
                     )
@@ -255,7 +255,7 @@ function layout_base_block()
                 html_td(html_label("wmin")),
                 html_td(
                     dcc_input(
-                        id = "wmin",
+                        id = "base-wmin",
                         type = "text",
                         value = "-5.0"
                     )
@@ -266,7 +266,7 @@ function layout_base_block()
                 html_td(html_label("beta")),
                 html_td(
                     dcc_input(
-                        id = "beta",
+                        id = "base-beta",
                         type = "text",
                         value = "10.0"
                     )
@@ -277,7 +277,7 @@ function layout_base_block()
                 html_td(html_label("offdiag")),
                 html_td(
                     dcc_radioitems(
-                        id = "offdiag",
+                        id = "base-offdiag",
                         options = [
                             (label = "Yes", value = "true"),
                             (label = "No", value = "false"),
@@ -292,7 +292,7 @@ function layout_base_block()
                 html_td(html_label("fwrite")),
                 html_td(
                     dcc_radioitems(
-                        id = "fwrite",
+                        id = "base-fwrite",
                         options = [
                             (label = "Yes", value = "true"),
                             (label = "No", value = "false"),
@@ -320,7 +320,7 @@ function layout_maxent_block()
                 html_td(html_label("method")),
                 html_td(
                     dcc_dropdown(
-                        id = "method",
+                        id = "maxent-method",
                         options = [
                             (label = "historic", value = "historic"),
                             (label = "classic", value = "classic"),
@@ -336,7 +336,7 @@ function layout_maxent_block()
                 html_td(html_label("stype")),
                 html_td(
                     dcc_dropdown(
-                        id = "stype",
+                        id = "maxent-stype",
                         options = [
                             (label = "sj", value = "sj"),
                             (label = "br", value = "br"),
@@ -350,7 +350,7 @@ function layout_maxent_block()
                 html_td(html_label("nalph")),
                 html_td(
                     dcc_input(
-                        id = "nalph",
+                        id = "maxent-nalph",
                         type = "text",
                         value = "12"
                     )
@@ -361,7 +361,7 @@ function layout_maxent_block()
                 html_td(html_label("alpha")),
                 html_td(
                     dcc_input(
-                        id = "alpha",
+                        id = "maxent-alpha",
                         type = "text",
                         value = "1e9"
                     )
@@ -372,7 +372,7 @@ function layout_maxent_block()
                 html_td(html_label("ratio")),
                 html_td(
                     dcc_input(
-                        id = "ratio",
+                        id = "maxent-ratio",
                         type = "text",
                         value = "10.0"
                     )
@@ -383,7 +383,7 @@ function layout_maxent_block()
                 html_td(html_label("blur")),
                 html_td(
                     dcc_input(
-                        id = "blur",
+                        id = "maxent-blur",
                         type = "text",
                         value = "-1.0"
                     )
@@ -394,6 +394,81 @@ function layout_maxent_block()
 end
 
 function layout_barrat_block()
+    html_table([
+        html_thead(
+            html_tr(
+                html_th(html_label("[BarRat] block"), colSpan = 3)
+            )
+        ),
+        #
+        html_tbody([
+            html_tr([
+                html_th(html_label("Possible type of the spectrum")),
+                html_td(html_label("atype")),
+                html_td(
+                    dcc_dropdown(
+                        id = "barrat-atype",
+                        options = [
+                            (label = "cont", value = "cont"),
+                            (label = "delta", value = "delta"),
+                        ],
+                        value = "cont",
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("How to denoise the input data")),
+                html_td(html_label("denoise")),
+                html_td(
+                    dcc_dropdown(
+                        id = "barrat-denoise",
+                        options = [
+                            (label = "none", value = "none"),
+                            (label = "prony_s", value = "prony_s"),
+                            (label = "prony_o", value = "prony_o"),
+                        ],
+                        value = "none",
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("Threshold for the Prony approximation")),
+                html_td(html_label("epsilon")),
+                html_td(
+                    dcc_input(
+                        id = "barrat-epsilon",
+                        type = "text",
+                        value = "1e-10"
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("Cutoff for unphysical poles")),
+                html_td(html_label("pcut")),
+                html_td(
+                    dcc_input(
+                        id = "barrat-pcut",
+                        type = "text",
+                        value = "1e-3"
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("Tiny distance from the real axis")),
+                html_td(html_label("eta")),
+                html_td(
+                    dcc_input(
+                        id = "barrat-eta",
+                        type = "text",
+                        value = "1e-2"
+                    )
+                ),
+            ]),
+        ]),
+    ], id = "barrat-block", hidden = true)
+end
+
+function layout_stochpx_block()
     html_table([
         html_thead(
             html_tr(
@@ -465,10 +540,7 @@ function layout_barrat_block()
                 ),
             ]),
         ]),
-    ], id = "barrat-block", hidden = true)
-end
-
-function layout_stochpx_block()
+    ], id = "stochpx-block", hidden = true)
 end
 
 function layout_calc_block()
@@ -596,7 +668,7 @@ function register_callback(app::Dash.DashApp)
     callback!(
         app,
         Output("dict-base", "children"),
-        [Input("$i", "value") for i in PBASE],
+        [Input("base-$i", "value") for i in PBASE],
     ) do vals...
         return join(vals, "|")
     end
@@ -604,7 +676,7 @@ function register_callback(app::Dash.DashApp)
     callback!(
         app,
         Output("dict-maxent", "children"),
-        [Input("$i", "value") for i in PMaxEnt],
+        [Input("maxent-$i", "value") for i in PMaxEnt],
     ) do vals...
         return join(vals, "|")
     end
@@ -612,7 +684,7 @@ function register_callback(app::Dash.DashApp)
     callback!(
         app,
         Output("dict-barrat", "children"),
-        [Input("$i", "value") for i in PBarRat],
+        [Input("barrat-$i", "value") for i in PBarRat],
     ) do vals...
         return join(vals, "|")
     end
