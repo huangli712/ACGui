@@ -490,7 +490,6 @@ end
 function layout_calc_block()
     html_div([
         html_button(id = "calc", children = "Calculate", n_clicks = 0),
-        html_button(id = "plot", children = "Plot", n_clicks = 0),
     ])
 end
 
