@@ -90,6 +90,8 @@ function layout_data_block()
             ),
         ]),
         html_br(),
+        html_div(id = "upload-file-head"),
+        html_br(),
         html_center(
             dcc_upload(
                 children = html_div([
@@ -496,6 +498,7 @@ function register_callback(app::Dash.DashApp)
         Output("upload-file-type", "children"),
         Output("upload-file-nrow", "children"),
         Output("upload-file-ncol", "children"),
+        Output("upload-file-head", "children"),
         Input("upload-data", "contents"),
         State("upload-data", "filename"),
     ) do contents, filename
@@ -510,10 +513,17 @@ function register_callback(app::Dash.DashApp)
             #
             str_vec = split(str, "\n", keepempty = false)
             nrow = length(str_vec)
-            ncol = length(split(str_vec[1], " ", keepempty = false))
-            return (filename, content_type, nrow, ncol)
+            str_arr = [split(x, " ", keepempty = false) for x in str_vec[1:4]]
+            ncol = length(str_arr[1])
+
+            dt = dash_datatable(
+                columns = [Dict("name" => "Column $i", "id" => "column-$i") for i in 1:ncol],
+                data = [Dict("column-$i" => str_arr[j][i] for i in 1:ncol) for j = 1:4]
+            )
+            return (filename, content_type, nrow, ncol, dt)
         else
-            return ("N/A", "N/A", "N/A", "N/A")
+            dt = dash_datatable()
+            return ("N/A", "N/A", "N/A", "N/A", dt)
         end
     end
 
