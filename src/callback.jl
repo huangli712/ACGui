@@ -7,6 +7,11 @@
 # Last modified: 2024/10/25
 #
 
+const PBASE = ["finput", "solver", "ktype", "mtype", "grid", "mesh", "ngrid", "nmesh", "wmax", "wmin", "beta", "offdiag", "fwrite"]
+const PMaxEnt = ["method", "stype", "nalph", "alpha", "ratio", "blur"]
+const PBarRat = ["atype", "denoise", "epsilon", "pcut", "eta"]
+const PStochPX = ["method", "nfine", "npole", "ntry", "nstep", "theta", "eta"]
+
 function register_callback(app::Dash.DashApp)
     callback!(
         app,
