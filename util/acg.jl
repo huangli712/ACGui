@@ -38,7 +38,7 @@ function acg_layout!(app::Dash.DashApp)
             dcc_tab(
                 label = "Run",
                 children = [
-                    layout_hidden_block(),
+                    layout_dict_block(),
                     layout_calc_block(),
                     layout_plot_block(),
                 ],
@@ -115,7 +115,10 @@ function layout_base_block()
     html_table([
         html_thead(
             html_tr(
-                html_th(html_label("Configuration parameters: general setup"), colSpan = 3)
+                html_th(
+                    html_label("Configuration parameters: general setup"),
+                    colSpan = 3
+                )
             )
         ),
         #
@@ -472,15 +475,15 @@ end
 function layout_stochpx_block()
 end
 
-function layout_hidden_block()
+function layout_dict_block()
     html_div([
-        html_label(children = "me", id = "base"),
+        html_label(children = "N/A", id = "dict-base"),
         html_br(),
-        html_label(children = "me", id = "maxent"),
+        html_label(children = "N/A", id = "dict-maxent"),
         html_br(),
-        html_label(children = "me", id = "barrat"),
+        html_label(children = "N/A", id = "dict-barrat"),
         html_br(),
-        html_label(children = "me", id = "finish"),
+        html_label(children = "N/A", id = "finish"),
     ])
 end
 
@@ -558,7 +561,7 @@ function register_callback(app::Dash.DashApp)
 
     callback!(
         app,
-        Output("base", "children"),
+        Output("dict-base", "children"),
         [Input("$i", "value") for i in PBASE],
     ) do vals...
         return join(vals, "|")
@@ -566,7 +569,7 @@ function register_callback(app::Dash.DashApp)
 
     callback!(
         app,
-        Output("maxent", "children"),
+        Output("dict-maxent", "children"),
         [Input("$i", "value") for i in PMaxEnt],
     ) do vals...
         return join(vals, "|")
@@ -574,7 +577,7 @@ function register_callback(app::Dash.DashApp)
 
     callback!(
         app,
-        Output("barrat", "children"),
+        Output("dict-barrat", "children"),
         [Input("$i", "value") for i in PBarRat],
     ) do vals...
         return join(vals, "|")
@@ -585,9 +588,9 @@ function register_callback(app::Dash.DashApp)
         Output("finish", "children"),
         Output("canvas", "children"),
         Input("calc", "n_clicks"),
-        State("base", "children"),
-        State("maxent", "children"),
-        State("barrat", "children"),
+        State("dict-base", "children"),
+        State("dict-maxent", "children"),
+        State("dict-barrat", "children"),
     ) do btn, pbase, pmaxent, pbarrat
 
         if btn > 0
@@ -599,11 +602,11 @@ function register_callback(app::Dash.DashApp)
                 "mtype"  => string(array_base[4]),
                 "grid"   => string(array_base[5]),
                 "mesh"   => string(array_base[6]),
-                "ngrid"  => parse(Int64, array_base[7]),
-                "nmesh"  => parse(Int64, array_base[8]),
-                "wmax"   => parse(Float64, array_base[9]),
-                "wmin"   => parse(Float64, array_base[10]),
-                "beta"   => parse(Float64, array_base[11]),
+                "ngrid"  => parse(I64, array_base[7]),
+                "nmesh"  => parse(I64, array_base[8]),
+                "wmax"   => parse(F64, array_base[9]),
+                "wmin"   => parse(F64, array_base[10]),
+                "beta"   => parse(F64, array_base[11]),
                 "offdiag" => parse(Bool, array_base[12]),
                 "fwrite"  => parse(Bool, array_base[13]),
             )
@@ -613,10 +616,10 @@ function register_callback(app::Dash.DashApp)
                 S = Dict{String,Any}(
                     "method" => string(array_maxent[1]),
                     "stype"  => string(array_maxent[2]),
-                    "nalph"  => parse(Int64, array_maxent[3]),
-                    "alpha"  => parse(Float64, array_maxent[4]),
-                    "ratio"  => parse(Float64, array_maxent[5]),
-                    "blur"   => parse(Float64, array_maxent[6]),
+                    "nalph"  => parse(I64, array_maxent[3]),
+                    "alpha"  => parse(F64, array_maxent[4]),
+                    "ratio"  => parse(F64, array_maxent[5]),
+                    "blur"   => parse(F64, array_maxent[6]),
                 )
             end
 
@@ -625,9 +628,9 @@ function register_callback(app::Dash.DashApp)
                 S = Dict{String,Any}(
                     "atype"   => string(array_barrat[1]),
                     "denoise" => string(array_barrat[2]),
-                    "epsilon" => parse(Float64, array_barrat[3]),
-                    "pcut"    => parse(Float64, array_barrat[4]),
-                    "eta"     => parse(Float64, array_barrat[5]),
+                    "epsilon" => parse(F64, array_barrat[3]),
+                    "pcut"    => parse(F64, array_barrat[4]),
+                    "eta"     => parse(F64, array_barrat[5]),
                 )
             end
 
