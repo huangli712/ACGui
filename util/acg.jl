@@ -775,6 +775,19 @@ function register_callback(app::Dash.DashApp)
                 )
             end
 
+            if array_base[2] == "StochPX"
+                array_barrat = split(pstochpx,"|")
+                S = Dict{String,Any}(
+                    "method" => string(array_stochpx[1]),
+                    "nfine"  => parse(I64, array_stochpx[2]),
+                    "npole"  => parse(I64, array_stochpx[3]),
+                    "ntry"   => parse(I64, array_stochpx[4]),
+                    "nstep"  => parse(I64, array_stochpx[5]),
+                    "theta"  => parse(F64, array_stochpx[6]),
+                    "eta"    => parse(F64, array_stochpx[7]),
+                )
+            end
+
             @show B
             @show S
             welcome()
