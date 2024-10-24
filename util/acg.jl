@@ -4,6 +4,7 @@ push!(LOAD_PATH,"/Users/lihuang/Working/devel/ACFlow/src")
 using ACFlow
 using Dash
 using Base64
+using DelimitedFiles
 
 const PBASE = ["finput", "solver", "ktype", "mtype", "grid", "mesh", "ngrid", "nmesh", "wmax", "wmin", "beta", "offdiag", "fwrite"]
 const PMaxEnt = ["method", "stype", "nalph", "alpha", "ratio", "blur"]
@@ -60,7 +61,7 @@ function layout_header_block()
     html_div([
         html_h2("ACGui: A Graphic User Interface For ACFlow"),
         html_hr(),
-        html_h4("Version : v0.1.0-devel.241024"),
+        html_h4("Version : v0.2.0-devel.241024"),
         html_h4("Release : 2024/10"),
         html_h4("Developed by Li Huang (hungli@caep.cn)"),
     ])
@@ -69,23 +70,38 @@ end
 function layout_data_block()
     html_div([
         html_br(),
+        html_table([
+            html_thead(
+                html_tr([
+                    html_th("Filename"),
+                    html_th("Type"),
+                    html_th("Number of rows"),
+                    html_th("Number of columns"),
+                ])
+            ),
+            #
+            html_tbody(
+                html_tr([
+                    html_td("N/A", id = "upload-file-name"),
+                    html_td("N/A", id = "upload-file-type"),
+                    html_td("N/A", id = "upload-file-nrow"),
+                    html_td("N/A", id = "upload-file-ncol"),
+                ])
+            ),
+        ]),
+        html_br(),
         html_center(
             dcc_upload(
-                id = "upload-data",
                 children = html_div([
                     "Drag and Drop or ", 
                     html_a("Select Files"),
                 ]),
+                id = "upload-data",
                 multiple = false,
                 className = "custom-upload",
             )
         ),
         html_br(),
-        html_center([
-            html_label("Please upload Matubara or imaginary time data to me."),
-            html_br(),
-            html_label("I like data."),
-        ]),
         html_div(id = "upload-file-info"),
     ])
 end
