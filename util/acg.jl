@@ -605,9 +605,5 @@ end
 
 app = dash()
 acg_layout!(app)
-
 register_callback(app)
-
-
-
 run_server(app, "0.0.0.0", debug = true)
