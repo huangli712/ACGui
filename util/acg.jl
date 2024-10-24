@@ -533,6 +533,74 @@ function register_callback(app::Dash.DashApp)
     ) do vals...
         return join(vals, "|")
     end
+
+    callback!(
+        app,
+        Output("finish", "children"),
+        Output("canvas", "children"),
+        Input("calc", "n_clicks"),
+        State("base", "children"),
+        State("maxent", "children"),
+        State("barrat", "children"),
+    ) do btn, pbase, pmaxent, pbarrat
+
+        if btn > 0
+            array_base = split(pbase,"|")
+            B = Dict{String,Any}(
+                "finput" => string(array_base[1]),
+                "solver" => string(array_base[2]),
+                "ktype"  => string(array_base[3]),
+                "mtype"  => string(array_base[4]),
+                "grid"   => string(array_base[5]),
+                "mesh"   => string(array_base[6]),
+                "ngrid"  => parse(Int64, array_base[7]),
+                "nmesh"  => parse(Int64, array_base[8]),
+                "wmax"   => parse(Float64, array_base[9]),
+                "wmin"   => parse(Float64, array_base[10]),
+                "beta"   => parse(Float64, array_base[11]),
+                "offdiag" => parse(Bool, array_base[12]),
+                "fwrite"  => parse(Bool, array_base[13]),
+            )
+
+            if array_base[2] == "MaxEnt"
+                array_maxent = split(pmaxent,"|")
+                S = Dict{String,Any}(
+                    "method" => string(array_maxent[1]),
+                    "stype"  => string(array_maxent[2]),
+                    "nalph"  => parse(Int64, array_maxent[3]),
+                    "alpha"  => parse(Float64, array_maxent[4]),
+                    "ratio"  => parse(Float64, array_maxent[5]),
+                    "blur"   => parse(Float64, array_maxent[6]),
+                )
+            end
+
+            if array_base[2] == "BarRat"
+                array_barrat = split(pbarrat,"|")
+                S = Dict{String,Any}(
+                    "atype"   => string(array_barrat[1]),
+                    "denoise" => string(array_barrat[2]),
+                    "epsilon" => parse(Float64, array_barrat[3]),
+                    "pcut"    => parse(Float64, array_barrat[4]),
+                    "eta"     => parse(Float64, array_barrat[5]),
+                )
+            end
+
+            @show B
+            @show S
+            welcome()
+            setup_param(B,S)
+            mesh, Aout, Gout = ACFlow.solve(ACFlow.read_data())
+
+            fig = dcc_graph(
+                figure = (
+                    data = [(x = mesh, y = Aout),],
+                )
+            )
+            return "here $btn", fig
+        else
+            return "here $btn", dcc_graph()
+        end
+    end
 end
 
 app = dash()
@@ -541,75 +609,5 @@ acg_layout!(app)
 register_callback(app)
 
 
-
-
-
-callback!(
-    app,
-    Output("finish", "children"),
-    Output("canvas", "children"),
-    Input("calc", "n_clicks"),
-    State("base", "children"),
-    State("maxent", "children"),
-    State("barrat", "children"),
-) do btn, pbase, pmaxent, pbarrat
-
-    if btn > 0
-        array_base = split(pbase,"|")
-        B = Dict{String,Any}(
-            "finput" => string(array_base[1]),
-            "solver" => string(array_base[2]),
-            "ktype"  => string(array_base[3]),
-            "mtype"  => string(array_base[4]),
-            "grid"   => string(array_base[5]),
-            "mesh"   => string(array_base[6]),
-            "ngrid"  => parse(Int64, array_base[7]),
-            "nmesh"  => parse(Int64, array_base[8]),
-            "wmax"   => parse(Float64, array_base[9]),
-            "wmin"   => parse(Float64, array_base[10]),
-            "beta"   => parse(Float64, array_base[11]),
-            "offdiag" => parse(Bool, array_base[12]),
-            "fwrite"  => parse(Bool, array_base[13]),
-        )
-
-        if array_base[2] == "MaxEnt"
-            array_maxent = split(pmaxent,"|")
-            S = Dict{String,Any}(
-                "method" => string(array_maxent[1]),
-                "stype"  => string(array_maxent[2]),
-                "nalph"  => parse(Int64, array_maxent[3]),
-                "alpha"  => parse(Float64, array_maxent[4]),
-                "ratio"  => parse(Float64, array_maxent[5]),
-                "blur"   => parse(Float64, array_maxent[6]),
-            )
-        end
-
-        if array_base[2] == "BarRat"
-            array_barrat = split(pbarrat,"|")
-            S = Dict{String,Any}(
-                "atype"   => string(array_barrat[1]),
-                "denoise" => string(array_barrat[2]),
-                "epsilon" => parse(Float64, array_barrat[3]),
-                "pcut"    => parse(Float64, array_barrat[4]),
-                "eta"     => parse(Float64, array_barrat[5]),
-            )
-        end
-
-        @show B
-        @show S
-        welcome()
-        setup_param(B,S)
-        mesh, Aout, Gout = ACFlow.solve(ACFlow.read_data())
-
-        fig = dcc_graph(
-            figure = (
-                data = [(x = mesh, y = Aout),],
-            )
-        )
-        return "here $btn", fig
-    else
-        return "here $btn", dcc_graph()
-    end
-end
 
 run_server(app, "0.0.0.0", debug = true)
