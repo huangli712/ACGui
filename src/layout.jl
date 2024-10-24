@@ -8,7 +8,7 @@
 #
 
 function acg_layout!(app::Dash.DashApp)
-    app.layout = html_div() do 
+    app.layout = html_div() do
         layout_header_block(),
         html_br(),
         dcc_tabs(children = [
@@ -88,7 +88,7 @@ function layout_data_block()
         html_center(
             dcc_upload(
                 children = html_div([
-                    "Drag and Drop or ", 
+                    "Drag and Drop or ",
                     html_a("Select Files"),
                 ]),
                 id = "upload-data",

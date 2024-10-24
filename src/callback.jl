@@ -50,9 +50,9 @@ function register_callback(app::Dash.DashApp)
             decoded = base64decode(content_string)
             str = String(decoded)
             #
-            #open(filename, "w") do f
-            #    write(f, str)
-            #end
+            open(filename, "w") do f
+                write(f, str)
+            end
             #
             str_vec = split(str, "\n", keepempty = false)
             str_head = [split(x, " ", keepempty = false) for x in str_vec[1:4]]
@@ -88,7 +88,7 @@ function register_callback(app::Dash.DashApp)
         if solver == "MaxEnt"
             return (false, true, true)
         end
-    
+
         if solver == "BarRat"
             return (true, false, true)
         end

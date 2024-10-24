@@ -10,7 +10,7 @@
 function acg_run()
     app = dash(
         assets_folder="../src/assets",
-        prevent_initial_callbacks = true
+        prevent_initial_callbacks = false
     )
 
     acg_layout!(app)
