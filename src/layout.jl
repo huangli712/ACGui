@@ -297,3 +297,90 @@ function layout_base_block()
         ]),
     ])
 end
+
+function layout_maxent_block()
+    html_table([
+        html_thead(
+            html_tr(
+                html_th(html_label("[MaxEnt] block"), colSpan = 3)
+            )
+        ),
+        #
+        html_tbody([
+            html_tr([
+                html_th(html_label("How to determine the optimized α parameter")),
+                html_td(html_label("method")),
+                html_td(
+                    dcc_dropdown(
+                        id = "maxent-method",
+                        options = [
+                            (label = "historic", value = "historic"),
+                            (label = "classic", value = "classic"),
+                            (label = "bryan", value = "bryan"),
+                            (label = "chi2kink", value = "chi2kink"),
+                        ],
+                        value = "chi2kink",
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("Type of the entropy term")),
+                html_td(html_label("stype")),
+                html_td(
+                    dcc_dropdown(
+                        id = "maxent-stype",
+                        options = [
+                            (label = "sj", value = "sj"),
+                            (label = "br", value = "br"),
+                        ],
+                        value = "sj",
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("Total number of the chosen α parameters")),
+                html_td(html_label("nalph")),
+                html_td(
+                    dcc_input(
+                        id = "maxent-nalph",
+                        type = "text",
+                        value = "12"
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("Starting value for the α parameter")),
+                html_td(html_label("alpha")),
+                html_td(
+                    dcc_input(
+                        id = "maxent-alpha",
+                        type = "text",
+                        value = "1e9"
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("Scaling factor for the α parameter")),
+                html_td(html_label("ratio")),
+                html_td(
+                    dcc_input(
+                        id = "maxent-ratio",
+                        type = "text",
+                        value = "10.0"
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("Shall we preblur the kernel and spectrum")),
+                html_td(html_label("blur")),
+                html_td(
+                    dcc_input(
+                        id = "maxent-blur",
+                        type = "text",
+                        value = "-1.0"
+                    )
+                ),
+            ]),
+        ]),
+    ], id = "maxent-block", hidden = true)
+end
