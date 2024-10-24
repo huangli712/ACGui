@@ -567,17 +567,22 @@ function layout_calc_block()
         html_label(
             children = "N/A",
             id = "dict-base",
-            hidden = true
+            hidden = true,
         ),
         html_label(
             children = "N/A",
             id = "dict-maxent",
-            hidden = true
+            hidden = true,
         ),
         html_label(
             children = "N/A",
             id = "dict-barrat",
-            hidden = true
+            hidden = true,
+        ),
+        html_label(
+            children = "N/A",
+            id = "dict-stochpx",
+            hidden = true,
         ),
         html_br(),
         html_center(
@@ -708,6 +713,14 @@ function register_callback(app::Dash.DashApp)
         app,
         Output("dict-barrat", "children"),
         [Input("barrat-$i", "value") for i in PBarRat],
+    ) do vals...
+        return join(vals, "|")
+    end
+
+    callback!(
+        app,
+        Output("dict-stochpx", "children"),
+        [Input("stochpx-$i", "value") for i in PStochPX],
     ) do vals...
         return join(vals, "|")
     end
