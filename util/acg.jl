@@ -71,6 +71,9 @@ function layout_data_block()
     html_div([
         html_br(),
         html_table([
+            html_caption(
+                html_b("Basic Information About the Uploaded File")
+            ),
             html_thead(
                 html_tr([
                     html_th("Filename"),
@@ -91,6 +94,8 @@ function layout_data_block()
         ]),
         html_br(),
         html_div(id = "upload-file-head"),
+        html_br(),
+        html_div(id = "upload-file-tail"),
         html_br(),
         html_center(
             dcc_upload(
