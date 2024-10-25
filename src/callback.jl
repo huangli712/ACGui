@@ -182,7 +182,18 @@ function callbacks_in_general_tab(app::Dash.DashApp)
     end
 end
 
+"""
+    callbacks_in_solver_tab(app::Dash.DashApp)
+
+Callbacks for the `solver` tab. It includes three callbacks. All of them
+are used to collect parameters that are relevant to analytic continuation
+solvers.
+"""
 function callbacks_in_solver_tab(app::Dash.DashApp)
+    # Callback 1
+    #
+    # Collect parameters from the `MaxEnt` panel. Then `dict-maxent` in
+    # `run` tab will be updated.
     callback!(
         app,
         Output("dict-maxent", "children"),
@@ -191,6 +202,10 @@ function callbacks_in_solver_tab(app::Dash.DashApp)
         return join(vals, "|")
     end
 
+    # Callback 2
+    #
+    # Collect parameters from the `BarRat` panel. Then `dict-barrat` in
+    # `run` tab will be updated.
     callback!(
         app,
         Output("dict-barrat", "children"),
@@ -199,6 +214,10 @@ function callbacks_in_solver_tab(app::Dash.DashApp)
         return join(vals, "|")
     end
 
+    # Callback 3
+    #
+    # Collect parameters from the `StochPX` panel. Then `dict-stochpx` in
+    # `run` tab will be updated.
     callback!(
         app,
         Output("dict-stochpx", "children"),
