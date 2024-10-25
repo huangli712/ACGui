@@ -11,6 +11,7 @@ module ACGui
 
 using Dash
 using Base64
+using TOML
 using ACFlow
 
 include("layout.jl")

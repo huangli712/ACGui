@@ -308,12 +308,16 @@ function callbacks_in_run_tab(app::Dash.DashApp)
                 )
             end
 
-            @show B
-            @show S
+            # Print the resulting TOML file in terminal
+            X = Dict("BASE"=>B, array_base[2]=>S)
+            TOML.print(X)
+
+            # Launch the `ACFlow` package to do analytic continuation.
             welcome()
             setup_param(B,S)
             mesh, Aout, Gout = ACFlow.solve(ACFlow.read_data())
 
+            # Visualize the calculated results
             fig = dcc_graph(
                 figure = (
                     data = [(x = mesh, y = Aout),],
@@ -325,6 +329,9 @@ function callbacks_in_run_tab(app::Dash.DashApp)
         end
     end
 
+    # Callback 2
+    #
+    # Show err.out in `err-out`.
     callback!(
         app,
         Output("err-out", "hidden"),
@@ -346,6 +353,9 @@ function callbacks_in_run_tab(app::Dash.DashApp)
     end
 end
 
+"""
+    callbacks_in_about_tab(app::Dash.DashApp)
+"""
 function callbacks_in_about_tab(app::Dash.DashApp)
 end
 
