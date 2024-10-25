@@ -7,10 +7,55 @@
 # Last modified: 2024/10/25
 #
 
-const PBASE = ["finput", "solver", "ktype", "mtype", "grid", "mesh", "ngrid", "nmesh", "wmax", "wmin", "beta", "offdiag", "fwrite"]
-const PMaxEnt = ["method", "stype", "nalph", "alpha", "ratio", "blur"]
-const PBarRat = ["atype", "denoise", "epsilon", "pcut", "eta"]
-const PStochPX = ["method", "nfine", "npole", "ntry", "nstep", "theta", "eta"]
+# The following global arrays are used to define the possible parameters
+# for the ACFlow package.
+#
+# For the [BASE] block
+const _PBASE = [
+    "finput",
+    "solver",
+    "ktype",
+    "mtype",
+    "grid",
+    "mesh",
+    "ngrid",
+    "nmesh",
+    "wmax",
+    "wmin",
+    "beta",
+    "offdiag",
+    "fwrite"
+]
+#
+# For the [MaxEnt] block
+const _PMaxEnt = [
+    "method",
+    "stype",
+    "nalph",
+    "alpha",
+    "ratio",
+    "blur"
+]
+#
+# For the [BarRat] block
+const _PBarRat = [
+    "atype",
+    "denoise",
+    "epsilon",
+    "pcut",
+    "eta"
+]
+#
+# For the [StochPX] block
+const _PStochPX = [
+    "method",
+    "nfine",
+    "npole",
+    "ntry",
+    "nstep",
+    "theta",
+    "eta"
+]
 
 function register_callback(app::Dash.DashApp)
     callback!(
@@ -101,7 +146,7 @@ function register_callback(app::Dash.DashApp)
     callback!(
         app,
         Output("dict-base", "children"),
-        [Input("base-$i", "value") for i in PBASE],
+        [Input("base-$i", "value") for i in _PBASE],
     ) do vals...
         return join(vals, "|")
     end
@@ -109,7 +154,7 @@ function register_callback(app::Dash.DashApp)
     callback!(
         app,
         Output("dict-maxent", "children"),
-        [Input("maxent-$i", "value") for i in PMaxEnt],
+        [Input("maxent-$i", "value") for i in _PMaxEnt],
     ) do vals...
         return join(vals, "|")
     end
@@ -117,7 +162,7 @@ function register_callback(app::Dash.DashApp)
     callback!(
         app,
         Output("dict-barrat", "children"),
-        [Input("barrat-$i", "value") for i in PBarRat],
+        [Input("barrat-$i", "value") for i in _PBarRat],
     ) do vals...
         return join(vals, "|")
     end
@@ -125,7 +170,7 @@ function register_callback(app::Dash.DashApp)
     callback!(
         app,
         Output("dict-stochpx", "children"),
-        [Input("stochpx-$i", "value") for i in PStochPX],
+        [Input("stochpx-$i", "value") for i in _PStochPX],
     ) do vals...
         return join(vals, "|")
     end
