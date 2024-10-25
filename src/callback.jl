@@ -57,8 +57,13 @@ const _PStochPX = [
     "eta"
 ]
 
+"""
+    callbacks_in_data_tab(app::Dash.DashApp)
+
+Callbacks for the `data` tab. It only includes a callback, which is used
+to upload files from client side to server side.
+"""
 function callbacks_in_data_tab(app::Dash.DashApp)
-    # For upload data
     callback!(
         app,
         Output("upload-file-name", "children"),
@@ -71,28 +76,54 @@ function callbacks_in_data_tab(app::Dash.DashApp)
         State("upload-data", "filename"),
     ) do contents, filename
         if !isnothing(filename)
+            # At first, we should decode the contents, and convert them to
+            # a readable string.
             content_type, content_string = split(contents, ',')
             decoded = base64decode(content_string)
             str = String(decoded)
             #
+            # Write the upload data to file.
             open(filename, "w") do f
                 write(f, str)
             end
             #
+            # Get the first and last 4 rows of upload data
             str_vec = split(str, "\n", keepempty = false)
             str_head = [split(x, " ", keepempty = false) for x in str_vec[1:4]]
             str_tail = [split(x, " ", keepempty = false) for x in str_vec[end-3:end]]
+            #
+            # Get number of rows and columns of upload data
             nrow = length(str_vec)
             ncol = length(str_head[1])
-
+            #
+            # Build datatable for the first 4 rows of upload data
             dt_head = dash_datatable(
-                columns = [Dict("name" => "Column $i", "id" => "column-$i") for i in 1:ncol],
-                data = [Dict("column-$i" => str_head[j][i] for i in 1:ncol) for j = 1:4]
+                columns = [
+                    Dict(
+                        "name" => "Column $i",
+                        "id" => "column-$i"
+                    ) for i in 1:ncol
+                ],
+                data = [
+                    Dict(
+                        "column-$i" => str_head[j][i] for i in 1:ncol
+                    ) for j = 1:4
+                ]
             )
-
+            #
+            # Build datatable for the last 4 rows of upload data
             dt_tail = dash_datatable(
-                columns = [Dict("name" => "Column $i", "id" => "column-$i") for i in 1:ncol],
-                data = [Dict("column-$i" => str_tail[j][i] for i in 1:ncol) for j = 1:4]
+                columns = [
+                    Dict(
+                        "name" => "Column $i",
+                        "id" => "column-$i"
+                    ) for i in 1:ncol
+                ],
+                data = [
+                    Dict(
+                        "column-$i" => str_tail[j][i] for i in 1:ncol
+                    ) for j = 1:4
+                ]
             )
 
             return (filename, content_type, nrow, ncol, dt_head, dt_tail)
