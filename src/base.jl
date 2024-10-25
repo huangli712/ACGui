@@ -15,5 +15,11 @@ function acg_run()
 
     acg_layout!(app)
     register_callback(app)
-    run_server(app, "0.0.0.0", debug = true)
+
+    run_server(
+        app, 
+        Dash.HTTP.Sockets.localhost,
+        8848,
+        debug = true
+    )
 end
