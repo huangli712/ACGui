@@ -282,19 +282,24 @@ function callbacks_in_run_tab(app::Dash.DashApp)
     #
     callback!(
         app,
-        Output("download-data", "data"),
+        Output("download-data", "children"),
         Input("get-ac-toml", "n_clicks"),
         State("dict-base", "children"),
         State("dict-maxent", "children"),
         State("dict-barrat", "children"),
         State("dict-stochpx", "children"),
     ) do btn, pbase, pmaxent, pbarrat, pstochpx
-        # Convert parameters to dictionary
-        B, S, solver = parse_parameters(pbase, pmaxent, pbarrat, pstochpx)
-
         if btn > 0
+            # Convert parameters to dictionary
+            B, S, solver = parse_parameters(pbase, pmaxent, pbarrat, pstochpx)
+
+            # Print it to a TOML file
             X = Dict("BASE"=>B, solver=>S)
-            return string(X)
+            io = IOBuffer()
+            TOML.print(io,X)
+            content = String(take!(io))
+
+            return dcc_download(data = Dict("content"=>content, "filename" => "ac.toml"))
         else
             return nothing
         end
