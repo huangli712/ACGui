@@ -4,9 +4,14 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/10/25
+# Last modified: 2024/10/26
 #
 
+"""
+    acg_layout!(app::Dash.DashApp)
+
+Global layout for the ACGui app.
+"""
 function acg_layout!(app::Dash.DashApp)
     app.layout = html_div() do
         layout_header_block(),
@@ -48,6 +53,11 @@ function acg_layout!(app::Dash.DashApp)
     end
 end
 
+"""
+    layout_header_block()
+
+Layout for the header part.
+"""
 function layout_header_block()
     html_center([
         html_h2("ACGui"),
@@ -55,9 +65,15 @@ function layout_header_block()
     ])
 end
 
+"""
+    layout_data_block()
+
+Layout for the `data` tab.
+"""
 function layout_data_block()
     html_div([
         html_br(),
+        # Table for basic information of the uploaded file.
         html_table([
             html_caption(
                 html_b("Basic Information About the Uploaded File")
@@ -81,10 +97,13 @@ function layout_data_block()
             ),
         ]),
         html_br(),
+        # The first 4 rows of the uploaded file
         html_div(id = "upload-file-head"),
         html_br(),
+        # The last 4 rows of the uploaded file
         html_div(id = "upload-file-tail"),
         html_br(),
+        # Upload control
         html_center(
             dcc_upload(
                 children = html_div([
@@ -99,6 +118,11 @@ function layout_data_block()
     ])
 end
 
+"""
+    layout_base_block()
+
+Layout for the `general` tab.
+"""
 function layout_base_block()
     html_table([
         html_thead(
@@ -298,6 +322,11 @@ function layout_base_block()
     ])
 end
 
+"""
+    layout_maxent_block()
+
+Layout for the `solver` tab. It is the panel for the `MaxEnt` solver.
+"""
 function layout_maxent_block()
     html_table([
         html_thead(
@@ -385,6 +414,11 @@ function layout_maxent_block()
     ], id = "maxent-block", hidden = true)
 end
 
+"""
+    layout_barrat_block()
+
+Layout for the `solver` tab. It is the panel for the `BarRat` solver.
+"""
 function layout_barrat_block()
     html_table([
         html_thead(
@@ -460,6 +494,11 @@ function layout_barrat_block()
     ], id = "barrat-block", hidden = true)
 end
 
+"""
+    layout_stochpx_block()
+
+Layout for the `solver` tab. It is the panel for the `StochPX` solver.
+"""
 function layout_stochpx_block()
     html_table([
         html_thead(
@@ -553,6 +592,11 @@ function layout_stochpx_block()
     ], id = "stochpx-block", hidden = true)
 end
 
+"""
+    layout_calc_block()
+
+Layout for the `run` tab.
+"""
 function layout_calc_block()
     html_div([
         html_br(),
@@ -587,21 +631,36 @@ function layout_calc_block()
         html_br(),
         html_center(
             html_button(
+                children = "Get ac.toml only",
+                id = "get-ac-toml",
+                n_clicks = 0
+            )
+        ),
+        html_br(),
+        html_center(
+            html_button(
                 children = "Check err.out",
                 id = "check-err-out",
                 n_clicks = 0
             )
         ),
         html_br(),
+        # To display err.out
         html_div(id = "err-out", hidden = true),
         html_br(),
+        # To display the calculated results
         html_div(id = "canvas"),
     ])
 end
 
+"""
+    layout_about_block()
+
+Layout for the `about` tab.
+"""
 function layout_about_block()
     html_div([
-        html_h4("Version : v0.3.0-devel.241025"),
+        html_h4("Version : v0.4.0-devel.241026"),
         html_h4("Release : 2024/10"),
         html_h4("Developed by Li Huang (hungli@caep.cn)"),
     ])

@@ -251,6 +251,7 @@ function callbacks_in_run_tab(app::Dash.DashApp)
         State("dict-stochpx", "children"),
     ) do btn, pbase, pmaxent, pbarrat, pstochpx
         if btn > 0
+            @show typeof(pbase)
             # Convert parameters to dictionary
             B, S, solver = parse_parameters(pbase, pmaxent, pbarrat, pstochpx)
 
@@ -308,6 +309,11 @@ Callbacks for the `about` tab. Now it is empty.
 function callbacks_in_about_tab(app::Dash.DashApp)
 end
 
+"""
+    parse_parameters(pbase, pmaxent, pbarrat, pstochpx)
+
+Convert parameters to dictionary.
+"""
 function parse_parameters(pbase, pmaxent, pbarrat, pstochpx)
     # For [BASE] block, it is necessary.
     array_base = split(pbase,"|")
