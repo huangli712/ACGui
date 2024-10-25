@@ -135,6 +135,13 @@ function callbacks_in_data_tab(app::Dash.DashApp)
     end
 end
 
+"""
+    callbacks_in_general_tab(app::Dash.DashApp)
+
+Callbacks for the `general` tab. It includes two callbacks. One is used to
+control the `solver` tab. The other is used to gather parameters from this
+tab, and then update `dict-base` in `run` tab.
+"""
 function callbacks_in_general_tab(app::Dash.DashApp)
     # For enable or disable solver tabs
     callback!(
