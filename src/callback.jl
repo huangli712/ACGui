@@ -58,41 +58,6 @@ const _PStochPX = [
 ]
 
 function callbacks_in_data_tab()
-end
-
-function callbacks_in_general_tab()
-end
-
-function callbacks_in_solver_tab()
-end
-
-function callbacks_in_run_tab()
-end
-
-function callbacks_in_about_tab()
-end
-
-function register_callback(app::Dash.DashApp)
-    callback!(
-        app,
-        Output("err-out", "hidden"),
-        Output("err-out", "children"),
-        Input("check-err-out", "n_clicks"),
-    ) do btn
-        fn = "./err.out"
-        if isfile(fn)
-            err = read(fn, String)
-        else
-            err = "N/A"
-        end
-        #
-        if iseven(btn)
-            return(true, err)
-        else
-            return(false, err)
-        end
-    end
-
     # For upload data
     callback!(
         app,
@@ -136,6 +101,44 @@ function register_callback(app::Dash.DashApp)
             return ("N/A", "N/A", "N/A", "N/A", dt, dt)
         end
     end
+end
+
+function callbacks_in_general_tab()
+end
+
+function callbacks_in_solver_tab()
+end
+
+function callbacks_in_run_tab()
+end
+
+function callbacks_in_about_tab()
+end
+
+function register_callback(app::Dash.DashApp)
+    callbacks_in_data_tab()
+
+    callback!(
+        app,
+        Output("err-out", "hidden"),
+        Output("err-out", "children"),
+        Input("check-err-out", "n_clicks"),
+    ) do btn
+        fn = "./err.out"
+        if isfile(fn)
+            err = read(fn, String)
+        else
+            err = "N/A"
+        end
+        #
+        if iseven(btn)
+            return(true, err)
+        else
+            return(false, err)
+        end
+    end
+
+
 
     # For enable or disable solver tabs
     callback!(
