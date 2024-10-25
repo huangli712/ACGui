@@ -636,6 +636,7 @@ function layout_calc_block()
                 n_clicks = 0
             )
         ),
+        dcc_download(id = "download-data"),
         html_br(),
         html_center(
             html_button(
