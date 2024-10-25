@@ -57,6 +57,21 @@ const _PStochPX = [
     "eta"
 ]
 
+function callbacks_in_data_tab()
+end
+
+function callbacks_in_general_tab()
+end
+
+function callbacks_in_solver_tab()
+end
+
+function callbacks_in_run_tab()
+end
+
+function callbacks_in_about_tab()
+end
+
 function register_callback(app::Dash.DashApp)
     callback!(
         app,
