@@ -10,18 +10,24 @@
 """
     acg_run()
 
-
+It is the main entry of the ACGui app. It will create a webui, register
+some callbacks, and start the web server. By default, the web server will
+provide services at http://127.0.0.1:8848.
 """
 function acg_run()
+    # Create a web app
     app = dash(
         assets_folder="../src/assets",
         prevent_initial_callbacks = false
     )
 
-    acg_clean()
+    # Create a web ui
     acg_layout!(app)
+
+    # Register some callbacks to interact with the users
     register_callback(app)
 
+    # Start the server
     run_server(
         app, 
         Dash.HTTP.Sockets.localhost,
