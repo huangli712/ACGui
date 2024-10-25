@@ -125,9 +125,10 @@ function callbacks_in_data_tab(app::Dash.DashApp)
                     ) for j = 1:4
                 ]
             )
-
+            #
             return (filename, content_type, nrow, ncol, dt_head, dt_tail)
         else
+            # Create an empty datatable
             dt = dash_datatable()
             return ("N/A", "N/A", "N/A", "N/A", dt, dt)
         end
