@@ -251,65 +251,11 @@ function callbacks_in_run_tab(app::Dash.DashApp)
         State("dict-stochpx", "children"),
     ) do btn, pbase, pmaxent, pbarrat, pstochpx
         if btn > 0
-            # For [BASE] block, it is necessary.
-            array_base = split(pbase,"|")
-            B = Dict{String,Any}(
-                "finput" => string(array_base[1]),
-                "solver" => string(array_base[2]),
-                "ktype"  => string(array_base[3]),
-                "mtype"  => string(array_base[4]),
-                "grid"   => string(array_base[5]),
-                "mesh"   => string(array_base[6]),
-                "ngrid"  => parse(I64, array_base[7]),
-                "nmesh"  => parse(I64, array_base[8]),
-                "wmax"   => parse(F64, array_base[9]),
-                "wmin"   => parse(F64, array_base[10]),
-                "beta"   => parse(F64, array_base[11]),
-                "offdiag" => parse(Bool, array_base[12]),
-                "fwrite"  => parse(Bool, array_base[13]),
-            )
-
-            # For [MaxEnt] block, it is optional.
-            if array_base[2] == "MaxEnt"
-                array_maxent = split(pmaxent,"|")
-                S = Dict{String,Any}(
-                    "method" => string(array_maxent[1]),
-                    "stype"  => string(array_maxent[2]),
-                    "nalph"  => parse(I64, array_maxent[3]),
-                    "alpha"  => parse(F64, array_maxent[4]),
-                    "ratio"  => parse(F64, array_maxent[5]),
-                    "blur"   => parse(F64, array_maxent[6]),
-                )
-            end
-
-            # For [BarRat] block, it is optional.
-            if array_base[2] == "BarRat"
-                array_barrat = split(pbarrat,"|")
-                S = Dict{String,Any}(
-                    "atype"   => string(array_barrat[1]),
-                    "denoise" => string(array_barrat[2]),
-                    "epsilon" => parse(F64, array_barrat[3]),
-                    "pcut"    => parse(F64, array_barrat[4]),
-                    "eta"     => parse(F64, array_barrat[5]),
-                )
-            end
-
-            # For [StochPX] block, it is optional.
-            if array_base[2] == "StochPX"
-                array_stochpx = split(pstochpx,"|")
-                S = Dict{String,Any}(
-                    "method" => string(array_stochpx[1]),
-                    "nfine"  => parse(I64, array_stochpx[2]),
-                    "npole"  => parse(I64, array_stochpx[3]),
-                    "ntry"   => parse(I64, array_stochpx[4]),
-                    "nstep"  => parse(I64, array_stochpx[5]),
-                    "theta"  => parse(F64, array_stochpx[6]),
-                    "eta"    => parse(F64, array_stochpx[7]),
-                )
-            end
+            # Convert parameters to dictionary
+            B, S, solver = parse_parameters(pbase, pmaxent, pbarrat, pstochpx)
 
             # Print the resulting TOML file in terminal
-            X = Dict("BASE"=>B, array_base[2]=>S)
+            X = Dict("BASE"=>B, solver=>S)
             TOML.print(X)
 
             # Launch the `ACFlow` package to do analytic continuation.
@@ -360,6 +306,67 @@ end
 Callbacks for the `about` tab. Now it is empty.
 """
 function callbacks_in_about_tab(app::Dash.DashApp)
+end
+
+function parse_parameters(pbase, pmaxent, pbarrat, pstochpx)
+    # For [BASE] block, it is necessary.
+    array_base = split(pbase,"|")
+    B = Dict{String,Any}(
+        "finput" => string(array_base[1]),
+        "solver" => string(array_base[2]),
+        "ktype"  => string(array_base[3]),
+        "mtype"  => string(array_base[4]),
+        "grid"   => string(array_base[5]),
+        "mesh"   => string(array_base[6]),
+        "ngrid"  => parse(I64, array_base[7]),
+        "nmesh"  => parse(I64, array_base[8]),
+        "wmax"   => parse(F64, array_base[9]),
+        "wmin"   => parse(F64, array_base[10]),
+        "beta"   => parse(F64, array_base[11]),
+        "offdiag" => parse(Bool, array_base[12]),
+        "fwrite"  => parse(Bool, array_base[13]),
+    )
+
+    # For [MaxEnt] block, it is optional.
+    if array_base[2] == "MaxEnt"
+        array_maxent = split(pmaxent,"|")
+        S = Dict{String,Any}(
+            "method" => string(array_maxent[1]),
+            "stype"  => string(array_maxent[2]),
+            "nalph"  => parse(I64, array_maxent[3]),
+            "alpha"  => parse(F64, array_maxent[4]),
+            "ratio"  => parse(F64, array_maxent[5]),
+            "blur"   => parse(F64, array_maxent[6]),
+        )
+    end
+
+    # For [BarRat] block, it is optional.
+    if array_base[2] == "BarRat"
+        array_barrat = split(pbarrat,"|")
+        S = Dict{String,Any}(
+            "atype"   => string(array_barrat[1]),
+            "denoise" => string(array_barrat[2]),
+            "epsilon" => parse(F64, array_barrat[3]),
+            "pcut"    => parse(F64, array_barrat[4]),
+            "eta"     => parse(F64, array_barrat[5]),
+        )
+    end
+
+    # For [StochPX] block, it is optional.
+    if array_base[2] == "StochPX"
+        array_stochpx = split(pstochpx,"|")
+        S = Dict{String,Any}(
+            "method" => string(array_stochpx[1]),
+            "nfine"  => parse(I64, array_stochpx[2]),
+            "npole"  => parse(I64, array_stochpx[3]),
+            "ntry"   => parse(I64, array_stochpx[4]),
+            "nstep"  => parse(I64, array_stochpx[5]),
+            "theta"  => parse(F64, array_stochpx[6]),
+            "eta"    => parse(F64, array_stochpx[7]),
+        )
+    end
+
+    return B, S, array_base[2]
 end
 
 """
