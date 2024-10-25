@@ -230,8 +230,9 @@ end
 """
     callbacks_in_run_tab(app::Dash.DashApp)
 
-Callbacks for the `run` tab. It contains two callbacks. One is for the
-`Start Analytic Continuation` button. The other is for the `Check err.out`
+Callbacks for the `run` tab. It contains three callbacks. The first one
+is for the `Start Analytic Continuation` button. The second one is for
+the `Get ac.toml only` button. The third one is for the `Check err.out`
 button.
 """
 function callbacks_in_run_tab(app::Dash.DashApp)
@@ -277,6 +278,29 @@ function callbacks_in_run_tab(app::Dash.DashApp)
     end
 
     # Callback 2
+    #
+    #
+    callback!(
+        app,
+        Output("download-data", "data"),
+        Input("get-ac-toml", "n_clicks"),
+        State("dict-base", "children"),
+        State("dict-maxent", "children"),
+        State("dict-barrat", "children"),
+        State("dict-stochpx", "children"),
+    ) do btn, pbase, pmaxent, pbarrat, pstochpx
+        # Convert parameters to dictionary
+        B, S, solver = parse_parameters(pbase, pmaxent, pbarrat, pstochpx)
+
+        if btn > 0
+            X = Dict("BASE"=>B, solver=>S)
+            return string(X)
+        else
+            return nothing
+        end
+    end
+
+    # Callback 3
     #
     # Show err.out in `err-out`.
     callback!(
