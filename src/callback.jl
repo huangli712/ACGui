@@ -57,7 +57,7 @@ const _PStochPX = [
     "eta"
 ]
 
-function callbacks_in_data_tab()
+function callbacks_in_data_tab(app::Dash.DashApp)
     # For upload data
     callback!(
         app,
@@ -103,43 +103,7 @@ function callbacks_in_data_tab()
     end
 end
 
-function callbacks_in_general_tab()
-end
-
-function callbacks_in_solver_tab()
-end
-
-function callbacks_in_run_tab()
-end
-
-function callbacks_in_about_tab()
-end
-
-function register_callback(app::Dash.DashApp)
-    callbacks_in_data_tab()
-
-    callback!(
-        app,
-        Output("err-out", "hidden"),
-        Output("err-out", "children"),
-        Input("check-err-out", "n_clicks"),
-    ) do btn
-        fn = "./err.out"
-        if isfile(fn)
-            err = read(fn, String)
-        else
-            err = "N/A"
-        end
-        #
-        if iseven(btn)
-            return(true, err)
-        else
-            return(false, err)
-        end
-    end
-
-
-
+function callbacks_in_general_tab(app::Dash.DashApp)
     # For enable or disable solver tabs
     callback!(
         app,
@@ -168,7 +132,9 @@ function register_callback(app::Dash.DashApp)
     ) do vals...
         return join(vals, "|")
     end
+end
 
+function callbacks_in_solver_tab(app::Dash.DashApp)
     callback!(
         app,
         Output("dict-maxent", "children"),
@@ -192,7 +158,9 @@ function register_callback(app::Dash.DashApp)
     ) do vals...
         return join(vals, "|")
     end
+end
 
+function callbacks_in_run_tab(app::Dash.DashApp)
     callback!(
         app,
         Output("canvas", "children"),
@@ -273,4 +241,35 @@ function register_callback(app::Dash.DashApp)
             return dcc_graph()
         end
     end
+
+    callback!(
+        app,
+        Output("err-out", "hidden"),
+        Output("err-out", "children"),
+        Input("check-err-out", "n_clicks"),
+    ) do btn
+        fn = "./err.out"
+        if isfile(fn)
+            err = read(fn, String)
+        else
+            err = "N/A"
+        end
+        #
+        if iseven(btn)
+            return(true, err)
+        else
+            return(false, err)
+        end
+    end
+end
+
+function callbacks_in_about_tab(app::Dash.DashApp)
+end
+
+function register_callback(app::Dash.DashApp)
+    callbacks_in_data_tab(app)
+    callbacks_in_general_tab(app)
+    callbacks_in_solver_tab(app)
+    callbacks_in_run_tab(app)
+    callbacks_in_about_tab(app)
 end
