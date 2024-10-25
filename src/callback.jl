@@ -227,7 +227,20 @@ function callbacks_in_solver_tab(app::Dash.DashApp)
     end
 end
 
+"""
+    callbacks_in_run_tab(app::Dash.DashApp)
+
+Callbacks for the `run` tab. It contains two callbacks. One is for the
+`Start Analytic Continuation` button. The other is for the `Check err.out`
+button.
+"""
 function callbacks_in_run_tab(app::Dash.DashApp)
+    # Callback 1
+    #
+    # For the `Start Analytic Continuation` button. It will collect key
+    # parameters, construct Dict structs, and launch the `ACFlow` package
+    # to do the simulation. Finally, it will show the calculated results
+    # in `canvas`.
     callback!(
         app,
         Output("canvas", "children"),
@@ -237,8 +250,8 @@ function callbacks_in_run_tab(app::Dash.DashApp)
         State("dict-barrat", "children"),
         State("dict-stochpx", "children"),
     ) do btn, pbase, pmaxent, pbarrat, pstochpx
-
         if btn > 0
+            # For [BASE] block, it is necessary.
             array_base = split(pbase,"|")
             B = Dict{String,Any}(
                 "finput" => string(array_base[1]),
@@ -256,6 +269,7 @@ function callbacks_in_run_tab(app::Dash.DashApp)
                 "fwrite"  => parse(Bool, array_base[13]),
             )
 
+            # For [MaxEnt] block, it is optional.
             if array_base[2] == "MaxEnt"
                 array_maxent = split(pmaxent,"|")
                 S = Dict{String,Any}(
@@ -268,6 +282,7 @@ function callbacks_in_run_tab(app::Dash.DashApp)
                 )
             end
 
+            # For [BarRat] block, it is optional.
             if array_base[2] == "BarRat"
                 array_barrat = split(pbarrat,"|")
                 S = Dict{String,Any}(
@@ -279,6 +294,7 @@ function callbacks_in_run_tab(app::Dash.DashApp)
                 )
             end
 
+            # For [StochPX] block, it is optional.
             if array_base[2] == "StochPX"
                 array_stochpx = split(pstochpx,"|")
                 S = Dict{String,Any}(
