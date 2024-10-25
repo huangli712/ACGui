@@ -143,7 +143,9 @@ control the `solver` tab. The other is used to gather parameters from this
 tab, and then update `dict-base` in `run` tab.
 """
 function callbacks_in_general_tab(app::Dash.DashApp)
-    # For enable or disable solver tabs
+    # Callback 1:
+    #
+    # Enable or disable specific solver panel in the `solver` tab.
     callback!(
         app,
         Output("maxent-block", "hidden"),
@@ -151,19 +153,26 @@ function callbacks_in_general_tab(app::Dash.DashApp)
         Output("stochpx-block", "hidden"),
         Input("base-solver", "value"),
     ) do solver
+        # Enable `MaxEnt` solver
         if solver == "MaxEnt"
             return (false, true, true)
         end
 
+        # Enable `BarRat` solver
         if solver == "BarRat"
             return (true, false, true)
         end
 
+        # Enable `StochPX` solver
         if solver == "StochPX"
             return (true, true, false)
         end
     end
 
+    # Callback 2
+    #
+    # Collect parameters from all inputs in this tab. And then `dict-base`
+    # in `run` tab is updated. Note that `dict-base` is hidden.
     callback!(
         app,
         Output("dict-base", "children"),
