@@ -310,11 +310,21 @@ function callbacks_in_about_tab(app::Dash.DashApp)
 end
 
 """
-    parse_parameters(pbase, pmaxent, pbarrat, pstochpx)
+    parse_parameters(
+        pbase::String,
+        pmaxent::String,
+        pbarrat::String,
+        pstochpx::String
+    )
 
 Convert parameters to dictionary.
 """
-function parse_parameters(pbase, pmaxent, pbarrat, pstochpx)
+function parse_parameters(
+    pbase::String,
+    pmaxent::String,
+    pbarrat::String,
+    pstochpx::String
+)
     # For [BASE] block, it is necessary.
     array_base = split(pbase,"|")
     B = Dict{String,Any}(
