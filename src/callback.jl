@@ -279,7 +279,8 @@ function callbacks_in_run_tab(app::Dash.DashApp)
 
     # Callback 2
     #
-    #
+    # Try to generate a TOML file from the collected parameters, and then
+    # download it.
     callback!(
         app,
         Output("download-data", "children"),
@@ -299,7 +300,12 @@ function callbacks_in_run_tab(app::Dash.DashApp)
             TOML.print(io,X)
             content = String(take!(io))
 
-            return dcc_download(data = Dict("content"=>content, "filename" => "ac.toml"))
+            return dcc_download(
+                    data = Dict(
+                        "content"=>content,
+                        "filename" => "ac.toml"
+                    )
+                )
         else
             return nothing
         end
