@@ -315,7 +315,7 @@ function callbacks_in_run_tab(app::Dash.DashApp)
             # Launch the `ACFlow` package to do analytic continuation.
             welcome()
             setup_param(B,S)
-            mesh, Aout, Gout = ACFlow.solve(ACFlow.read_data())
+            mesh, Aout, _ = ACFlow.solve(ACFlow.read_data())
 
             # Visualize the calculated results
             fig = dcc_graph(
@@ -323,6 +323,7 @@ function callbacks_in_run_tab(app::Dash.DashApp)
                     data = [(x = mesh, y = Aout),],
                 )
             )
+
             return fig
         else
             return dcc_graph()
@@ -355,10 +356,17 @@ end
 
 """
     callbacks_in_about_tab(app::Dash.DashApp)
+
+Callbacks for the `about` tab. Now it is empty.
 """
 function callbacks_in_about_tab(app::Dash.DashApp)
 end
 
+"""
+    register_callback(app::Dash.DashApp)
+
+Register all callbacks for the ACGui app.
+"""
 function register_callback(app::Dash.DashApp)
     callbacks_in_data_tab(app)
     callbacks_in_general_tab(app)
