@@ -20,6 +20,8 @@ makedocs(
     modules = [ACGui],
     pages = [
         "Home" => "index.md",
+        "Installation" => "install.md",
+        "Usage" => "usage.md",
         "Library" => "library.md",
     ],
 )
