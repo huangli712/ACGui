@@ -661,7 +661,7 @@ Layout for the `about` tab.
 """
 function layout_about_block()
     html_div([
-        html_h4("Version : v0.4.0-devel.241026"),
+        html_h4("Version : v0.5.0-devel.241030"),
         html_h4("Release : 2024/10"),
         html_h4("Developed by Li Huang (hungli@caep.cn)"),
     ])
