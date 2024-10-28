@@ -7,7 +7,7 @@
 # Last modified: 2024/10/25
 #
 
-# The following global arrays are used to define the possible parameters
+# The following global arrays are used to define the configure parameters
 # for the ACFlow package.
 #
 # For the [BASE] block
@@ -193,7 +193,7 @@ function callbacks_in_solver_tab(app::Dash.DashApp)
     # Callback 1
     #
     # Collect parameters from the `MaxEnt` panel. Then `dict-maxent` in
-    # `run` tab will be updated.
+    # `run` tab will be updated. Note that `dict-maxent` is hidden.
     callback!(
         app,
         Output("dict-maxent", "children"),
@@ -205,7 +205,7 @@ function callbacks_in_solver_tab(app::Dash.DashApp)
     # Callback 2
     #
     # Collect parameters from the `BarRat` panel. Then `dict-barrat` in
-    # `run` tab will be updated.
+    # `run` tab will be updated. Note that `dict-barrat` is hidden.
     callback!(
         app,
         Output("dict-barrat", "children"),
@@ -217,7 +217,7 @@ function callbacks_in_solver_tab(app::Dash.DashApp)
     # Callback 3
     #
     # Collect parameters from the `StochPX` panel. Then `dict-stochpx` in
-    # `run` tab will be updated.
+    # `run` tab will be updated. Note that `dict-stochpx` is hidden.
     callback!(
         app,
         Output("dict-stochpx", "children"),

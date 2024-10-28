@@ -68,7 +68,8 @@ end
 """
     layout_data_block()
 
-Layout for the `data` tab.
+Layout for the `data` tab. Users can upload imaginary-time or Matsubara
+Green's functions via this tab.
 """
 function layout_data_block()
     html_div([
@@ -121,7 +122,8 @@ end
 """
     layout_base_block()
 
-Layout for the `general` tab.
+Layout for the `general` tab. Users should configure the basic parameters
+for analytic continuation calculations in this tab.
 """
 function layout_base_block()
     html_table([
@@ -147,6 +149,7 @@ function layout_base_block()
                     )
                 ),
             ]),
+            # Now ACGui only supports three solvers.
             html_tr([
                 html_th(html_label("Solver for the analytic continuation problem")),
                 html_td(html_label("solver")),
@@ -325,7 +328,9 @@ end
 """
     layout_maxent_block()
 
-Layout for the `solver` tab. It is the panel for the `MaxEnt` solver.
+Layout for the `solver` tab. It is the panel for the `MaxEnt` solver. Note
+that this panel can be hidden, if `solver` in `general` tab is not equal
+to `MaxEnt`.
 """
 function layout_maxent_block()
     html_table([
@@ -417,7 +422,9 @@ end
 """
     layout_barrat_block()
 
-Layout for the `solver` tab. It is the panel for the `BarRat` solver.
+Layout for the `solver` tab. It is the panel for the `BarRat` solver. Note
+that this panel can be hidden, if `solver` in `general` tab is not equal
+to `BarRat`.
 """
 function layout_barrat_block()
     html_table([
@@ -497,7 +504,9 @@ end
 """
     layout_stochpx_block()
 
-Layout for the `solver` tab. It is the panel for the `StochPX` solver.
+Layout for the `solver` tab. It is the panel for the `StochPX` solver. Note
+that this panel can be hidden, if `solver` in `general` tab is not equal
+to `StochPX`.
 """
 function layout_stochpx_block()
     html_table([
@@ -595,11 +604,14 @@ end
 """
     layout_calc_block()
 
-Layout for the `run` tab.
+Layout for the `run` tab. The users can start analytic continuation
+simulations and visualize the calculated results via this tab.
 """
 function layout_calc_block()
     html_div([
         html_br(),
+        # The following four labels are always invisible. They are used to
+        # collect the configuration parameters for ACFlow.
         html_label(
             children = "N/A",
             id = "dict-base",
@@ -657,7 +669,8 @@ end
 """
     layout_about_block()
 
-Layout for the `about` tab.
+Layout for the `about` tab. It is used to display the version number and
+author of ACGui.
 """
 function layout_about_block()
     html_div([

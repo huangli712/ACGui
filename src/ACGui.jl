@@ -45,13 +45,13 @@ export layout_about_block
 
 include("callback.jl")
 #
-export register_callback
 export callbacks_in_data_tab
 export callbacks_in_general_tab
 export callbacks_in_solver_tab
 export callbacks_in_run_tab
 export callbacks_in_about_tab
 export parse_parameters
+export register_callback
 
 include("base.jl")
 #
