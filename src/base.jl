@@ -29,7 +29,7 @@ function acg_run()
 
     # Start the server
     run_server(
-        app, 
+        app,
         Dash.HTTP.Sockets.localhost,
         8848,
         debug = false
