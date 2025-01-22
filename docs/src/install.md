@@ -18,8 +18,7 @@ julia> using Pkg
 julia> Pkg.add("Dash")
 ```
 
-Note that `ACFlow` is not a registered package, so please follow the instruction in
-to install it.
+Note that [`ACFlow`](https://github.com/huangli712/ACFlow) is not a registered package, so please follow its user guide to install it.
 
 ## How to install
 
