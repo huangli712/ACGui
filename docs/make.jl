@@ -14,6 +14,7 @@ makedocs(
         ansicolor = true,
         repolink = "https://github.com/huangli712/ACGui",
         size_threshold = 409600, # 400kb
+        assets = ["assets/acgui.css"],
     ),
     #format = Documenter.LaTeX(platform = "none"),
     remotes = nothing,
