@@ -36,21 +36,6 @@ julia> using Pkg
 julia> Pkg.update("ACGui")
 ```
 
-## Documentation
-
-Finally, in order to generate the documentation, please type the following commands in the terminal:
-
-```shell
-$ pwd
-/home/your_home/acgui
-$ cd docs
-$ julia make.jl
-```
-
-After a few seconds, the documentation is built and saved in the `acgui/docs/build` directory if everything is OK. The home page of the documentation is `acgui/docs/build/index.html`. The users can open it with any web browsers.
-
----
-
 !!! info
 
     If the users do not want to install `ACGui`, just have a try. The simplest way is as follows:
@@ -68,3 +53,16 @@ After a few seconds, the documentation is built and saved in the `acgui/docs/bui
     ```julia
     push!(LOAD_PATH, "/home/your_home/acgui/src")
     ```
+
+## Documentation
+
+Finally, in order to generate the documentation, please type the following commands in the terminal:
+
+```shell
+$ pwd
+/home/your_home/acgui
+$ cd docs
+$ julia make.jl
+```
+
+After a few seconds, the documentation is built and saved in the `acgui/docs/build` directory if everything is OK. The home page of the documentation is `acgui/docs/build/index.html`. The users can open it with any web browsers.
