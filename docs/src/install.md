@@ -41,7 +41,7 @@ julia> Pkg.update("ACGui")
     If the users do not want to install `ACGui`, just have a try. The simplest way is as follows:
 
     * Download the source codes of `ACGui` from its github repository:
-    
+
     ```text
     https://github.com/huangli712/ACGui
     ```
@@ -49,7 +49,7 @@ julia> Pkg.update("ACGui")
     Then uncompress it into `/home/your_home/acgui`.
 
     * Plug the following code in front of the `acgui/util/acg.jl` script:
-    
+
     ```julia
     push!(LOAD_PATH, "/home/your_home/acgui/src")
     ```
