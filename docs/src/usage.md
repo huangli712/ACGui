@@ -32,7 +32,7 @@ This is the client side of `ACGui`.
 * Choose a appropriate file that contains the necessary data.
 * Click `Open` in the pop-up dialogue box.
 
-After a few seconds, the data will be uploaded to the server side.
+After a few seconds, the data will be uploaded to the server side. Note that the data file will be stored in the working directory in the server side.
 
 ![data.png](./assets/data.png)
 
@@ -45,7 +45,7 @@ After a few seconds, the data will be uploaded to the server side.
 * Select the `General` tab.
 * Fix filename for input data by `finput`.
 * Choose suitable analytic continuation solver by `solver`.
-* Fix other parameters.
+* Fix other parameters if necessary.
 
 ![general.png](./assets/general.png)
 
