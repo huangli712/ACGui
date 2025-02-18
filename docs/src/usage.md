@@ -56,7 +56,7 @@ After a few seconds, the data will be uploaded to the server side. Note that the
 ## Analytic continuation solver
 
 * Select the `Solver` tab.
-* Customize the parameters for the solver. 
+* Customize the parameters for the chosen solver. 
 
 ![solver.png](./assets/solver.png)
 
@@ -69,8 +69,16 @@ After a few seconds, the data will be uploaded to the server side. Note that the
 * Select the `Run` tab.
 * Click `Start Analytic Continuation` to start calculation. After a few seconds or minites or hours (it depends on the solver you used), the spectrum will be shown in the bottom of this tab.
 * Click `Get ac.toml only` to download the generated `ac.toml` file. Later you can modify it and start analytic continuation calculation manually.
-* Click `Check err.out` to check the `err.out` file if available. If `ACFlow` encounters something wrong, it will dump the error message into `err.out`.
+* Click `Check err.out` to check the `err.out` file if available. If `ACFlow` encounters something wrong, it will write the error message into `err.out`.
 
 ![run.png](./assets/run.png)
 
 **Figure 4 |** The `Run` tab in `ACGui`.
+
+!!! info
+
+    The `MaxEnt` and `BarRat` solvers are highly efficient. So we can see the analytic continuation results very soon. However, the `StochAC` and `StochPX` solvers are quite slow. It is not a good idea to launch analytic continuation calculations directly through `ACGui`. We usually use `ACGui` to generate a valid `ac.toml`. Then we can submit the computational job manually.
+
+!!! warning
+
+    Now `ACGui` does not support parallel calculation. In other words, you can not launch the `StochAC` and `StochPX` solvers in multiple processors at the same time.
