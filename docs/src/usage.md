@@ -26,9 +26,26 @@ This is the client side of `ACGui`.
 * Select the `Data` tab.
 * Click `Drag and Drop or Select Files`.
 * Choose a appropriate file that contains the necessary data.
+* Click `Open` in the pop-up dialogue box.
+
+![data.png](./assets/data.png)
+
+**Figure 1 |**
 
 ## General setup
 
+![general.png](./assets/general.png)
+
+**Figure 2 |**
+
 ## Analytic continuation solver
 
+![solver.png](./assets/solver.png)
+
+**Figure 3 |**
+
 ## Run
+
+![run.png](./assets/run.png)
+
+**Figure 4 |**
