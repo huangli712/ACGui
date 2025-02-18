@@ -32,6 +32,8 @@ This is the client side of `ACGui`.
 * Choose a appropriate file that contains the necessary data.
 * Click `Open` in the pop-up dialogue box.
 
+After a few seconds, the data will be uploaded to the server side.
+
 ![data.png](./assets/data.png)
 
 **Figure 1 |** The `Data` tab in `ACGui`. 
