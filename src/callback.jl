@@ -453,14 +453,14 @@ function parse_parameters(
     if array_base[2] == "StochAC"
         array_stochac = split(pstochac,"|")
         S = Dict{String,Any}(
-            "nfine"  => parse(I64, array_stochac[2]),
-            "ngamm"  => parse(I64, array_stochac[3]),
-            "nwarm"  => parse(I64, array_stochac[4]),
-            "nstep"  => parse(I64, array_stochac[5]),
+            "nfine"  => parse(I64, array_stochac[1]),
+            "ngamm"  => parse(I64, array_stochac[2]),
+            "nwarm"  => parse(I64, array_stochac[3]),
+            "nstep"  => parse(I64, array_stochac[4]),
             "ndump"  => parse(I64, array_stochac[5]),
-            "nalph"  => parse(I64, array_stochac[5]),
-            "alpha"  => parse(F64, array_stochac[6]),
-            "ratio"  => parse(F64, array_stochac[7]),
+            "nalph"  => parse(I64, array_stochac[6]),
+            "alpha"  => parse(F64, array_stochac[7]),
+            "ratio"  => parse(F64, array_stochac[8]),
         )
     end
 
