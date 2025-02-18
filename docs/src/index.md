@@ -4,7 +4,7 @@
 
 !!! info
 
-    Thank you for using ACGui. This documentation will help you to be familiar with and explore the ACGui toolkit. It is just compatible with ACGui v0.5.0-devel.241030.
+    Thank you for using ACGui. This documentation will help you to be familiar with and explore the ACGui toolkit. It is just compatible with ACGui v0.6.0-devel.250218.
 
 !!! warning
 
