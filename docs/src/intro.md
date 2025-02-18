@@ -4,8 +4,14 @@
 
 Now `ACGui` supports the following features:
 
-* Three analytic continuation solvers: MaxEnt, BarRat, and StochPX.
+* Four analytic continuation solvers: MaxEnt, BarRat, StochAC, and StochPX.
 * Visualize the spectral functions on line.
 * Generate `ac.toml` automatically.
 * Flexible UI.
 * Easy to install.
+
+!!! info
+
+    For more information about the `ACFlow` package, please visit the following URL
+
+    > https://github.com/huangli712/ACFlow
