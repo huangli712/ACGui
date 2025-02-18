@@ -36,7 +36,7 @@ After a few seconds, the data will be uploaded to the server side. Note that the
 
 ![data.png](./assets/data.png)
 
-**Figure 1 |** The `Data` tab in `ACGui`. 
+**Figure 1 |** The `Data` tab in `ACGui`.
 
 ---
 
@@ -56,7 +56,7 @@ After a few seconds, the data will be uploaded to the server side. Note that the
 ## Analytic continuation solver
 
 * Select the `Solver` tab.
-* Customize the parameters for the chosen solver. 
+* Customize the parameters for the chosen solver.
 
 ![solver.png](./assets/solver.png)
 
@@ -81,4 +81,4 @@ After a few seconds, the data will be uploaded to the server side. Note that the
 
 !!! warning
 
-    Now `ACGui` does not support parallel calculation. In other words, you can not launch the `StochAC` and `StochPX` solvers in multiple processors at the same time.
+    Now `ACGui` does not support parallel calculation. In other words, you can not execute the `StochAC` and `StochPX` solvers in multiple processors at the same time.
