@@ -10,7 +10,8 @@
 """
     acg_layout!(app::Dash.DashApp)
 
-Global layout for the ACGui app.
+Global layout for the ACGui app. There are five tabs, namely `Data`,
+`General`, `Solver`, `Run`, and `About`.
 """
 function acg_layout!(app::Dash.DashApp)
     app.layout = html_div() do
@@ -361,7 +362,7 @@ function layout_maxent_block()
                 ),
             ]),
             html_tr([
-                html_th(html_label("Type of the entropy term")),
+                html_th(html_label("Type of the entropic term")),
                 html_td(html_label("stype")),
                 html_td(
                     dcc_dropdown(
