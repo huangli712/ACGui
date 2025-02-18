@@ -14,4 +14,6 @@ Now `ACGui` supports the following features:
 
     For more information about the `ACFlow` package, please visit the following URL
 
-    > https://github.com/huangli712/ACFlow
+    ```text
+    https://github.com/huangli712/ACFlow
+    ```
