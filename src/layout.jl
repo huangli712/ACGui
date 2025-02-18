@@ -519,9 +519,96 @@ function layout_stochac_block()
             )
         ),
         #
-        html_tbody([]
-
-        ),
+        html_tbody([
+            html_tr([
+                html_th(html_label("Number of points of a very fine linear mesh")),
+                html_td(html_label("nfine")),
+                html_td(
+                    dcc_input(
+                        id = "stochac-nfine",
+                        type = "text",
+                        value = "10000"
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("Number of δ functions")),
+                html_td(html_label("ngamm")),
+                html_td(
+                    dcc_input(
+                        id = "stochac-ngamm",
+                        type = "text",
+                        value = "512"
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("Number of Monte Carlo thermalization steps")),
+                html_td(html_label("nwarm")),
+                html_td(
+                    dcc_input(
+                        id = "stochac-nwarm",
+                        type = "text",
+                        value = "4000"
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("Number of Monte Carlo sweeping steps")),
+                html_td(html_label("nstep")),
+                html_td(
+                    dcc_input(
+                        id = "stochac-nstep",
+                        type = "text",
+                        value = "4000000"
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("Intervals for monitoring Monte Carlo sweeps")),
+                html_td(html_label("ndump")),
+                html_td(
+                    dcc_input(
+                        id = "stochac-ndump",
+                        type = "text",
+                        value = "40000"
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("Total number of the chosen α parameters")),
+                html_td(html_label("nalph")),
+                html_td(
+                    dcc_input(
+                        id = "stochac-nalph",
+                        type = "text",
+                        value = "20"
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("Starting value for the α parameter")),
+                html_td(html_label("alpha")),
+                html_td(
+                    dcc_input(
+                        id = "stochac-alpha",
+                        type = "text",
+                        value = "1.00"
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("Scaling factor for the α parameter")),
+                html_td(html_label("ratio")),
+                html_td(
+                    dcc_input(
+                        id = "stochac-ratio",
+                        type = "text",
+                        value = "1.20"
+                    )
+                ),
+            ]),
+        ]),
     ], id = "stochac-block", hidden = true)
 end
 
