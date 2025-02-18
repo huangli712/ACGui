@@ -513,6 +513,17 @@ that this panel can be hidden, if `solver` in `general` tab is not equal
 to `StochAC`.
 """
 function layout_stochac_block()
+    html_table([
+        html_thead(
+            html_tr(
+                html_th(html_label("[StochPX] block"), colSpan = 3)
+            )
+        ),
+        #
+        html_tbody([]
+
+        ),
+    ], id = "stochac-block", hidden = true)
 end
 
 """
