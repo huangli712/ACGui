@@ -64,6 +64,11 @@ This is the client side of `ACGui`.
 
 ## Run
 
+* Select the `Run` tab.
+* Click `Start Analytic Continuation` to start calculation. After a few seconds or minites or hours (it depends on the solver you used), the spectrum will be shown in the bottom of this tab.
+* Click `Get ac.toml only` to download the generated `ac.toml` file. Later you can modify it and start analytic continuation calculation manually.
+* Click `Check err.out` to check the `err.out` file if available. If `ACFlow` encounters something wrong, it will dump the error message into `err.out`.
+
 ![run.png](./assets/run.png)
 
 **Figure 4 |** The `Run` tab in `ACGui`.
