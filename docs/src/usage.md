@@ -41,7 +41,7 @@ This is the client side of `ACGui`.
 ## General setup
 
 * Select the `General` tab.
-* Fix `finput`.
+* Fix filename for input data by `finput`.
 * Choose suitable analytic continuation solver by `solver`.
 * Fix other parameters.
 
@@ -52,6 +52,9 @@ This is the client side of `ACGui`.
 ---
 
 ## Analytic continuation solver
+
+* Select the `Solver` tab.
+* Customize the parameters for the solver. 
 
 ![solver.png](./assets/solver.png)
 
