@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/10/25
+# Last modified: 2025/02/18
 #
 
 # The following global arrays are used to define the configure parameters
@@ -45,6 +45,12 @@ const _PBarRat = [
     "pcut",
     "eta"
 ]
+#
+# For the [StochAC] block
+const _PStochAC = [
+    
+]
+
 #
 # For the [StochPX] block
 const _PStochPX = [
