@@ -24,7 +24,7 @@ calculated results quickly. However, the StochAC and StochPX solvers are
 quite slow (they could spend several hours solving analytic continuation
 problems). It is not a good idea to start calculations with them through
 ACGui. In such cases, users can download the relevant `ac.toml` files from
-this app, and then submit tasks manually.
+this app, and then submit their tasks manually.
 """
 module ACGui
 
@@ -33,7 +33,7 @@ using Base64
 using Dash
 using ACFlow
 
-# Setup web ui
+# Setup frontend ui
 include("layout.jl")
 #
 export acg_layout!
@@ -47,7 +47,7 @@ export layout_stochpx_block
 export layout_calc_block
 export layout_about_block
 
-# Define important callbacks to respond users' input
+# Register important callbacks to respond users' input
 include("callback.jl")
 #
 export callbacks_in_data_tab
