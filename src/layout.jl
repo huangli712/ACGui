@@ -80,7 +80,6 @@ function layout_data_block()
             html_caption(
                 html_b("Basic Information About the Uploaded File")
             ),
-            html_br(),
             #
             html_thead(
                 html_tr([
@@ -516,7 +515,7 @@ function layout_stochac_block()
     html_table([
         html_thead(
             html_tr(
-                html_th(html_label("[StochPX] block"), colSpan = 3)
+                html_th(html_label("[StochAC] block"), colSpan = 3)
             )
         ),
         #
