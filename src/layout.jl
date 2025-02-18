@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/10/26
+# Last modified: 2025/02/18
 #
 
 """
@@ -32,6 +32,7 @@ function acg_layout!(app::Dash.DashApp)
                 children = [
                     layout_maxent_block(),
                     layout_barrat_block(),
+                    layout_stochac_block(),
                     layout_stochpx_block(),
                 ],
                 className = "custom-tab",
@@ -79,6 +80,8 @@ function layout_data_block()
             html_caption(
                 html_b("Basic Information About the Uploaded File")
             ),
+            html_br(),
+            #
             html_thead(
                 html_tr([
                     html_th("Filename"),
@@ -149,7 +152,7 @@ function layout_base_block()
                     )
                 ),
             ]),
-            # Now ACGui only supports three solvers.
+            # Now ACGui only supports four analytic continuation solvers.
             html_tr([
                 html_th(html_label("Solver for the analytic continuation problem")),
                 html_td(html_label("solver")),
@@ -159,6 +162,7 @@ function layout_base_block()
                         options = [
                             (label = "MaxEnt", value = "MaxEnt"),
                             (label = "BarRat", value = "BarRat"),
+                            (label = "StochAC", value = "StochAC"),
                             (label = "StochPX", value = "StochPX"),
                         ],
                         value = "MaxEnt",
@@ -499,6 +503,16 @@ function layout_barrat_block()
             ]),
         ]),
     ], id = "barrat-block", hidden = true)
+end
+
+"""
+    layout_stochac_block()
+
+Layout for the `solver` tab. It is the panel for the `StochAC` solver. Note
+that this panel can be hidden, if `solver` in `general` tab is not equal
+to `StochAC`.
+"""
+function layout_stochac_block()
 end
 
 """
