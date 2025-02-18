@@ -2,6 +2,8 @@
 
 It is quite easy to use `ACGui`.
 
+---
+
 ## Launch ACGui
 
 Suppose that the `ACGui` is placed in the folder `/home/your_home/acgui`, then we should execute the following command in the terminal to launch the server side of `ACGui`:
@@ -21,6 +23,8 @@ http://127.0.0.1:8848
 
 This is the client side of `ACGui`.
 
+---
+
 ## Prepare input data
 
 * Select the `Data` tab.
@@ -30,22 +34,33 @@ This is the client side of `ACGui`.
 
 ![data.png](./assets/data.png)
 
-**Figure 1 |**
+**Figure 1 |** The `Data` tab in `ACGui`. 
+
+---
 
 ## General setup
 
+* Select the `General` tab.
+* Fix `finput`.
+* Choose suitable analytic continuation solver by `solver`.
+* Fix other parameters.
+
 ![general.png](./assets/general.png)
 
-**Figure 2 |**
+**Figure 2 |** The `General` tab in `ACGui`.
+
+---
 
 ## Analytic continuation solver
 
 ![solver.png](./assets/solver.png)
 
-**Figure 3 |**
+**Figure 3 |** The `Solver` tab in `ACGui`.
+
+---
 
 ## Run
 
 ![run.png](./assets/run.png)
 
-**Figure 4 |**
+**Figure 4 |** The `Run` tab in `ACGui`.
