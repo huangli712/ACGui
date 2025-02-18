@@ -23,6 +23,10 @@ This is the client side of `ACGui`.
 
 ## Prepare input data
 
+* Select the `Data` tab.
+* Click `Drag and Drop or Select Files`.
+* Choose a appropriate file that contains the necessary data.
+
 ## General setup
 
 ## Analytic continuation solver
