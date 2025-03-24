@@ -339,8 +339,10 @@ function callbacks_in_run_tab(app::Dash.DashApp)
         State("dict-maxent", "children"),
         State("dict-barrat", "children"),
         State("dict-stochac", "children"),
+        State("dict-stochsk", "children"),
+        State("dict-stochom", "children"),
         State("dict-stochpx", "children"),
-    ) do btn, pbase, pmaxent, pbarrat, pstochac, pstochpx
+    ) do btn, pbase, pmaxent, pbarrat, pstochac, pstochsk, pstochom, pstochpx
         if btn > 0
             # Convert parameters to dictionary
             B, S, solver = parse_parameters(
@@ -348,6 +350,8 @@ function callbacks_in_run_tab(app::Dash.DashApp)
                 pmaxent,
                 pbarrat,
                 pstochac,
+                pstochsk,
+                pstochom,
                 pstochpx
             )
 
