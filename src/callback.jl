@@ -538,7 +538,7 @@ function parse_parameters(
     if array_base[2] == "StochSK"
         array_stochsk = split(pstochsk,"|")
         S = Dict{String,Any}(
-            "method" => parse(I64, array_stochsk[1]),
+            "method" => string(array_stochsk[1]),
             "nfine"  => parse(I64, array_stochsk[2]),
             "ngamm"  => parse(I64, array_stochsk[3]),
             "nwarm"  => parse(I64, array_stochsk[4]),
