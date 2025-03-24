@@ -638,9 +638,9 @@ function layout_stochsk_block()
                 html_td(html_label("nfine")),
                 html_td(
                     dcc_input(
-                        id = "stochac-nfine",
+                        id = "stochsk-nfine",
                         type = "text",
-                        value = "10000"
+                        value = "100000"
                     )
                 ),
             ]),
@@ -649,9 +649,9 @@ function layout_stochsk_block()
                 html_td(html_label("ngamm")),
                 html_td(
                     dcc_input(
-                        id = "stochac-ngamm",
+                        id = "stochsk-ngamm",
                         type = "text",
-                        value = "512"
+                        value = "1000"
                     )
                 ),
             ]),
@@ -660,9 +660,9 @@ function layout_stochsk_block()
                 html_td(html_label("nwarm")),
                 html_td(
                     dcc_input(
-                        id = "stochac-nwarm",
+                        id = "stochsk-nwarm",
                         type = "text",
-                        value = "4000"
+                        value = "1000"
                     )
                 ),
             ]),
@@ -671,9 +671,9 @@ function layout_stochsk_block()
                 html_td(html_label("nstep")),
                 html_td(
                     dcc_input(
-                        id = "stochac-nstep",
+                        id = "stochsk-nstep",
                         type = "text",
-                        value = "4000000"
+                        value = "20000"
                     )
                 ),
             ]),
@@ -682,47 +682,47 @@ function layout_stochsk_block()
                 html_td(html_label("ndump")),
                 html_td(
                     dcc_input(
-                        id = "stochac-ndump",
+                        id = "stochsk-ndump",
                         type = "text",
-                        value = "40000"
+                        value = "200"
                     )
                 ),
             ]),
             html_tr([
-                html_th(html_label("Total number of the chosen α parameters")),
-                html_td(html_label("nalph")),
+                html_th(html_label("How often to recalculate the goodness function")),
+                html_td(html_label("retry")),
                 html_td(
                     dcc_input(
-                        id = "stochac-nalph",
+                        id = "stochsk-retry",
                         type = "text",
-                        value = "20"
+                        value = "10"
                     )
                 ),
             ]),
             html_tr([
-                html_th(html_label("Starting value for the α parameter")),
-                html_td(html_label("alpha")),
+                html_th(html_label("Starting value for the Θ parameter")),
+                html_td(html_label("theta")),
                 html_td(
                     dcc_input(
-                        id = "stochac-alpha",
+                        id = "stochsk-theta",
                         type = "text",
-                        value = "1.00"
+                        value = "1e+6"
                     )
                 ),
             ]),
             html_tr([
-                html_th(html_label("Scaling factor for the α parameter")),
+                html_th(html_label("Scaling factor for the Θ parameter")),
                 html_td(html_label("ratio")),
                 html_td(
                     dcc_input(
-                        id = "stochac-ratio",
+                        id = "stochsk-ratio",
                         type = "text",
-                        value = "1.20"
+                        value = "0.90"
                     )
                 ),
             ]),
         ]),
-    ], id = "stochac-block", hidden = true)
+    ], id = "stochsk-block", hidden = true)
 end
 
 """
@@ -830,7 +830,7 @@ function layout_stochom_block()
                 ),
             ]),
         ]),
-    ], id = "stochac-block", hidden = true)
+    ], id = "stochom-block", hidden = true)
 end
 
 """
