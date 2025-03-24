@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2025/02/18
+# Last modified: 2025/03/24
 #
 
 # The following global arrays are used to define the configure parameters
@@ -57,7 +57,29 @@ const _PStochAC = [
     "alpha",
     "ratio"
 ]
-
+#
+# For the [StochSK] block
+const _PStochSK = [
+    "method",
+    "nfine",
+    "ngamm",
+    "nwarm",
+    "nstep",
+    "ndump",
+    "retry",
+    "theta",
+    "ratio"
+]
+#
+# For the [StochOM] block
+const _PStochOM = [
+    "ntry",
+    "nstep",
+    "nbox",
+    "sbox",
+    "wbox",
+    "norm"
+]
 #
 # For the [StochPX] block
 const _PStochPX = [
