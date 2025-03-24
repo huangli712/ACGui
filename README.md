@@ -6,7 +6,7 @@ This app is currently under developement. **PLEASE USE IT AT YOUR OWN RISK!**
 
 ## Version
 
-v0.6.0-devel.250218
+v0.7.0-devel.250324
 
 ## License
 
@@ -14,4 +14,6 @@ GNU General Public License Version 3
 
 ## Documentation
 
-See `acgui/docs`.
+Source: See `acgui/docs`.
+
+Online: https://huangli712.github.io/projects/acgui/index.html
