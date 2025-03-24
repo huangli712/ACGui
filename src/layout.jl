@@ -821,28 +821,6 @@ function layout_stochom_block()
                     )
                 ),
             ]),
-            html_tr([
-                html_th(html_label("Starting value for the α parameter")),
-                html_td(html_label("alpha")),
-                html_td(
-                    dcc_input(
-                        id = "stochac-alpha",
-                        type = "text",
-                        value = "1.00"
-                    )
-                ),
-            ]),
-            html_tr([
-                html_th(html_label("Scaling factor for the α parameter")),
-                html_td(html_label("ratio")),
-                html_td(
-                    dcc_input(
-                        id = "stochac-ratio",
-                        type = "text",
-                        value = "1.20"
-                    )
-                ),
-            ]),
         ]),
     ], id = "stochom-block", hidden = true)
 end
