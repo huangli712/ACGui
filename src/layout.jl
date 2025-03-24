@@ -773,7 +773,7 @@ function layout_stochom_block()
                     dcc_input(
                         id = "stochom-nstep",
                         type = "text",
-                        value = "512"
+                        value = "1000"
                     )
                 ),
             ]),
@@ -784,7 +784,7 @@ function layout_stochom_block()
                     dcc_input(
                         id = "stochom-nbox",
                         type = "text",
-                        value = "4000"
+                        value = "100"
                     )
                 ),
             ]),
@@ -795,7 +795,7 @@ function layout_stochom_block()
                     dcc_input(
                         id = "stochom-sbox",
                         type = "text",
-                        value = "4000000"
+                        value = "0.005"
                     )
                 ),
             ]),
@@ -806,7 +806,7 @@ function layout_stochom_block()
                     dcc_input(
                         id = "stochom-wbox",
                         type = "text",
-                        value = "40000"
+                        value = "0.02"
                     )
                 ),
             ]),
@@ -817,7 +817,7 @@ function layout_stochom_block()
                     dcc_input(
                         id = "stochom-norm",
                         type = "text",
-                        value = "20"
+                        value = "-1.0"
                     )
                 ),
             ]),
