@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2025/02/18
+# Last modified: 2025/03/24
 #
 
 """
@@ -30,10 +30,12 @@ function acg_layout!(app::Dash.DashApp)
             ),
             dcc_tab(
                 label = "Solver",
-                children = [
+                children = [ # For six analytic continuation solvers
                     layout_maxent_block(),
                     layout_barrat_block(),
                     layout_stochac_block(),
+                    layout_stochsk_block(),
+                    layout_stochom_block(),
                     layout_stochpx_block(),
                 ],
                 className = "custom-tab",
@@ -152,7 +154,7 @@ function layout_base_block()
                     )
                 ),
             ]),
-            # Now ACGui only supports four analytic continuation solvers.
+            # Now ACGui only supports six analytic continuation solvers.
             html_tr([
                 html_th(html_label("Solver for the analytic continuation problem")),
                 html_td(html_label("solver")),
@@ -163,6 +165,8 @@ function layout_base_block()
                             (label = "MaxEnt", value = "MaxEnt"),
                             (label = "BarRat", value = "BarRat"),
                             (label = "StochAC", value = "StochAC"),
+                            (label = "StochSK", value = "StochSK"),
+                            (label = "StochOM", value = "StochOM"),
                             (label = "StochPX", value = "StochPX"),
                         ],
                         value = "MaxEnt",
@@ -722,8 +726,8 @@ simulations and visualize the calculated results via this tab.
 function layout_calc_block()
     html_div([
         html_br(),
-        # The following five labels are always invisible. They are used to
-        # collect the configuration parameters for ACFlow.
+        # The following seven labels are always invisible. They are used
+        # to collect the configuration parameters for ACFlow.
         html_label(
             children = "N/A",
             id = "dict-base",
@@ -742,6 +746,16 @@ function layout_calc_block()
         html_label(
             children = "N/A",
             id = "dict-stochac",
+            hidden = true,
+        ),
+        html_label(
+            children = "N/A",
+            id = "dict-stochsk",
+            hidden = true,
+        ),
+        html_label(
+            children = "N/A",
+            id = "dict-stochom",
             hidden = true,
         ),
         html_label(
@@ -791,8 +805,8 @@ author of ACGui.
 """
 function layout_about_block()
     html_div([
-        html_h4("Version : v0.6.0-devel.250218"),
-        html_h4("Release : 2025/02"),
+        html_h4("Version : v0.7.0-devel.250324"),
+        html_h4("Release : 2025/03"),
         html_h4("Developed by Li Huang (hungli at caep.cn)"),
     ])
 end
