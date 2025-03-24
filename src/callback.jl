@@ -238,7 +238,7 @@ end
 """
     callbacks_in_solver_tab(app::Dash.DashApp)
 
-Callbacks for the `solver` tab. It includes four callbacks. All of them
+Callbacks for the `solver` tab. It includes six callbacks. All of them
 are used to collect parameters that are relevant to analytic continuation
 solvers.
 """
@@ -280,6 +280,30 @@ function callbacks_in_solver_tab(app::Dash.DashApp)
     end
 
     # Callback 4
+    #
+    # Collect parameters from the `StochSK` panel. Then `dict-stochsk` in
+    # `run` tab will be updated. Note that `dict-stochsk` is hidden.
+    callback!(
+        app,
+        Output("dict-stochsk", "children"),
+        [Input("stochsk-$i", "value") for i in _PStochSK],
+    ) do vals...
+        return join(vals, "|")
+    end
+
+    # Callback 5
+    #
+    # Collect parameters from the `StochOM` panel. Then `dict-stochom` in
+    # `run` tab will be updated. Note that `dict-stochom` is hidden.
+    callback!(
+        app,
+        Output("dict-stochom", "children"),
+        [Input("stochom-$i", "value") for i in _PStochOM],
+    ) do vals...
+        return join(vals, "|")
+    end
+
+    # Callback 6
     #
     # Collect parameters from the `StochPX` panel. Then `dict-stochpx` in
     # `run` tab will be updated. Note that `dict-stochpx` is hidden.
