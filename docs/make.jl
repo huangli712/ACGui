@@ -15,9 +15,9 @@ makedocs(
         repolink = "https://github.com/huangli712/ACGui",
         size_threshold = 409600, # 400kb
         assets = ["assets/acgui.css"],
-        inventory_version = "0.60",
+        collapselevel = 1,
+        inventory_version = "0.70",
     ),
-    #format = Documenter.LaTeX(platform = "none"),
     remotes = nothing,
     modules = [ACGui],
     pages = [
