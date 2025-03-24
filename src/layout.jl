@@ -768,10 +768,10 @@ function layout_stochom_block()
             ]),
             html_tr([
                 html_th(html_label("Number of Monte Carlo steps per attempt / try")),
-                html_td(html_label("ngamm")),
+                html_td(html_label("nstep")),
                 html_td(
                     dcc_input(
-                        id = "stochac-ngamm",
+                        id = "stochom-nstep",
                         type = "text",
                         value = "512"
                     )
@@ -779,10 +779,10 @@ function layout_stochom_block()
             ]),
             html_tr([
                 html_th(html_label("Number of boxes to construct the spectrum")),
-                html_td(html_label("nwarm")),
+                html_td(html_label("nbox")),
                 html_td(
                     dcc_input(
-                        id = "stochac-nwarm",
+                        id = "stochom-nbox",
                         type = "text",
                         value = "4000"
                     )
@@ -790,10 +790,10 @@ function layout_stochom_block()
             ]),
             html_tr([
                 html_th(html_label("Minimum area of the randomly generated boxes")),
-                html_td(html_label("nstep")),
+                html_td(html_label("sbox")),
                 html_td(
                     dcc_input(
-                        id = "stochac-nstep",
+                        id = "stochom-sbox",
                         type = "text",
                         value = "4000000"
                     )
@@ -801,10 +801,10 @@ function layout_stochom_block()
             ]),
             html_tr([
                 html_th(html_label("Minimum width of the randomly generated boxes")),
-                html_td(html_label("ndump")),
+                html_td(html_label("wbox")),
                 html_td(
                     dcc_input(
-                        id = "stochac-ndump",
+                        id = "stochom-wbox",
                         type = "text",
                         value = "40000"
                     )
@@ -812,10 +812,10 @@ function layout_stochom_block()
             ]),
             html_tr([
                 html_th(html_label("Is the norm calculated")),
-                html_td(html_label("nalph")),
+                html_td(html_label("norm")),
                 html_td(
                     dcc_input(
-                        id = "stochac-nalph",
+                        id = "stochom-norm",
                         type = "text",
                         value = "20"
                     )
