@@ -538,14 +538,15 @@ function parse_parameters(
     if array_base[2] == "StochSK"
         array_stochsk = split(pstochsk,"|")
         S = Dict{String,Any}(
-            "nfine"  => parse(I64, array_stochsk[1]),
-            "ngamm"  => parse(I64, array_stochsk[2]),
-            "nwarm"  => parse(I64, array_stochsk[3]),
-            "nstep"  => parse(I64, array_stochsk[4]),
-            "ndump"  => parse(I64, array_stochsk[5]),
-            "nalph"  => parse(I64, array_stochsk[6]),
-            "alpha"  => parse(F64, array_stochsk[7]),
-            "ratio"  => parse(F64, array_stochsk[8]),
+            "method" => parse(I64, array_stochsk[1]),
+            "nfine"  => parse(I64, array_stochsk[2]),
+            "ngamm"  => parse(I64, array_stochsk[3]),
+            "nwarm"  => parse(I64, array_stochsk[4]),
+            "nstep"  => parse(I64, array_stochsk[5]),
+            "ndump"  => parse(I64, array_stochsk[6]),
+            "retry"  => parse(I64, array_stochsk[7]),
+            "theta"  => parse(F64, array_stochsk[8]),
+            "ratio"  => parse(F64, array_stochsk[9]),
         )
     end
 
@@ -553,14 +554,12 @@ function parse_parameters(
     if array_base[2] == "StochOM"
         array_stochom = split(pstochom,"|")
         S = Dict{String,Any}(
-            "nfine"  => parse(I64, array_stochom[1]),
-            "ngamm"  => parse(I64, array_stochom[2]),
-            "nwarm"  => parse(I64, array_stochom[3]),
-            "nstep"  => parse(I64, array_stochom[4]),
-            "ndump"  => parse(I64, array_stochom[5]),
-            "nalph"  => parse(I64, array_stochom[6]),
-            "alpha"  => parse(F64, array_stochom[7]),
-            "ratio"  => parse(F64, array_stochom[8]),
+            "ntry"   => parse(I64, array_stochom[1]),
+            "nstep"  => parse(I64, array_stochom[2]),
+            "nbox"   => parse(I64, array_stochom[3]),
+            "sbox"   => parse(F64, array_stochom[4]),
+            "wbox"   => parse(F64, array_stochom[5]),
+            "norm"   => parse(F64, array_stochom[6]),
         )
     end
 
