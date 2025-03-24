@@ -618,17 +618,17 @@ function layout_stochac_block()
 end
 
 """
-    layout_stochac_block()
+    layout_stochsk_block()
 
-Layout for the `solver` tab. It is the panel for the `StochAC` solver. Note
+Layout for the `solver` tab. It is the panel for the `StochSK` solver. Note
 that this panel can be hidden, if `solver` in `general` tab is not equal
-to `StochAC`.
+to `StochSK`.
 """
-function layout_stochac_block()
+function layout_stochsk_block()
     html_table([
         html_thead(
             html_tr(
-                html_th(html_label("[StochAC] block"), colSpan = 3)
+                html_th(html_label("[StochSK] block"), colSpan = 3)
             )
         ),
         #
