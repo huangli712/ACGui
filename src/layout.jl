@@ -634,6 +634,20 @@ function layout_stochsk_block()
         #
         html_tbody([
             html_tr([
+                html_th(html_label("How to determine the optimized Θ parameter")),
+                html_td(html_label("method")),
+                html_td(
+                    dcc_dropdown(
+                        id = "stochsk-method",
+                        options = [
+                            (label = "chi2min", value = "chi2min"),
+                            (label = "chi2kink", value = "chi2kink"),
+                        ],
+                        value = "chi2min",
+                    )
+                ),
+            ]),
+            html_tr([
                 html_th(html_label("Number of points of a very fine linear mesh")),
                 html_td(html_label("nfine")),
                 html_td(
