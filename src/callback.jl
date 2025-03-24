@@ -460,6 +460,8 @@ end
         pmaxent::String,
         pbarrat::String,
         pstochac::String,
+        pstochsk::String,
+        pstochom::String,
         pstochpx::String
     )
 
@@ -470,6 +472,8 @@ function parse_parameters(
     pmaxent::String,
     pbarrat::String,
     pstochac::String,
+    pstochsk::String,
+    pstochom::String,
     pstochpx::String
 )
     # For [BASE] block, it is necessary.
