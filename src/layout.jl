@@ -756,18 +756,18 @@ function layout_stochom_block()
         #
         html_tbody([
             html_tr([
-                html_th(html_label("Number of points of a very fine linear mesh")),
-                html_td(html_label("nfine")),
+                html_th(html_label("Number of attempts (tries) to seek the solution")),
+                html_td(html_label("ntry")),
                 html_td(
                     dcc_input(
-                        id = "stochac-nfine",
+                        id = "stochom-ntry",
                         type = "text",
-                        value = "10000"
+                        value = "2000"
                     )
                 ),
             ]),
             html_tr([
-                html_th(html_label("Number of δ functions")),
+                html_th(html_label("Number of Monte Carlo steps per attempt / try")),
                 html_td(html_label("ngamm")),
                 html_td(
                     dcc_input(
@@ -778,7 +778,7 @@ function layout_stochom_block()
                 ),
             ]),
             html_tr([
-                html_th(html_label("Number of Monte Carlo thermalization steps")),
+                html_th(html_label("Number of boxes to construct the spectrum")),
                 html_td(html_label("nwarm")),
                 html_td(
                     dcc_input(
@@ -789,7 +789,7 @@ function layout_stochom_block()
                 ),
             ]),
             html_tr([
-                html_th(html_label("Number of Monte Carlo sweeping steps")),
+                html_th(html_label("Minimum area of the randomly generated boxes")),
                 html_td(html_label("nstep")),
                 html_td(
                     dcc_input(
@@ -800,7 +800,7 @@ function layout_stochom_block()
                 ),
             ]),
             html_tr([
-                html_th(html_label("Intervals for monitoring Monte Carlo sweeps")),
+                html_th(html_label("Minimum width of the randomly generated boxes")),
                 html_td(html_label("ndump")),
                 html_td(
                     dcc_input(
@@ -811,7 +811,7 @@ function layout_stochom_block()
                 ),
             ]),
             html_tr([
-                html_th(html_label("Total number of the chosen α parameters")),
+                html_th(html_label("Is the norm calculated")),
                 html_td(html_label("nalph")),
                 html_td(
                     dcc_input(
