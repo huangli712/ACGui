@@ -534,18 +534,18 @@ function parse_parameters(
         )
     end
 
-    # For [StochAC] block, it is optional.
-    if array_base[2] == "StochAC"
-        array_stochac = split(pstochac,"|")
+    # For [StochSK] block, it is optional.
+    if array_base[2] == "StochSK"
+        array_stochsk = split(pstochsk,"|")
         S = Dict{String,Any}(
-            "nfine"  => parse(I64, array_stochac[1]),
-            "ngamm"  => parse(I64, array_stochac[2]),
-            "nwarm"  => parse(I64, array_stochac[3]),
-            "nstep"  => parse(I64, array_stochac[4]),
-            "ndump"  => parse(I64, array_stochac[5]),
-            "nalph"  => parse(I64, array_stochac[6]),
-            "alpha"  => parse(F64, array_stochac[7]),
-            "ratio"  => parse(F64, array_stochac[8]),
+            "nfine"  => parse(I64, array_stochsk[1]),
+            "ngamm"  => parse(I64, array_stochsk[2]),
+            "nwarm"  => parse(I64, array_stochsk[3]),
+            "nstep"  => parse(I64, array_stochsk[4]),
+            "ndump"  => parse(I64, array_stochsk[5]),
+            "nalph"  => parse(I64, array_stochsk[6]),
+            "alpha"  => parse(F64, array_stochsk[7]),
+            "ratio"  => parse(F64, array_stochsk[8]),
         )
     end
 
