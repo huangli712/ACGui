@@ -77,8 +77,8 @@ After a few seconds, the data will be uploaded to the server side. Note that the
 
 !!! info
 
-    The `MaxEnt` and `BarRat` solvers are highly efficient. So we can see the analytic continuation results very soon. However, the `StochAC` and `StochPX` solvers are quite slow. It is not a good idea to launch them directly through `ACGui`. We usually use `ACGui` to generate a valid `ac.toml`. Then we can submit the computational job manually.
+    The `MaxEnt` and `BarRat` solvers are highly efficient. So we can see the analytic continuation results very soon. However, the other stochastic solvers are quite slow. It is not a good idea to launch them directly through `ACGui`. We usually use `ACGui` to generate a valid `ac.toml`. Then we can submit the computational job manually.
 
 !!! warning
 
-    Now `ACGui` does not support parallel calculation. In other words, you can not execute the `StochAC` and `StochPX` solvers in multiple processors at the same time.
+    Now `ACGui` does not support parallel calculation. In other words, you can not execute the `StochAC`, `StochSK`, `StochOM`, and `StochPX` solvers with multiple processors at the same time.
