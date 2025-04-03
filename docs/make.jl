@@ -1,5 +1,5 @@
-push!(LOAD_PATH, "../src")
-push!(LOAD_PATH, "../../ACFlow/src")
+haskey(ENV,"ACFLOW_PATH") && pushfirst!(LOAD_PATH, ENV["ACFLOW_PATH"])
+haskey(ENV,"ACGUI_PATH") && pushfirst!(LOAD_PATH, ENV["ACGUI_PATH"])
 
 using Documenter
 using Random
@@ -16,7 +16,6 @@ makedocs(
         size_threshold = 409600, # 400kb
         assets = ["assets/acgui.css"],
         collapselevel = 1,
-        inventory_version = "0.70",
     ),
     remotes = nothing,
     modules = [ACGui],
