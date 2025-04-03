@@ -1,6 +1,6 @@
 # ACGui
 
-*A graphic user interface for the ACFlow package*
+*A web-based graphic user interface for the ACFlow package*
 
 !!! info
 
