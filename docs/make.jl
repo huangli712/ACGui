@@ -1,5 +1,5 @@
-haskey(ENV,"ACFLOW_PATH") && pushfirst!(LOAD_PATH, ENV["ACFLOW_PATH"])
-haskey(ENV,"ACGUI_PATH") && pushfirst!(LOAD_PATH, ENV["ACGUI_PATH"])
+haskey(ENV,"ACFLOW_HOME") && pushfirst!(LOAD_PATH, ENV["ACFLOW_HOME"])
+haskey(ENV,"ACGUI_HOME") && pushfirst!(LOAD_PATH, ENV["ACGUI_HOME"])
 
 using Documenter
 using Random
