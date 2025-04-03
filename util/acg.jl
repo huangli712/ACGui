@@ -14,8 +14,11 @@
 #
 # Usage:
 #
-#     $ acg.jl
+#     $ ./acg.jl
 #
+
+haskey(ENV,"ACFLOW_PATH") && pushfirst!(LOAD_PATH, ENV["ACFLOW_PATH"])
+haskey(ENV,"ACGUI_PATH") && pushfirst!(LOAD_PATH, ENV["ACGUI_PATH"])
 
 using ACGui
 
