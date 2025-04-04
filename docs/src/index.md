@@ -1,10 +1,10 @@
 # ACGui
 
-*A web-based graphic user interface for the ACFlow package*
+*A web-based graphic user interface for ACFlow*
 
 !!! info
 
-    Thank you for using ACGui. This documentation will help you to be familiar with and explore the ACGui toolkit. It is just compatible with ACGui v0.8.0-devel.250403.
+    Thank you for using ACGui. This documentation will help you to be familiar with and explore the ACGui toolkit. It is just compatible with ACGui v1.0.0-devel.250405.
 
 !!! warning
 

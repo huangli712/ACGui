@@ -6,7 +6,7 @@ This app is currently under developement. **PLEASE USE IT AT YOUR OWN RISK!**
 
 ## Version
 
-v0.8.0-devel.250403
+v1.0.0-devel.250405
 
 ## License
 
