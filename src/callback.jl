@@ -355,7 +355,7 @@ function callbacks_in_run_tab(app::Dash.DashApp)
     # Callback 1
     #
     # For the `Start Analytic Continuation` button. It will collect key
-    # parameters, construct Dict structs, and launch the `ACFlow` package
+    # parameters, construct Dict structs, and launch the `ACFlow` toolkit
     # to do the simulation. Finally, it will show the calculated results
     # in `canvas`.
     callback!(
@@ -365,17 +365,19 @@ function callbacks_in_run_tab(app::Dash.DashApp)
         State("dict-base", "children"),
         State("dict-maxent", "children"),
         State("dict-barrat", "children"),
+        State("dict-nevanac", "children"),
         State("dict-stochac", "children"),
         State("dict-stochsk", "children"),
         State("dict-stochom", "children"),
         State("dict-stochpx", "children"),
-    ) do btn, pbase, pmaxent, pbarrat, pstochac, pstochsk, pstochom, pstochpx
+    ) do btn, pbase, pmaxent, pbarrat, pnevanac, pstochac, pstochsk, pstochom, pstochpx
         if btn > 0
             # Convert parameters to dictionary
             B, S, solver = parse_parameters(
                 pbase,
                 pmaxent,
                 pbarrat,
+                pnevanac,
                 pstochac,
                 pstochsk,
                 pstochom,
@@ -386,7 +388,7 @@ function callbacks_in_run_tab(app::Dash.DashApp)
             X = Dict("BASE"=>B, solver=>S)
             TOML.print(X)
 
-            # Launch the `ACFlow` package to do analytic continuation.
+            # Launch the `ACFlow` toolkit to do analytic continuation.
             welcome()
             setup_param(B,S)
             mesh, Aout, _ = ACFlow.solve(ACFlow.read_data())
@@ -415,17 +417,19 @@ function callbacks_in_run_tab(app::Dash.DashApp)
         State("dict-base", "children"),
         State("dict-maxent", "children"),
         State("dict-barrat", "children"),
+        State("dict-nevanac", "children"),
         State("dict-stochac", "children"),
         State("dict-stochsk", "children"),
         State("dict-stochom", "children"),
         State("dict-stochpx", "children"),
-    ) do btn, pbase, pmaxent, pbarrat, pstochac, pstochsk, pstochom, pstochpx
+    ) do btn, pbase, pmaxent, pbarrat, pnevanac, pstochac, pstochsk, pstochom, pstochpx
         if btn > 0
             # Convert parameters to dictionary
             B, S, solver = parse_parameters(
                 pbase,
                 pmaxent,
                 pbarrat,
+                pnevanac,
                 pstochac,
                 pstochsk,
                 pstochom,
@@ -486,6 +490,7 @@ end
         pbase::String,
         pmaxent::String,
         pbarrat::String,
+        pnevanac::String,
         pstochac::String,
         pstochsk::String,
         pstochom::String,
@@ -498,6 +503,7 @@ function parse_parameters(
     pbase::String,
     pmaxent::String,
     pbarrat::String,
+    pnevanac::String,
     pstochac::String,
     pstochsk::String,
     pstochom::String,
@@ -543,6 +549,18 @@ function parse_parameters(
             "epsilon" => parse(F64, array_barrat[3]),
             "pcut"    => parse(F64, array_barrat[4]),
             "eta"     => parse(F64, array_barrat[5]),
+        )
+    end
+
+    # For [NevanAC] block, it is optional.
+    if array_base[2] == "NevanAC"
+        array_barrat = split(pnevanac,"|")
+        S = Dict{String,Any}(
+            "pick"  => parse(Bool, array_barrat[1]),
+            "hardy" => parse(Bool, array_barrat[2]),
+            "hmax"  => parse(I64, array_barrat[3]),
+            "alpha" => parse(F64, array_barrat[4]),
+            "eta"   => parse(F64, array_barrat[5]),
         )
     end
 
