@@ -4,11 +4,11 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2025/03/24
+# Last modified: 2025/04/05
 #
 
 # The following global arrays are used to define the configure parameters
-# for the ACFlow package.
+# for the ACFlow toolkit.
 #
 # For the [BASE] block
 const _PBASE = [
@@ -44,6 +44,15 @@ const _PBarRat = [
     "epsilon",
     "pcut",
     "eta"
+]
+#
+# For the [NevanAC] block
+const _PNevanAC = [
+    "pick",
+    "hardy",
+    "hmax",
+    "alpha",
+    "eta"    
 ]
 #
 # For the [StochAC] block
