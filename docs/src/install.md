@@ -54,6 +54,12 @@ julia> Pkg.update("ACGui")
     push!(LOAD_PATH, "/home/your_home/acgui/src")
     ```
 
+    or just setup the environment variable `ACGUI_HOME`:
+
+    ```shell
+    export ACGUI_HOME=/home/your_home/acgui/src
+    ```
+
 ## Documentation
 
 Finally, in order to generate the documentation, please type the following commands in the terminal:
