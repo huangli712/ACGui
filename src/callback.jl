@@ -289,7 +289,7 @@ function callbacks_in_solver_tab(app::Dash.DashApp)
     callback!(
         app,
         Output("dict-nevanac", "children"),
-        [Input("nevanac-$i", "value") for i in _NevanAC],
+        [Input("nevanac-$i", "value") for i in _PNevanAC],
     ) do vals...
         return join(vals, "|")
     end
