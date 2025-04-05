@@ -52,7 +52,7 @@ const _PNevanAC = [
     "hardy",
     "hmax",
     "alpha",
-    "eta"    
+    "eta"
 ]
 #
 # For the [StochAC] block
