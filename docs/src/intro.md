@@ -26,7 +26,7 @@ Now `ACGui` supports the following features:
 
 !!! tip
 
-    The ACGui app is web-based. In addition to this, we also provide another graphic user interface, namely `ZenGui`, for the `ACFlow` toolkit. `ZenGui` is a traditional windows GUI application. 
+    The ACGui app is web-based. In addition to this, we also provide another graphic user interface, namely `ZenGui`, for the `ACFlow` toolkit. `ZenGui` is a traditional windows GUI application.
 
     For more information about the `ZenGui` app, please visit the following URL
 

@@ -2,10 +2,6 @@
 
 It is quite easy to use `ACGui`.
 
-!!! warning
-
-    To make `ACGui` works correctly, you have to make sure `ACFlow` and `ACGui` are installed correctly, or the relevant environment variables (I mean `ACFLOW_HOME` and `ACGUI_HOME`) are set correctly.
-
 ---
 
 ## Launch ACGui
@@ -78,6 +74,10 @@ After a few seconds, the data will be uploaded to the server side. Note that the
 ![run.png](./assets/run.png)
 
 **Figure 4 |** The `Run` tab in `ACGui`.
+
+!!! warning
+
+    To make `ACGui` works correctly, you have to make sure `ACFlow` and `ACGui` are installed correctly, or the relevant environment variables (I mean `ACFLOW_HOME` and `ACGUI_HOME`) are set correctly.
 
 !!! info
 
