@@ -194,6 +194,7 @@ function callbacks_in_general_tab(app::Dash.DashApp)
         app,
         Output("maxent-block", "hidden"),
         Output("barrat-block", "hidden"),
+        Output("nevanac-block", "hidden"),
         Output("stochac-block", "hidden"),
         Output("stochsk-block", "hidden"),
         Output("stochom-block", "hidden"),
@@ -202,32 +203,37 @@ function callbacks_in_general_tab(app::Dash.DashApp)
     ) do solver
         # Enable `MaxEnt` solver
         if solver == "MaxEnt"
-            return (false, true, true, true, true, true)
+            return (false, true, true, true, true, true, true)
         end
 
         # Enable `BarRat` solver
         if solver == "BarRat"
-            return (true, false, true, true, true, true)
+            return (true, false, true, true, true, true, true)
+        end
+
+        # Enable `NevanAC` solver
+        if solver == "NevanAC"
+            return (true, true, false, true, true, true, true)
         end
 
         # Enable `StochAC` solver
         if solver == "StochAC"
-            return (true, true, false, true, true, true)
+            return (true, true, true, false, true, true, true)
         end
 
         # Enable `StochSK` solver
         if solver == "StochSK"
-            return (true, true, true, false, true, true)
+            return (true, true, true, true, false, true, true)
         end
 
         # Enable `StochOM` solver
         if solver == "StochOM"
-            return (true, true, true, true, false, true)
+            return (true, true, true, true, true, false, true)
         end
 
         # Enable `StochPX` solver
         if solver == "StochPX"
-            return (true, true, true, true, true, false)
+            return (true, true, true, true, true, true, false)
         end
     end
 
