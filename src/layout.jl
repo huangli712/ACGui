@@ -512,6 +512,88 @@ function layout_barrat_block()
 end
 
 """
+    layout_barrat_block()
+
+Layout for the `solver` tab. It is the panel for the `BarRat` solver. Note
+that this panel can be hidden, if `solver` in `general` tab is not equal
+to `BarRat`.
+"""
+function layout_barrat_block()
+    html_table([
+        html_thead(
+            html_tr(
+                html_th(html_label("[BarRat] block"), colSpan = 3)
+            )
+        ),
+        #
+        html_tbody([
+            html_tr([
+                html_th(html_label("Possible type of the spectrum")),
+                html_td(html_label("atype")),
+                html_td(
+                    dcc_dropdown(
+                        id = "barrat-atype",
+                        options = [
+                            (label = "cont", value = "cont"),
+                            (label = "delta", value = "delta"),
+                        ],
+                        value = "cont",
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("How to denoise the input data")),
+                html_td(html_label("denoise")),
+                html_td(
+                    dcc_dropdown(
+                        id = "barrat-denoise",
+                        options = [
+                            (label = "none", value = "none"),
+                            (label = "prony_s", value = "prony_s"),
+                            (label = "prony_o", value = "prony_o"),
+                        ],
+                        value = "none",
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("Threshold for the Prony approximation")),
+                html_td(html_label("epsilon")),
+                html_td(
+                    dcc_input(
+                        id = "barrat-epsilon",
+                        type = "text",
+                        value = "1e-10"
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("Cutoff for unphysical poles")),
+                html_td(html_label("pcut")),
+                html_td(
+                    dcc_input(
+                        id = "barrat-pcut",
+                        type = "text",
+                        value = "1e-3"
+                    )
+                ),
+            ]),
+            html_tr([
+                html_th(html_label("Tiny distance from the real axis")),
+                html_td(html_label("eta")),
+                html_td(
+                    dcc_input(
+                        id = "barrat-eta",
+                        type = "text",
+                        value = "1e-2"
+                    )
+                ),
+            ]),
+        ]),
+    ], id = "barrat-block", hidden = true)
+end
+
+"""
     layout_stochac_block()
 
 Layout for the `solver` tab. It is the panel for the `StochAC` solver. Note
