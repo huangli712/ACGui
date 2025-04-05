@@ -512,69 +512,70 @@ function layout_barrat_block()
 end
 
 """
-    layout_barrat_block()
+    layout_nevanac_block()
 
-Layout for the `solver` tab. It is the panel for the `BarRat` solver. Note
+Layout for the `solver` tab. It is the panel for the `NevanAC` solver. Note
 that this panel can be hidden, if `solver` in `general` tab is not equal
-to `BarRat`.
+to `NevanAC`.
 """
-function layout_barrat_block()
+function layout_nevanac_block()
     html_table([
         html_thead(
             html_tr(
-                html_th(html_label("[BarRat] block"), colSpan = 3)
+                html_th(html_label("[NevanAC] block"), colSpan = 3)
             )
         ),
         #
         html_tbody([
             html_tr([
-                html_th(html_label("Possible type of the spectrum")),
-                html_td(html_label("atype")),
+                html_th(html_label("Check the Pick criterion or not")),
+                html_td(html_label("pick")),
                 html_td(
-                    dcc_dropdown(
-                        id = "barrat-atype",
+                    dcc_radioitems(
+                        id = "nevanac-pick",
                         options = [
-                            (label = "cont", value = "cont"),
-                            (label = "delta", value = "delta"),
+                            (label = "Yes", value = "true"),
+                            (label = "No", value = "false"),
                         ],
-                        value = "cont",
+                        value = "true",
+                        labelStyle = Dict("display" => "inline-block")
                     )
                 ),
             ]),
             html_tr([
-                html_th(html_label("How to denoise the input data")),
-                html_td(html_label("denoise")),
+                html_th(html_label("Perform Hardy basis optimization or not")),
+                html_td(html_label("hardy")),
                 html_td(
-                    dcc_dropdown(
-                        id = "barrat-denoise",
+                    dcc_radioitems(
+                        id = "nevanac-hardy",
                         options = [
-                            (label = "none", value = "none"),
-                            (label = "prony_s", value = "prony_s"),
-                            (label = "prony_o", value = "prony_o"),
+                            (label = "Yes", value = "true"),
+                            (label = "No", value = "false"),
                         ],
-                        value = "none",
+                        value = "true",
+                        labelStyle = Dict("display" => "inline-block")
                     )
                 ),
             ]),
             html_tr([
-                html_th(html_label("Threshold for the Prony approximation")),
-                html_td(html_label("epsilon")),
+                html_th(html_label("Upper cut off of Hardy order")),
+                html_td(html_label("hmax")),
                 html_td(
                     dcc_input(
-                        id = "barrat-epsilon",
+                        id = "nevanac-hmax",
                         type = "text",
-                        value = "1e-10"
+                        value = "50"
                     )
                 ),
             ]),
             html_tr([
-                html_th(html_label("Cutoff for unphysical poles")),
-                html_td(html_label("pcut")),
+                html_th(html_label("Regulation parameter for smooth norm")),
+                html_td(html_label("alpha")),
                 html_td(
                     dcc_input(
-                        id = "barrat-pcut",
+                        id = "nevanac-alpha",
                         type = "text",
-                        value = "1e-3"
+                        value = "1e-4"
                     )
                 ),
             ]),
@@ -583,14 +584,14 @@ function layout_barrat_block()
                 html_td(html_label("eta")),
                 html_td(
                     dcc_input(
-                        id = "barrat-eta",
+                        id = "nevanac-eta",
                         type = "text",
                         value = "1e-2"
                     )
                 ),
             ]),
         ]),
-    ], id = "barrat-block", hidden = true)
+    ], id = "nevanac-block", hidden = true)
 end
 
 """
