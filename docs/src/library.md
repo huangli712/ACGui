@@ -28,6 +28,7 @@ layout_data_block
 layout_base_block
 layout_maxent_block
 layout_barrat_block
+layout_nevanac_block
 layout_stochac_block
 layout_stochsk_block
 layout_stochom_block

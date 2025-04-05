@@ -4,7 +4,7 @@
 
 Now `ACGui` supports the following features:
 
-* Six analytic continuation solvers: MaxEnt, BarRat, StochAC, StochSK, StochOM, and StochPX.
+* Seven analytic continuation solvers: MaxEnt, BarRat, NevanAC, StochAC, StochSK, StochOM, and StochPX.
 * Visualize the spectral functions on line.
 * Generate `ac.toml` automatically.
 * Flexible UI.
@@ -22,4 +22,20 @@ Now `ACGui` supports the following features:
 
     ```text
     https://huangli712.github.io/projects/acflow/index.html
+    ```
+
+!!! tip
+
+    The ACGui app is web-based. In addition to this, we also provide another graphic user interface, namely `ZenGui`, for the `ACFlow` toolkit. `ZenGui` is a traditional windows GUI application. 
+
+    For more information about the `ZenGui` app, please visit the following URL
+
+    ```text
+    https://github.com/huangli712/ZenGui
+    ```
+
+    The online documentation about the `ZenGui` app can be found in:
+
+    ```text
+    https://huangli712.github.io/projects/zengui/index.html
     ```
