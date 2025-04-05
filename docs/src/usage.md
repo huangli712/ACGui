@@ -2,6 +2,10 @@
 
 It is quite easy to use `ACGui`.
 
+!!! warning
+
+    To make `ACGui` works correctly, you have to make sure `ACFlow` and `ACGui` are installed correctly, or the relevant environment variables (I mean `ACFLOW_HOME` and `ACGUI_HOME`) are set correctly.
+
 ---
 
 ## Launch ACGui
