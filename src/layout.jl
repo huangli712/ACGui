@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2025/03/24
+# Last modified: 2025/04/05
 #
 
 """
@@ -33,6 +33,7 @@ function acg_layout!(app::Dash.DashApp)
                 children = [ # For six analytic continuation solvers
                     layout_maxent_block(),
                     layout_barrat_block(),
+                    layout_nevanac_block(),
                     layout_stochac_block(),
                     layout_stochsk_block(),
                     layout_stochom_block(),
@@ -65,7 +66,7 @@ Layout for the header part.
 function layout_header_block()
     html_center([
         html_h2("ACGui"),
-        html_h3("A Graphic User Interface For ACFlow"),
+        html_h3("A Web-Based Graphic User Interface For ACFlow"),
     ])
 end
 
@@ -164,6 +165,7 @@ function layout_base_block()
                         options = [
                             (label = "MaxEnt", value = "MaxEnt"),
                             (label = "BarRat", value = "BarRat"),
+                            (label = "NevanAC", value = "NevanAC"),
                             (label = "StochAC", value = "StochAC"),
                             (label = "StochSK", value = "StochSK"),
                             (label = "StochOM", value = "StochOM"),
