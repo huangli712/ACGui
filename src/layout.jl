@@ -1019,7 +1019,7 @@ simulations and visualize the calculated results via this tab.
 function layout_calc_block()
     html_div([
         html_br(),
-        # The following seven labels are always invisible. They are used
+        # The following eight labels are always invisible. They are used
         # to collect the configuration parameters for ACFlow.
         html_label(
             children = "N/A",
@@ -1034,6 +1034,11 @@ function layout_calc_block()
         html_label(
             children = "N/A",
             id = "dict-barrat",
+            hidden = true,
+        ),
+        html_label(
+            children = "N/A",
+            id = "dict-nevanac",
             hidden = true,
         ),
         html_label(
@@ -1098,8 +1103,8 @@ author of ACGui.
 """
 function layout_about_block()
     html_div([
-        html_h4("Version : v0.7.0-devel.250324"),
-        html_h4("Release : 2025/03"),
+        html_h4("Version : v1.0.0-devel.250405"),
+        html_h4("Release : 2025/04"),
         html_h4("Developed by Li Huang (hungli at caep.cn)"),
     ])
 end
