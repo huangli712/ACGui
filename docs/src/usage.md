@@ -6,7 +6,7 @@ It is quite easy to use `ACGui`.
 
 ## Launch ACGui
 
-Suppose that the `ACGui` is placed in the folder `/home/your_home/acgui`, then we should execute the following command in the terminal to launch the server side of `ACGui`:
+Suppose that the `ACGui` toolkit is placed in the folder `/home/your_home/acgui`, then we should execute the following command in the terminal to launch the server side of `ACGui`:
 
 ```shell
 $ pwd

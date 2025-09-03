@@ -6,7 +6,7 @@ Now `ACGui` supports the following features:
 
 * Seven analytic continuation solvers: MaxEnt, BarRat, NevanAC, StochAC, StochSK, StochOM, and StochPX.
 * Visualize the spectral functions on line.
-* Generate `ac.toml` automatically.
+* Generate configuration file (`ac.toml`) automatically.
 * Flexible UI.
 * Easy to install.
 
