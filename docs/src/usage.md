@@ -4,7 +4,7 @@ It is quite easy to use `ACGui`.
 
 ---
 
-## Launch ACGui
+## Boost server side
 
 Suppose that the `ACGui` toolkit is placed in the folder `/home/your_home/acgui`, then we should execute the following command in the terminal to launch the server side of `ACGui`:
 
@@ -14,6 +14,10 @@ $ pwd
 $ ./util/acg.jl
 [ Info: Listening on: 127.0.0.1:8848, thread id: 1
 ```
+
+---
+
+## Launch client side
 
 Next, we can use any favourite web browsers (such as Chrome, Edge, or Firefox) to open the following URL:
 
@@ -53,7 +57,7 @@ After a few seconds, the data will be uploaded to the server side. Note that the
 
 ---
 
-## Analytic continuation solver
+## Configure analytic continuation solver
 
 * Select the `Solver` tab.
 * Customize the parameters for the chosen solver.
@@ -64,7 +68,7 @@ After a few seconds, the data will be uploaded to the server side. Note that the
 
 ---
 
-## Run
+## Run analytic continuation solver
 
 * Select the `Run` tab.
 * Click `Start Analytic Continuation` to start calculation. After a few seconds or minites or hours (it depends on the solver you used), the spectrum will be shown in the bottom of this tab.
@@ -86,3 +90,26 @@ After a few seconds, the data will be uploaded to the server side. Note that the
 !!! warning
 
     Now `ACGui` does not support parallel calculation. In other words, you can not execute the `StochAC`, `StochSK`, `StochOM`, and `StochPX` solvers with multiple processors at the same time.
+
+## Stop server side
+
+* Press `CTRL+C` in the terminal, then the client side will stop to respond.
+
+---
+
+## Change internet port
+
+The default HTTP port is 8848, but you can modify it by the following steps:
+
+* Open `acgui/src/base.jl` with any favorite editor.
+* Go to line 34, and change 8848 to any positive number between 1 and 65535 you wish.
+
+```julia
+# Start the server
+run_server(
+    app,
+    Dash.HTTP.Sockets.localhost,
+    8848, # Change it
+    debug = false
+)
+```
