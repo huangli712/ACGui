@@ -1,10 +1,8 @@
-# Usage
-
 It is quite easy to use `ACGui`.
 
 ---
 
-## Boost server side
+## Boost Server Side
 
 Suppose that the `ACGui` toolkit is placed in the folder `/home/your_home/acgui`, then we should execute the following command in the terminal to launch the server side of `ACGui`:
 
@@ -17,7 +15,7 @@ $ ./util/acg.jl
 
 ---
 
-## Launch client side
+## Launch Client Side
 
 Next, we can use any favourite web browsers (such as Chrome, Edge, or Firefox) to open the following URL:
 
@@ -29,7 +27,7 @@ This is the client side of `ACGui`.
 
 ---
 
-## Prepare input data
+## Prepare Input Data
 
 * Select the `Data` tab.
 * Click `Drag and Drop or Select Files`.
@@ -44,7 +42,7 @@ After a few seconds, the data will be uploaded to the server side. Note that the
 
 ---
 
-## General setup
+## General Setup
 
 * Select the `General` tab.
 * Fix filename for input data by `finput`.
@@ -57,7 +55,7 @@ After a few seconds, the data will be uploaded to the server side. Note that the
 
 ---
 
-## Configure analytic continuation solver
+## Configure Analytic Continuation Solver
 
 * Select the `Solver` tab.
 * Customize the parameters for the chosen solver.
@@ -68,7 +66,7 @@ After a few seconds, the data will be uploaded to the server side. Note that the
 
 ---
 
-## Run analytic continuation solver
+## Run Analytic Continuation Solver
 
 * Select the `Run` tab.
 * Click `Start Analytic Continuation` to start calculation. After a few seconds or minites or hours (it depends on the solver you used), the spectrum will be shown in the bottom of this tab.
@@ -91,13 +89,13 @@ After a few seconds, the data will be uploaded to the server side. Note that the
 
     Now `ACGui` does not support parallel calculation. In other words, you can not execute the `StochAC`, `StochSK`, `StochOM`, and `StochPX` solvers with multiple processors at the same time.
 
-## Stop server side
+## Stop Server Side
 
 * Press `CTRL+C` in the terminal, then the client side will stop to respond.
 
 ---
 
-## Change internet port
+## Change Internet Port
 
 The default HTTP port is 8848, but you can modify it by the following steps:
 

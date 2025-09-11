@@ -1,5 +1,3 @@
-# Installation
-
 It is quite easy to install `ACGui`.
 
 ## Prerequisite
@@ -20,7 +18,7 @@ julia> Pkg.add("Dash")
 
 Note that [`ACFlow`](https://github.com/huangli712/ACFlow) is not a registered package, so please follow its user guide to install it.
 
-## How to install
+## How To Install
 
 The users can use the `Pkg` package to install the `ACGui` app from its github repository directly:
 

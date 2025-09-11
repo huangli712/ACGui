@@ -20,7 +20,7 @@ makedocs(
     remotes = nothing,
     modules = [ACGui],
     pages = [
-        "Home" => "index.md",
+        "Welcome" => "index.md",
         "Introduction" => "intro.md",
         "Installation" => "install.md",
         "Usage" => "usage.md",
