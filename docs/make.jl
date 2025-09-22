@@ -6,8 +6,8 @@ using Random
 using ACGui
 
 makedocs(
-    sitename = "ACGui",
-    clean = false,
+    sitename = "ACGui: The User Guide",
+    clean = true,
     authors = "Li Huang <huangli@caep.cn> and contributors",
     format = Documenter.HTML(
         prettyurls = false,
@@ -17,6 +17,7 @@ makedocs(
         assets = ["assets/acgui.css"],
         collapselevel = 1,
     ),
+    #format = Documenter.LaTeX(platform = "none"),
     remotes = nothing,
     modules = [ACGui],
     pages = [
