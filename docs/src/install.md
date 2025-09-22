@@ -70,3 +70,10 @@ $ julia make.jl
 ```
 
 After a few seconds, the documentation is built and saved in the `acgui/docs/build` directory if everything is OK. The home page of the documentation is `acgui/docs/build/index.html`. The users can open it with any web browsers.
+
+!!! info
+
+    If the documentation has not been generated successfully, please try the following solutions:
+
+    * Install the `ACFlow` and `ACGui` codes via the official `Pkg` package.
+    * Or setup the environment variables `ACFLOW_HOME` and `ACGUI_HOME`. They should be associated with the `src` folders of the `ACFlow` and `ACGui` codes, respectively.
