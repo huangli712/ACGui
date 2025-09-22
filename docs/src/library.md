@@ -40,7 +40,7 @@ callbacks_in_run_tab
 callbacks_in_about_tab
 ```
 
-## Base
+## Core
 
 ```@docs
 acg_clean

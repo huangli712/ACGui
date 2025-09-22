@@ -101,6 +101,7 @@ The default HTTP port is 8848, but you can modify it by the following steps:
 
 * Open `acgui/src/base.jl` with any favorite editor.
 * Go to line 34, and change 8848 to any positive number between 1 and 65535 you wish.
+* Please stop and restart the server side to make it work.
 
 ```julia
 # Start the server
